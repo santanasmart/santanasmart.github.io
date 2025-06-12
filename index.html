@@ -1,88 +1,729 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SANTANASMART</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <style>
-    header {
-      background-color: #ff0000;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    footer {
-      background-color: #f0f0f0;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    nav a {
-      margin: 0 1rem;
-      color: white;
-      text-decoration: none;
-    }
-    .logo {
-      width: 250px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SantanaSmart - Soluciones especializadas para Santana Motors y su red de proveedores. Servicios de gestión de flotas, cadena de suministro y soporte a producción.">
+    <meta name="keywords" content="Santana Motors, vehículos todoterreno, Linares, gestión de flotas, cadena de suministro, producción automotriz, mantenimento industrial, diseño cad, prototipos">
+    
+    <title>SantanaSmart | Soluciones para Santana Motors</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=arial:wght@300;400;500;700&family=arial:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'arial', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'arial', sans-serif;
+            font-weight: 700;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .logo-ss {
+            font-family: 'arial', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            background-color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .logo-text {
+            font-family: 'arial', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,200,0.8) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 100, 0.8), rgba(44, 62, 100, 0.8)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            padding: 10px 25px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+        
+        .btn-santana {
+            background-color: #d9534f;
+            border-color: #d9534f;
+            color: white;
+        }
+        
+        .btn-santana:hover {
+            background-color: #c9302c;
+            border-color: #c12e2a;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-right: 15px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-links h5 {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links h5:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary-color);
+            margin-top: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: none;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        .client-logo {
+            max-height: 80px;
+            max-width: 180px;
+            margin: 15px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        .santana-badge {
+            background-color: #d9334f;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .logo-ss {
+                width: 80px;
+                height: 80px;
+                font-size: 1.8rem;
+                margin-right: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="SANTANASMART.JPG" alt="SantanaSmart Logo" class="logo">
-    <h1>LINARES</h1>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#blog">Blog</a>
-      <a href="#noticias">Noticias</a>
-      <a href="#contacto">Contacto</a>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <!-- Logo con doble ss -->
+                <div class="logo-ss">s+s</div>
+                <span class="logo-text">SantanaSmart</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#clientes">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-santana ms-2" href="#contacto">Santana Motors</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
-  </header>
 
-  <main class="container mt-4">
-    <section id="inicio">
-      <h2>Asesoría en Mantenimiento Industrial</h2>
-
-<p>Asesoramiento Técnico Especializado
-
-En SantanaSmart sabemos lo importante que es contar con la solución adecuada para cada necesidad. Por eso, ofrecemos un servicio de asesoramiento técnico personalizado, pensado para ayudarte a detectar problemas, mejorar instalaciones y optimizar procesos dentro de tu empresa o proyecto.
-
-Si necesitas apoyo para resolver un problema técnico o quieres sacar el máximo rendimiento a tus sistemas, rellena el formulario y uno de nuestros especialistas se pondrá en contacto contigo en el menor tiempo posible.Somos una empresa especializada en ofrecer soluciones inteligentes para el mantenimiento industrial, integrando automatización tecnológica y estrategias preventivas y correctivas que optimizan la productividad, reducen tiempos de parada y mejoran la eficiencia operativa.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Soluciones inteligentes para el renacimiento de Santana Motors en nuestro Linares</h1>
+            <p class="lead">Especialistas en gestión de flotas para la nueva etapa de producción de vehículos todoterreno en Linares.</p>
+            <div>
+                <a href="#contacto" class="btn btn-primary btn-lg me-2">Servicios para Santana</a>
+                <a href="#servicios" class="btn btn-outline-light btn-lg">Nuestras Soluciones</a>
+            </div>
+        </div>
     </section>
 
-    <section id="servicios">
-      <h2>Servicios</h2>
-      <ul>
-        <li>Asesoramiento técnico</li>
-        <li>Mantenimiento
- industrial</li>
-        <li>Consultoría tecnológica</li>
-      </ul>
+    <!-- Servicios -->
+    <section class="py-5" id="servicios">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Servicios Especializados <span class="santana-badge">Santana Motors</span></h2>
+                    <p class="text-center mb-5">Soluciones diseñadas específicamente para las necesidades de la nueva planta de producción y su red de proveedores</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h3>Gestión de Cadena de Suministro</h3>
+                            <p>Coordinación de proveedores locales e internacionales para la producción, con seguimiento de componentes desde China hasta Linares.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-car-alt"></i>
+                            </div>
+                            <h3>Flotas de Prueba</h3>
+                            <p>Gestión integral de vehículos de prueba previos al lanzamiento, con análisis de datos de rendimiento para ajustes de producción.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h3>Soporte a Producción</h3>
+                            <p>Coordinación logística para la línea de montaje, gestión de inventario y entregas just-in-time de componentes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3>Mantenimiento Predictivo</h3>
+                            <p>Tecnología avanzada para anticipar necesidades de mantenimiento en vehículos de prueba y flotas internas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-gas-pump"></i>
+                            </div>
+                            <h3>Optimización de Combustible</h3>
+                            <p>Soluciones para reducir el consumo en vehículos de prueba y flotas de transporte de componentes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Seguridad Integral</h3>
+                            <p>Protección de activos y conductores, con sistemas de seguridad avanzados para toda la operación.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="blog">
-      <h2>Blog</h2>
-      <p>Próximamente artículos sobre tecnología, proyectos y novedades.</p>
+    <!-- Sobre Nosotros -->
+    <section class="py-5 bg-light" id="nosotros">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a7b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1350&q=80" alt="Equipo SantanaSmart" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">Nuestra Historia con Santana</h2>
+                    <p>Fundada en 2023, SantanaSmart nació con la visión de apoyar el renacimiento de la industria automotriz en Linares. Cuando en 2025 se anunció el retorno de Santana Motors con inversión china, nos especializamos en servir a esta nueva etapa.</p>
+                    <p>Nuestro equipo combina experiencia en la antigua Santana Motors con especialistas en tecnología moderna, creando puentes entre el legado histórico y la innovación actual.</p>
+                    <p>Ofrecemos servicios adaptados específicamente a las necesidades de la nueva planta de producción y su red de proveedores locales.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Experiencia en Santana Motors</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Soporte 24/7 para producción</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Conocimiento local + tecnología</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Adaptación cultural china-española</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="noticias">
-      <h2>Noticias</h2>
-      <p>Actualizaciones importantes de la empresa y nuevos servicios.</p>
+    <!-- Clientes y Testimonios -->
+    <section class="py-5" id="clientes">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Confían en Nosotros</h2>
+                    <p class="text-center mb-5">Clientes satisfechos de nuestra especialización en el sector automotriz</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/60.jpg" alt="Director Santana" class="testimonial-img mx-auto d-block">
+                        <h5 class="text-center">Zhang Wei</h5>
+                        <p class="text-muted text-center">Director de Operaciones, Santana Motors</p>
+                        <p class="text-center">"SantanaSmart ha sido un partner esencial en nuestra transición, entendiendo perfectamente las necesidades de una planta de producción moderna manteniendo el ADN local."</p>
+                        <div class="text-center text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Proveedor local" class="testimonial-img mx-auto d-block">
+                        <h5 class="text-center">Transportes Delgado</h5>
+                        <p class="text-muted text-center">Proveedor de Santana Motors</p>
+                        <p class="text-center">"Como proveedores de Santana, SantanaSmart nos ha ayudado a optimizar nuestras entregas just-in-time, reduciendo costos y mejorando nuestra eficiencia."</p>
+                        <div class="text-center text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ex trabajador Santana" class="testimonial-img mx-auto d-block">
+                        <h5 class="text-center">María Gutiérrez</h5>
+                        <p class="text-muted text-center">Ex-trabajadora Santana Motors</p>
+                        <p class="text-center">"Después de trabajar en la antigua Santana, es emocionante ver cómo SantanaSmart está ayudando a mantener el conocimiento local mientras incorpora nueva tecnología."</p>
+                        <div class="text-center text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h4 class="text-center mb-4">Proveedores y colaboradores de Santana Motors</h4>
+                    <div class="d-flex flex-wrap justify-content-center align-items-center">
+                        <img src="https://via.placeholder.com/180x80/2c3e50/FFFFFF?text=Santana+Motors" alt="Santana Motors" class="img-fluid client-logo">
+                        <img src="https://via.placeholder.com/180x80/2c3e50/FFFFFF?text=AutoPartes+China" alt="AutoPartes China" class="img-fluid client-logo">
+                        <img src="https://via.placeholder.com/180x80/2c3e50/FFFFFF?text=Transportes+Linares" alt="Transportes Linares" class="img-fluid client-logo">
+                        <img src="https://via.placeholder.com/180x80/2c3e50/FFFFFF?text=Logística+Andalucía" alt="Logística Andalucía" class="img-fluid client-logo">
+                        <img src="https://via.placeholder.com/180x80/2c3e50/FFFFFF?text=Componentes+JA" alt="Componentes JA" class="img-fluid client-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>Email: contacto@santanasmart.com</p>
-      <p>Teléfono: +34 600 000 000</p>
+    <!-- Contacto -->
+    <section class="py-5 bg-light" id="contacto">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="section-title">Contacto</h2>
+                    <p class="text-center mb-5">Especialistas en soluciones para Santana Motors y su red de proveedores</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <h3>Información de Contacto</h3>
+                    <p>Estamos ubicados en Linares para ofrecer soporte inmediato a Santana Motors y sus proveedores.</p>
+                    
+                    <div class="contact-info">
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <h5>Dirección</h5>
+                                <p>Av. de Andalucía, 15, 23700 Linares, Jaén</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-phone-alt contact-icon"></i>
+                            <div>
+                                <h5>Teléfono</h5>
+                                <p>+34 953 123 456</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>santana@santanasmart.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-clock contact-icon"></i>
+                            <div>
+                                <h5>Horario</h5>
+                                <p>Lunes a Viernes: 8:00 - 20:00<br>Sábado: 9:00 - 14:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <h3>Servicio para Santana Motors</h3>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="empresa" class="form-label">Empresa</label>
+                                <input type="text" class="form-control" id="empresa" placeholder="Proveedor de Santana Motors?">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="telefono">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="servicio" class="form-label">Servicio de interés</label>
+                            <select class="form-select" id="servicio">
+                                <option selected>Seleccione un servicio...</option>
+                                <option>Gestión de Cadena de Suministro</option>
+                                <option>Flotas de Prueba</option>
+                                <option>Soporte a Producción</option>
+                                <option>Mantenimiento Predictivo</option>
+                                <option>Optimización de Combustible</option>
+                                <option>Seguridad Integral</option>
+                                <option>Otro servicio para Santana</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" rows="5" placeholder="Indique su relación con Santana Motors y sus necesidades..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <p>&copy; 2025 SantanaSmart. Todos los derechos reservados.</p>
-  </footer>
+    <!-- Mapa -->
+    <div class="container-fluid p-0">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3171.219605043971!2d-3.649336923974119!3d37.3574308720964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6e7ce3a8f928b1%3A0x5a1a6b6f8a1a1a1a!2sAntigua%20f%C3%A1brica%20Santana%20Motor%2C%20Linares!5e0!3m2!1ses!2ses!4v1689876543210!5m2!1ses!2ses" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase">SantanaSmart</h5>
+                    <p>Partner tecnológico especializado en Santana Motors. Combinamos el legado histórico con soluciones modernas para la nueva etapa de producción en Linares.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="footer-links">Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#clientes">Clientes</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="footer-links">Servicios Santana</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Gestión de Cadena</a></li>
+                        <li><a href="#">Flotas de Prueba</a></li>
+                        <li><a href="#">Soporte Producción</a></li>
+                        <li><a href="#">Mantenimiento</a></li>
+                        <li><a href="#">Seguridad</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-links">Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Av. Andalucía, 15, Linares</li>
+                        <li><i class="fas fa-phone-alt me-2"></i> +34 953 123 456</li>
+                        <li><i class="fas fa-envelope me-2"></i> santana@santanasmart.com</li>
+                        <li><i class="fas fa-clock me-2"></i> 8:00 - 20:00 (L-V)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center copyright">
+                    <p class="mb-0">&copy; 2025 SantanaSmart. Todos los derechos reservados. Especialistas en soluciones para Santana Motors.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scripts personalizados -->
+    <script>
+        // Smooth scrolling para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Cambiar navbar al hacer scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+        
+        // Resaltar servicios para Santana
+        const santanaBadge = document.createElement('span');
+        santanaBadge.className = 'santana-badge';
+        santanaBadge.textContent = 'Santana Motors';
+        document.querySelector('.section-title').appendChild(santanaBadge);
+    </script>
 </body>
 </html>
-
-
