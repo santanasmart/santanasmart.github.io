@@ -10,5 +10,12 @@
     "resumen": "Resumen de la segunda entrada.",
     "imagen": "https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&w=400&q=80",
     "enlace": "https://www.santanasmart.com/blog/segunda-entrada"
-  }
+  },
+  {
+    "titulo": "Tercera entrada de blog",
+    "resumen": "Resumen de la Tercera entrada.",
+    "imagen": "https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&w=400&q=80",
+    "enlace": "https://www.santanasmart.com"
+  },
+  
 ]
