@@ -6,7 +6,7 @@ categories: [Ingeniería Mecánica, Cálculos]
 tags: [tornillos, torque, par de apriete, fatiga, M8, esfuerzos]
 description: "Descubre cómo calcular el par de apriete y la resistencia a carga axial, cortante y cíclica en tornillos métricos M8, incluyendo fórmulas clave y ejemplos reales."
 author: SantanaSmart
-image: /assets/images/tornillom8.jpeg
+image: /assets/images/tornillom8.jpg
 ---
 
 ## 🔩 Introducción
