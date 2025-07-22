@@ -56,5 +56,5 @@ Talleres especializados en robótica, electrónica aplicada, mantenimiento indus
 ¿Estás iniciando un nuevo proyecto industrial o quieres modernizar tu empresa actual?  
 En **SantanaSmart** te ayudamos a dar el siguiente paso con seguridad, estrategia y tecnología.
 
-📩 Contáctanos hoy y agenda una reunión sin compromiso. santanasmart@proton.me 
+📩 Contáctanos hoy y agenda una reunión sin compromiso.  
 
