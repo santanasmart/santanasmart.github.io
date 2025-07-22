@@ -6,13 +6,13 @@ categories: [Seguridad Infantil, Consejos]
 tags: [bebés, calor, coches, seguridad, verano]
 description: "Evita tragedias por golpes de calor dentro del coche. Conoce las mejores formas de proteger a tu bebé en verano."
 author: SantanaSmart
-image: /assets/images/pbc.jpeg
+image: /assets/images/pbc.jpg
 ---
 
 ## ¿Por qué es peligroso dejar a un bebé dentro del coche?
 
 <p align="center">
-  <img src="/assets/images/pbc.jpeg" alt="Proteger a bebés del calor en el coche" style="max-width: 100%; height: auto;">
+  <img src="/assets/images/bt.jpg" alt="Proteger a bebés del calor en el coche" style="max-width: 100%; height: auto;">
 </p>
 
 
