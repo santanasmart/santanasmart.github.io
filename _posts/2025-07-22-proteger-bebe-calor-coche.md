@@ -11,7 +11,10 @@ image: /assets/images/pbc.jpeg
 
 ## ¿Por qué es peligroso dejar a un bebé dentro del coche?
 
-![Proteger a bebés del calor en el coche](/assets/images/pbc.jpeg)
+<p align="center">
+  <img src="/assets/images/pbc.jpeg" alt="Proteger a bebés del calor en el coche" style="max-width: 100%; height: auto;">
+</p>
+
 
 
 El golpe de calor puede afectar a un bebé en tan solo **10 minutos**, incluso si el coche está estacionado a la sombra. Según estudios médicos, la temperatura interna de un vehículo puede subir hasta **20 °C** en pocos minutos.
