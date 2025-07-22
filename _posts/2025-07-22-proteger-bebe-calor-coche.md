@@ -12,7 +12,7 @@ image: /assets/images/pbc.jpg
 ## ¿Por qué es peligroso dejar a un bebé dentro del coche?
 
 <p align="center">
-  <img src="/assets/images/bt.jpg" alt="Proteger a bebés del calor en el coche" style="max-width: 100%; height: auto;">
+  <img src="/assets/images/pbc.jpg" alt="Proteger a bebés del calor en el coche" style="max-width: 100%; height: auto;">
 </p>
 
 
