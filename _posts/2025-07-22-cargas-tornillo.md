@@ -11,6 +11,10 @@ image: /assets/images/tornillom8.jpg
 
 ## 🔩 Introducción
 
+<p align="center">
+  <img src="/assets/images/tornillom8.jpg" alt="Proteger a bebés del calor en el coche" style="max-width: 100%; height: auto;">
+</p>
+
 Los tornillos métricos, como el **M8**, son muy comunes en aplicaciones estructurales y mecánicas. Es fundamental conocer cómo calcular correctamente su **par de apriete**, así como los **esfuerzos a tracción, compresión, cortante y fatiga** que puede soportar.
 
 En esta guía práctica, te mostramos cómo estimar estos valores de forma sencilla y segura.
