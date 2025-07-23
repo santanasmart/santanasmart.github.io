@@ -9,7 +9,7 @@ image: "/assets/images/energetico.jpg"
 ## 🔋 España impulsa el almacenamiento eléctrico con un plan récord de 700 millones de euros
 
 <p align="center">
-  <img src="/assets/images/energetico.jpg" alt="Proteger a bebés del calor en el coche" style="max-width: 100%; height: auto;">
+  <img src="/assets/images/energetico.jpg" alt="energía" style="max-width: 100%; height: auto;">
 </p>
 
 
