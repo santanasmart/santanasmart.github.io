@@ -8,6 +8,11 @@ image: "/assets/images/energetico.jpg"
 
 ## 🔋 España impulsa el almacenamiento eléctrico con un plan récord de 700 millones de euros
 
+<p align="center">
+  <img src="/assets/images/energetico.jpg" alt="Proteger a bebés del calor en el coche" style="max-width: 100%; height: auto;">
+</p>
+
+
 **Madrid, 23 de julio de 2025** — La Comisión Europea ha aprobado un programa de ayudas por valor de **700 millones de euros** para financiar instalaciones de almacenamiento de electricidad en España. La financiación, gestionada por el Ministerio de Transición Ecológica e IDAE, cubrirá hasta el **85 % de los costes** de proyectos como baterías, almacenamiento térmico y sistemas hidráulicos reversibles :contentReference[oaicite:2]{index=2}.
 
 Se estima que entre **80 y 120 proyectos** se beneficiarán del programa, generando entre **2,5 y 3,5 GW** adicionales de capacidad de almacenamiento que deben estar operativos antes de finales de 2029 :contentReference[oaicite:3]{index=3}.
