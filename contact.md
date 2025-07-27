@@ -4,19 +4,12 @@ title: Contacto
 permalink: /contacto/
 ---
 
-¿Tienes preguntas o sugerencias? ¡Escríbeme!
+Contacto
 
-<form action="https://formspree.io/f/tuformid" method="POST">
-  <label for="name">Nombre:</label><br />
-  <input type="text" name="name" required /><br /><br />
+¿Tienes alguna duda, propuesta o simplemente quieres ponerte en contacto con nosotros?
 
-  <label for="email">Email:</label><br />
-  <input type="email" name="email" required /><br /><br />
+En SantanaSmart estaremos encantados de atenderte. Ya sea para colaborar, solicitar información o iniciar un nuevo proyecto juntos, puedes escribirnos directamente a:
 
-  <label for="message">Mensaje:</label><br />
-  <textarea name="message" rows="6" required></textarea><br /><br />
+📧 santanasmart@proton.me
 
-  <button type="submit">Enviar</button>
-</form>
-
-> Asegúrate de reemplazar `"tuformid"` con el ID real de tu cuenta Formspree.
+Responderemos lo antes posible.
