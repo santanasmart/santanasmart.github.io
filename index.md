@@ -45,7 +45,7 @@ Talleres especializados en robótica, electrónica aplicada, mantenimiento indus
 ![Equipo de trabajo](https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg)
 
 - ✅ Experiencia técnica multidisciplinar  
-- ✅ Conocimiento profundo del ecosistema industrial de Linares  
+- ✅ Conocimiento profundo del ecosistema industrial en sus distintas areas  
 - ✅ Soluciones adaptadas a tu realidad y presupuesto  
 - ✅ Compromiso con la innovación, la eficiencia y el desarrollo sostenible  
 
