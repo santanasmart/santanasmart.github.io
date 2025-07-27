@@ -2,6 +2,7 @@
 title: "Optimización del perfil evolvente de dientes de engranajes: Mejorando rendimiento y vida útil"
 date: 2025-07-27
 categories: [ingeniería, engranajes, mantenimiento]
+image: "/assets/images/engranaje.jpg"
 ---
 
 # Optimización del perfil evolvente de dientes de engranajes: Mejorando rendimiento y vida útil
