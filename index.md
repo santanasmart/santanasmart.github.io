@@ -5,7 +5,7 @@ description: Servicios de asesoría industrial en Linares para startups y empres
 permalink: /
 ---
 
-👉 Visita la sección de [ENTRADAS](/blog.html) o conoce más [sobre mí](/about).
+👉 Visita la sección de [ENTRADAS](/blog.html) o conoce más [sobre nosotros](/about).
 
 ¿Quieres contactarme? Ve a la [página de contacto](/contacto).
 
