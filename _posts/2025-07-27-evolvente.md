@@ -7,6 +7,10 @@ image: "/assets/images/engranaje.jpg"
 
 # Optimización del perfil evolvente de dientes de engranajes: Mejorando rendimiento y vida útil
 
+<p align="center">
+  <img src="/assets/images/engranaje.jpg" alt="Santana y Rockwell en Linares" style="max-width: 100%; height: auto;">
+</p>
+
 El diseño y mantenimiento de engranajes es crucial para la eficiencia y durabilidad de muchos sistemas mecánicos industriales. Recientemente, se han destacado avances importantes en el **rectificado y optimización del perfil evolvente** de los dientes de engranajes, con el objetivo de mejorar su rendimiento y prolongar su vida útil.
 
 ## ¿Qué es el perfil evolvente y por qué es importante?
