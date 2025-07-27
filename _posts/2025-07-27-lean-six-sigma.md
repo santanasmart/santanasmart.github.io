@@ -6,6 +6,10 @@ image: "/assets/images/lss.jpg"
 
 ## 🧠 Fundamentos
 
+<p align="center">
+  <img src="/assets/images/lss.jpg" alt="Santana y Rockwell en Linares" style="max-width: 100%; height: auto;">
+</p>
+
 ### Lean
 Se centra en **eliminar desperdicios** y actividades que no agregan valor al cliente.
 
