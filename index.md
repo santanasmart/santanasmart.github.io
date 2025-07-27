@@ -21,7 +21,7 @@ En **SantanaSmart**, creemos que el verdadero motor del desarrollo industrial es
 
 ## 🛠 Nuestros Servicios
 
-![Automatización](https://images.pexels.com/photos/236709/pexels-photo-236709.jpeg)
+![Automatización](https://images.pexels.com/photos/31973806/pexels-photo-31973806.jpeg)
 
 🔧 **Asesoría Técnica Industrial**  
 Diseño y mejora de procesos productivos, selección de maquinaria, planificación de planta y control de calidad.
@@ -42,7 +42,7 @@ Talleres especializados en robótica, electrónica aplicada, mantenimiento indus
 
 ## 🌐 ¿Por qué SantanaSmart?
 
-![Equipo de trabajo](https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg)
+![Equipo de trabajo](https://images.pexels.com/photos/1105379/pexels-photo-1105379.jpeg)
 
 - ✅ Experiencia técnica multidisciplinar  
 - ✅ Conocimiento profundo del ecosistema industrial en sus distintas areas  
