@@ -10,6 +10,7 @@ Contacto
 
 En SantanaSmart estaremos encantados de atenderte. Ya sea para colaborar, solicitar información o iniciar un nuevo proyecto juntos, puedes escribirnos directamente a:
 
-📧 santanasmart@proton.me
+Puedes escribirme directamente a:  
+[📧 santanasmart@proton.me](mailto:santanasmart@proton.me)
 
 Responderemos lo antes posible.
