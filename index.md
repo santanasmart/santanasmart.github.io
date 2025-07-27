@@ -7,7 +7,7 @@ permalink: /
 
 👉 Visita la sección de [ENTRADAS](/blog.html) o conoce más [sobre nosotros](/about).
 
-¿Quieres contactarme? Ve a la [página de contacto](/contacto).
+¿Quieres contactarnos? Ve a la [página de contacto](/contacto).
 
 # 🏭 Bienvenidos a SantanaSmart
 
@@ -56,5 +56,5 @@ Talleres especializados en robótica, electrónica aplicada, mantenimiento indus
 ¿Estás iniciando un nuevo proyecto industrial o quieres modernizar tu empresa actual?  
 En **SantanaSmart** te ayudamos a dar el siguiente paso con seguridad, estrategia y tecnología.
 
-📩 Contáctanos hoy y agenda una reunión sin compromiso.  
+📩 Contáctanos hoy y agenda una reunión sin compromiso. [página de contacto](/contacto).
 
