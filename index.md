@@ -11,7 +11,7 @@ permalink: /
 
 # 🏭 Bienvenidos a SantanaSmart
 
-![Fábrica moderna](https://images.pexels.com/photos/1476321/pexels-photo-1476321.jpeg)
+![Fábrica moderna](https://images.pexels.com/photos/3757226/pexels-photo-3757226.jpeg)
 
 ### Asesoría Industrial Inteligente para Empresas que Quieren Crecer
 
