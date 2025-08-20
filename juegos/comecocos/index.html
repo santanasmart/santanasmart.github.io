@@ -8,25 +8,24 @@ permalink: /juegos/comecocos/
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Mini Comecocos (Compacto)</title>
+  <title>BocaDots — Juego Original</title>
   <style>
-    :root { --bg:#0b0f19; --hud:#e6e6e6; }
-    html, body { margin:0; background:#000; color: var(--hud); font-family: system-ui, -apple-system, Segoe UI, Roboto; }
-    .wrap { max-width: 900px; margin: 20px auto; padding: 0 12px; }
-    h1 { font-size: clamp(18px, 3vw, 22px); margin: 0 0 10px; }
-    .hud { display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; justify-content:space-between; margin: 8px 0 12px; }
-    .lives { display:flex; gap:6px; }
-    .life { width:12px; height:12px; border-radius:50%; background:#ffd54a; box-shadow: 0 0 6px #ffd54a80; }
-    .grid { position: relative; }
-    canvas { width: 100%; height: auto; display:block; background:#000414; border-radius:12px; border:1px solid #1e3258; }
-    .overlay { position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
-    .msg { background: rgba(10,14,28,.78); padding:10px 14px; border:1px solid #2c3a60; border-radius:10px; text-align:center; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; border: 1px solid #345; background: #0c1222; border-radius: 6px; padding: 0 6px; }
+    :root { --bg:#080a12; --ink:#e8eefc; --blue:#2f6df6; --dot:#8fd3ff; --power:#ffd36e; --hero:#ffd84a; }
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto}
+    .wrap{max-width:900px;margin:18px auto;padding:0 12px}
+    h1{font-size:clamp(18px,3vw,22px);margin:8px 0 12px}
+    .hud{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:8px 0 12px}
+    .lives{display:flex;gap:6px} .life{width:12px;height:12px;border-radius:50%;background:var(--hero);box-shadow:0 0 6px #ffd84a80}
+    .grid{position:relative} canvas{width:100%;height:auto;display:block;background:#0b0f19;border-radius:12px;border:1px solid #1f2f56}
+    .overlay{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+    .msg{background:#0c1222d0;padding:10px 14px;border:1px solid #2b3d75;border-radius:10px;text-align:center}
+    .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;border:1px solid #345;background:#0c1222;border-radius:6px;padding:0 6px}
+    a.back{color:#a8c4ff}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>🟡 Mini Comecocos (Compacto)</h1>
+    <h1>🟡 BocaDots <small style="opacity:.7;font-weight:600;">(original)</small></h1>
     <div class="hud">
       <div>🎯 Puntos: <b id="score">0</b></div>
       <div>🌀 Nivel: <b id="level">1</b></div>
@@ -35,11 +34,12 @@ permalink: /juegos/comecocos/
     </div>
 
     <div class="grid">
-      <!-- Tamaño compacto: 30 x 34 tiles -->
-      <canvas id="game" width="540" height="612" aria-label="Juego Comecocos"></canvas>
+      <!-- Compacto: 28 x 30 tiles -->
+      <canvas id="game" width="504" height="540" aria-label="BocaDots"></canvas>
       <div class="overlay"><div class="msg" id="overlayMsg" hidden>
         <h2 id="stateTitle">¡Listo!</h2>
         <div id="stateSubtitle">Pulsa cualquier tecla para empezar</div>
+        <div style="margin-top:6px;font-size:12px;opacity:.8"><a class="back" href="{{ '/' | relative_url }}">Volver al inicio</a></div>
       </div></div>
     </div>
   </div>
@@ -47,72 +47,74 @@ permalink: /juegos/comecocos/
   <script>
   (()=>{'use strict';
 
-  // ====== Parámetros compactos ======
-  const TILE=18, COLS=30, ROWS=34;
-  const SPEED_PAC=8.5, SPEED_GHOST=7.2, SPEED_FRIGHT=5.0, FRIGHT_TIME=6.0;
-  const GHOST_COLORS=['#ff4b4b','#ff78ff','#4bf1ff','#ffb84b'];
+  // ====== Dimensiones compactas y parámetros ======
+  const TILE=18, COLS=28, ROWS=30;
+  const SPEED_HERO=8.8, SPEED_BOT=7.4, SPEED_FRIGHT=5.1, FRIGHT_TIME=6.0;
+  const BOT_COLORS=['#ff5d6c','#ff7df7','#63e9ff','#ffc16b'];
 
   const cvs=document.getElementById('game'), ctx=cvs.getContext('2d');
   const scoreEl=document.getElementById('score'), levelEl=document.getElementById('level'), livesEl=document.getElementById('lives');
   const overlayMsg=document.getElementById('overlayMsg'), stateTitle=document.getElementById('stateTitle'), stateSubtitle=document.getElementById('stateSubtitle');
+  cvs.width=COLS*TILE; cvs.height=ROWS*TILE;
+
+  // ====== Sonidos WebAudio (originales) ======
+  const AC = window.AudioContext ? new AudioContext() : null;
+  const beep=(f=440, t=0.06, g=0.08)=>{ if(!AC) return;
+    const a=AC.createOscillator(), v=AC.createGain();
+    a.type='sine'; a.frequency.value=f; v.gain.value=g;
+    a.connect(v); v.connect(AC.destination);
+    a.start(); a.stop(AC.currentTime+t);
+  };
+  const sndEat=()=>beep(740,0.045,0.06);
+  const sndPower=()=>beep(320,0.12,0.08);
+  const sndHit=()=>{beep(120,0.12,0.12); setTimeout(()=>beep(90,0.12,0.12),70);};
+  const sndWin=()=>{[660,880,990].forEach((f,i)=>setTimeout(()=>beep(f,0.09,0.09),i*90));};
 
   // ====== Utilidades ======
   const DIRS={left:{x:-1,y:0},right:{x:1,y:0},up:{x:0,y:-1},down:{x:0,y:1},none:{x:0,y:0}};
   const OPP={left:'right',right:'left',up:'down',down:'up'};
   const clamp=(v,min,max)=>v<min?min:(v>max?max:v);
   const rand=(a,b)=>Math.random()*(b-a)+a;
-  const choice = arr => arr[(Math.random()*arr.length)|0];
+  const choice=arr=>arr[(Math.random()*arr.length)|0];
 
-  // ====== Laberinto ======
-  // 0 vacío, 1 muro, 2 punto, 3 power
+  // ====== Laberinto (geométrico propio) ======
+  // 0 vacío, 1 muro, 2 puntito, 3 power
   const grid=Array.from({length:ROWS},()=>Array(COLS).fill(0));
   const wall=(x,y,w,h)=>{for(let r=y;r<y+h;r++)for(let c=x;c<c+w;c++) if(r>=0&&r<ROWS&&c>=0&&c<COLS) grid[r][c]=1;}
 
-  // Bordes
+  // Bordes y túnel central
   wall(0,0,COLS,1); wall(0,ROWS-1,COLS,1); wall(0,0,1,ROWS); wall(COLS-1,0,1,ROWS);
+  const TUNNEL_ROW=(ROWS/2)|0; grid[TUNNEL_ROW][0]=0; grid[TUNNEL_ROW][COLS-1]=0;
 
-  // Túnel lateral en fila media
-  const TUNNEL_ROW = (ROWS/2)|0;
-  grid[TUNNEL_ROW][0]=0; grid[TUNNEL_ROW][COLS-1]=0;
-
-  // Bloques internos con proporciones (para no romper al cambiar tamaño)
-  const W = COLS, H = ROWS;
-  // Columnas verticales
-  wall(Math.round(W*0.18), Math.round(H*0.10), 2, Math.round(H*0.35));
-  wall(Math.round(W*0.18), Math.round(H*0.55), 2, Math.round(H*0.30));
-  wall(W-Math.round(W*0.18)-2, Math.round(H*0.10), 2, Math.round(H*0.35));
-  wall(W-Math.round(W*0.18)-2, Math.round(H*0.55), 2, Math.round(H*0.30));
-  // Barras horizontales
-  wall(Math.round(W*0.07), Math.round(H*0.26), Math.round(W*0.35), 2);
-  wall(W-Math.round(W*0.42), Math.round(H*0.26), Math.round(W*0.35), 2);
-  wall(Math.round(W*0.07), H-Math.round(H*0.26)-2, Math.round(W*0.35), 2);
-  wall(W-Math.round(W*0.42), H-Math.round(H*0.26)-2, Math.round(W*0.35), 2);
-  // Casa central de fantasmas
-  const houseW= Math.max(8, Math.round(W*0.28));
-  const houseH= 5;
-  const houseX= (W/2|0) - (houseW/2|0);
-  const houseY= (H/2|0) - 2;
+  // Bloques internos diseñados por proporción (estética original)
+  const W=COLS,H=ROWS;
+  // Pilas verticales
+  wall(Math.round(W*0.16), 3, 2, H-6);
+  wall(W- Math.round(W*0.16)-2, 3, 2, H-6);
+  // Pasillos horizontales
+  wall(3, Math.round(H*0.28), Math.round(W*0.34), 2);
+  wall(W-3-Math.round(W*0.34), Math.round(H*0.28), Math.round(W*0.34), 2);
+  wall(3, H-Math.round(H*0.28)-2, Math.round(W*0.34), 2);
+  wall(W-3-Math.round(W*0.34), H-Math.round(H*0.28)-2, Math.round(W*0.34), 2);
+  // Casa central “Bóts”
+  const houseW=Math.max(8, Math.round(W*0.32)), houseH=5;
+  const houseX=(W/2|0)-(houseW/2|0), houseY=(H/2|0)-2;
   wall(houseX, houseY, houseW, houseH);
-  // Puerta (hueco) de la casa
-  for (let c=(W/2|0)-1; c<=(W/2|0)+1; c++) grid[houseY][c]=0;
+  // Puerta central
+  for(let c=(W/2|0)-1;c<=(W/2|0)+1;c++) grid[houseY][c]=0;
 
-  // Rellenar puntos en lo transitable
-  for (let r=0;r<ROWS;r++) for (let c=0;c<COLS;c++) if (grid[r][c]===0) grid[r][c]=2;
+  // Relleno de puntos
+  for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++) if (grid[r][c]===0) grid[r][c]=2;
+  // Power-dots originales (esquinas)
+  const POW=[[2,2],[W-3,2],[2,H-3],[W-3,H-3]]; POW.forEach(([c,r])=>{ if(grid[r]?.[c]===2) grid[r][c]=3; });
 
-  // Power-dots en esquinas accesibles
-  const POW = [
-    [2,2], [W-3,2], [2,H-3], [W-3,H-3]
-  ];
-  POW.forEach(([c,r])=>{ if (grid[r]?.[c]===2) grid[r][c]=3; });
-
-  // Posiciones de inicio
-  const PAC_START={c:(W/2|0), r:H-6};
-  const GHOST_HOME={c:(W/2|0), r:H/2|0};
-  grid[PAC_START.r][PAC_START.c]=0; grid[GHOST_HOME.r][GHOST_HOME.c]=0;
+  // Posiciones
+  const HERO_START={c:(W/2|0), r:H-6}, BOT_HOME={c:(W/2|0), r:H/2|0};
+  grid[HERO_START.r][HERO_START.c]=0; grid[BOT_HOME.r][BOT_HOME.c]=0;
 
   const countDots=()=>grid.flat().filter(v=>v===2||v===3).length;
 
-  // ====== Entidades ======
+  // ====== Entidades (estética original) ======
   class Entity{
     constructor(c,r,color){this.x=c*TILE+TILE/2;this.y=r*TILE+TILE/2;this.dir='none';this.nextDir='none';this.color=color;this.radius=TILE*0.48;}
     tileC(){return Math.floor(this.x/TILE)} tileR(){return Math.floor(this.y/TILE)}
@@ -120,9 +122,8 @@ permalink: /juegos/comecocos/
     isWall(c,r){return (r<0||r>=ROWS||c<0||c>=COLS)?true:grid[r][c]===1;}
     trySetDir(d){const v=DIRS[d],nc=this.tileC()+v.x,nr=this.tileR()+v.y;if(!this.isWall(nc,nr)){this.dir=d;return true}return false;}
     move(dt,speed){
-      const v=DIRS[this.dir];
-      let nx=this.x+v.x*speed*TILE*dt, ny=this.y+v.y*speed*TILE*dt;
-      // túnel
+      const v=DIRS[this.dir]; let nx=this.x+v.x*speed*TILE*dt, ny=this.y+v.y*speed*TILE*dt;
+      // túnel wrap
       if (this.tileR()===TUNNEL_ROW){
         if (nx < -TILE/2) nx = (COLS*TILE)-TILE/2;
         if (nx > (COLS*TILE)+TILE/2) nx = TILE/2;
@@ -133,37 +134,43 @@ permalink: /juegos/comecocos/
     }
   }
 
-  class Pacman extends Entity{
-    constructor(){ super(PAC_START.c,PAC_START.r,'#ffd84a'); this.mouth=0; }
+  // Protagonista “Boca” (no es Pac-Man: arco con borde y ojo propio)
+  class Boca extends Entity{
+    constructor(){ super(HERO_START.c,HERO_START.r,'var(--hero)'); this.mouth=0; }
     update(dt){
       if (this.atCenter() && this.nextDir!=='none') this.trySetDir(this.nextDir);
-      this.move(dt,SPEED_PAC);
+      this.move(dt,SPEED_HERO);
       this.mouth=(this.mouth+dt*8)%(Math.PI*2);
       const c=this.tileC(), r=this.tileR();
-      if (grid[r]?.[c]===2){ grid[r][c]=0; score+=10; dotsLeft--; }
-      else if (grid[r]?.[c]===3){ grid[r][c]=0; score+=50; dotsLeft--; frightTimer=FRIGHT_TIME; ghosts.forEach(g=>g.setFright()); }
+      if (grid[r]?.[c]===2){ grid[r][c]=0; score+=10; dotsLeft--; sndEat(); }
+      else if (grid[r]?.[c]===3){ grid[r][c]=0; score+=60; dotsLeft--; frightTimer=FRIGHT_TIME; bots.forEach(b=>b.setFright()); sndPower(); }
     }
     draw(){
-      const ang=Math.abs(Math.sin(this.mouth))*0.6;
-      let rot=0; if (this.dir==='left') rot=Math.PI; else if (this.dir==='up') rot=-Math.PI/2; else if (this.dir==='down') rot=Math.PI/2;
+      const ang=Math.abs(Math.sin(this.mouth))*0.55;
+      let rot=0; if(this.dir==='left')rot=Math.PI; else if(this.dir==='up')rot=-Math.PI/2; else if(this.dir==='down')rot=Math.PI/2;
       ctx.save(); ctx.translate(this.x,this.y); ctx.rotate(rot);
-      ctx.fillStyle=this.color; ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,this.radius,ang,Math.PI*2-ang); ctx.fill(); ctx.restore();
+      // borde
+      ctx.beginPath(); ctx.fillStyle=this.color; ctx.moveTo(0,0); ctx.arc(0,0,this.radius,ang,Math.PI*2-ang); ctx.fill();
+      // ojo
+      ctx.fillStyle='#1f2540'; ctx.beginPath(); ctx.arc(3,-4,2,0,Math.PI*2); ctx.fill();
+      ctx.restore();
     }
   }
 
-  class Ghost extends Entity{
+  // Enemigos “Bóts” (cuerpo en gota geométrica, ojo vectorial)
+  class Bot extends Entity{
     constructor(i){
-      super(GHOST_HOME.c + (i-1)-1, GHOST_HOME.r, GHOST_COLORS[i%4]);
+      super(BOT_HOME.c + (i-1)-1, BOT_HOME.r, BOT_COLORS[i%4]);
       this.dir = choice(['left','right','up','down']);
       this.mode = 'chase'; // 'chase' | 'fright' | 'eaten'
       this.eyesOnly=false;
       this.scatterTarget = { c: i%2===0 ? 1 : COLS-2, r: i<2 ? 1 : ROWS-2 };
     }
-    speed(){ return this.mode==='fright'?SPEED_FRIGHT : (this.mode==='eaten'?SPEED_GHOST*1.2:SPEED_GHOST); }
+    speed(){ return this.mode==='fright'?SPEED_FRIGHT : (this.mode==='eaten'?SPEED_BOT*1.2:SPEED_BOT); }
     setFright(){ if (this.mode!=='eaten'){ this.mode='fright'; this.dir=OPP[this.dir]||this.dir; } }
     setEaten(){ this.mode='eaten'; this.eyesOnly=true; }
     setChase(){ this.mode='chase'; this.eyesOnly=false; }
-    homeReached(){ return this.tileC()===GHOST_HOME.c && this.tileR()===GHOST_HOME.r; }
+    homeReached(){ return this.tileC()===BOT_HOME.c && this.tileR()===BOT_HOME.r; }
     chooseDir(){
       if (!this.atCenter()) return;
       const opts=['left','right','up','down'].filter(d=>{
@@ -175,15 +182,14 @@ permalink: /juegos/comecocos/
 
       let target;
       if (this.mode==='fright'){
-        const dx=this.tileC()-pac.tileC(), dy=this.tileR()-pac.tileR();
+        const dx=this.tileC()-boca.tileC(), dy=this.tileR()-boca.tileR();
         target={ c: clamp(this.tileC()+Math.sign(dx)*6,1,COLS-2), r: clamp(this.tileR()+Math.sign(dy)*6,1,ROWS-2) };
       } else if (this.mode==='eaten'){
-        target=GHOST_HOME;
+        target=BOT_HOME;
       } else {
-        target = Math.random()<0.7 ? {c: pac.tileC(), r: pac.tileR()} : this.scatterTarget;
+        target = Math.random()<0.7 ? {c: boca.tileC(), r: boca.tileR()} : this.scatterTarget;
       }
 
-      // elegir dirección con menor distancia Manhattan (+ruido)
       let best=opts[0], bestScore=Infinity;
       for (const d of opts){
         const v=DIRS[d], nc=this.tileC()+v.x, nr=this.tileR()+v.y;
@@ -197,109 +203,105 @@ permalink: /juegos/comecocos/
       this.move(dt,this.speed());
       if (this.mode==='eaten' && this.homeReached()) this.setChase();
 
-      // colisión con Pacman
-      const dx=this.x-pac.x, dy=this.y-pac.y;
+      // colisión con Boca
+      const dx=this.x-boca.x, dy=this.y-boca.y;
       if (dx*dx+dy*dy < (TILE*0.7)*(TILE*0.7)){
-        if (this.mode==='fright'){ this.setEaten(); score+=200; }
+        if (this.mode==='fright'){ this.setEaten(); score+=200; sndEat(); }
         else if (this.mode==='chase'){ loseLife(); }
       }
     }
     draw(){
       ctx.save(); ctx.translate(this.x,this.y);
-      const color = (this.mode==='fright' && !this.eyesOnly) ? '#3dd6ff' : this.color;
-      // cuerpo tipo fantasma
-      const w=TILE*0.95, h=TILE*0.95, r=h*0.52;
+      const color = (this.mode==='fright' && !this.eyesOnly) ? '#7bd7ff' : this.color;
+      // cuerpo original (gota redondeada)
+      const w=TILE*0.95, h=TILE*0.95, r=h*0.55;
       ctx.fillStyle=color; ctx.beginPath();
-      ctx.moveTo(-w*0.5, 0); ctx.lineTo(-w*0.5, -h*0.1);
-      ctx.quadraticCurveTo(-w*0.5, -r, 0, -r);
-      ctx.quadraticCurveTo(w*0.5, -r, w*0.5, -h*0.1);
-      ctx.lineTo(w*0.5, 0);
-      const bumps=4, step=w/bumps;
-      for (let i=0;i<bumps;i++){
-        ctx.quadraticCurveTo(-w*0.5 + step*(i+0.5), h*0.35, -w*0.5 + step*(i+1), 0);
-      }
+      ctx.moveTo(-w*0.45, 0);
+      ctx.quadraticCurveTo(-w*0.5, -r*0.1, 0, -r);
+      ctx.quadraticCurveTo(w*0.5, -r*0.1, w*0.45, 0);
+      ctx.lineTo(w*0.45, r*0.2); ctx.lineTo(-w*0.45, r*0.2);
       ctx.closePath(); ctx.fill();
-      // ojos
+
+      // ojo vectorial estilizado
       ctx.fillStyle='#fff';
-      ctx.beginPath(); ctx.arc(-6,-6,4,0,Math.PI*2); ctx.fill();
-      ctx.beginPath(); ctx.arc( 6,-6,4,0,Math.PI*2); ctx.fill();
-      ctx.fillStyle='#1134ff';
+      ctx.beginPath(); ctx.ellipse(-4,-6,3,2,0,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse( 4,-6,3,2,0,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#0c1dff';
       const v=DIRS[this.dir]||DIRS.left;
-      ctx.beginPath(); ctx.arc(-6+v.x*2,-6+v.y*2,2,0,Math.PI*2); ctx.fill();
-      ctx.beginPath(); ctx.arc( 6+v.x*2,-6+v.y*2,2,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(-4+v.x*1.6,-6+v.y*1.6,1.4,0,Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc( 4+v.x*1.6,-6+v.y*1.6,1.4,0,Math.PI*2); ctx.fill();
+
       ctx.restore();
     }
   }
 
-  // ====== Estado del juego ======
-  let pac=new Pacman();
-  let ghosts=[0,1,2,3].map(i=>new Ghost(i));
+  // ====== Estado y bucle ======
+  let boca=new Boca();
+  let bots=[0,1,2,3].map(i=>new Bot(i));
   let dotsLeft=countDots(), score=0, level=1, lives=3, frightTimer=0, running=false, last=0;
 
-  function updateLives(){ livesEl.innerHTML=''; for (let i=0;i<lives;i++){ const d=document.createElement('div'); d.className='life'; livesEl.appendChild(d); } }
+  function updateLives(){ livesEl.innerHTML=''; for(let i=0;i<lives;i++){ const d=document.createElement('div'); d.className='life'; livesEl.appendChild(d);} }
   function showOverlay(t,s){ stateTitle.textContent=t; stateSubtitle.textContent=s; overlayMsg.hidden=false; }
   function hideOverlay(){ overlayMsg.hidden=true; }
-  function resetPositions(){ pac=new Pacman(); ghosts=[0,1,2,3].map(i=>new Ghost(i)); }
+  function resetPositions(){ boca=new Boca(); bots=[0,1,2,3].map(i=>new Bot(i)); }
   function nextLevel(){
     level++; levelEl.textContent=String(level);
-    // repoblar puntos (sin tocar muros)
-    for (let r=0;r<ROWS;r++) for (let c=0;c<COLS;c++){
-      if (grid[r][c]===0) grid[r][c]=2;
-    }
+    // repoblar puntos
+    for (let r=0;r<ROWS;r++) for (let c=0;c<COLS;c++){ if (grid[r][c]===0) grid[r][c]=2; }
     POW.forEach(([c,r])=>{ if (grid[r]?.[c]!==1) grid[r][c]=3; });
-    dotsLeft=countDots(); resetPositions();
+    dotsLeft=countDots(); resetPositions(); sndWin();
   }
   function loseLife(){
-    lives--; updateLives();
-    if (lives<=0){ running=false; showOverlay('💀 Juego terminado','Pulsa cualquier tecla para reiniciar'); }
+    lives--; updateLives(); sndHit();
+    if (lives<=0){ running=false; showOverlay('💀 Fin de la partida','Pulsa cualquier tecla para reiniciar'); }
     else { resetPositions(); }
   }
 
-  // ====== Entrada ======
   updateLives(); scoreEl.textContent='0'; levelEl.textContent='1';
-  showOverlay('👋 ¡Listo!','Pulsa cualquier tecla para empezar');
+  showOverlay('👋 ¡BocaDots listo!','Pulsa cualquier tecla para empezar');
 
   const keymap={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',a:'left',d:'right',w:'up',s:'down',A:'left',D:'right',W:'up',S:'down'};
-  window.addEventListener('keydown', (e)=>{
-    if (!running){ running=true; hideOverlay(); last=performance.now(); return; }
-    const d=keymap[e.key]; if(!d) return;
-    pac.nextDir=d; e.preventDefault();
+  window.addEventListener('keydown',e=>{
+    if (!running){ running=true; hideOverlay(); last=performance.now(); if(AC&&AC.state==='suspended'){AC.resume()} return; }
+    const d=keymap[e.key]; if(!d) return; boca.nextDir=d; e.preventDefault();
   }, {passive:false});
 
-  // ====== Bucle principal ======
   function loop(ts){
     if (!running){ requestAnimationFrame(loop); return; }
-    const dt = Math.min(0.035, (ts-last)/1000); last = ts;
+    const dt=Math.min(0.035,(ts-last)/1000); last=ts;
 
-    pac.update(dt);
-    if (frightTimer>0){ frightTimer-=dt; if (frightTimer<=0){ ghosts.forEach(g=>g.setChase()); frightTimer=0; } }
-    ghosts.forEach(g=>g.update(dt));
+    boca.update(dt);
+    if (frightTimer>0){ frightTimer-=dt; if (frightTimer<=0){ bots.forEach(b=>b.setChase()); frightTimer=0; } }
+    bots.forEach(b=>b.update(dt));
     if (dotsLeft<=0){ nextLevel(); }
 
-    draw();
-    requestAnimationFrame(loop);
+    draw(); requestAnimationFrame(loop);
   }
 
   function draw(){
     ctx.clearRect(0,0,cvs.width,cvs.height);
 
-    // Muros
-    ctx.fillStyle='#2039ff';
-    for (let r=0;r<ROWS;r++) for (let c=0;c<COLS;c++) if (grid[r][c]===1) ctx.fillRect(c*TILE,r*TILE,TILE,TILE);
+    // Muros “lineales” propios (en vez de ladrillos sólidos)
+    ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--blue') || '#2f6df6';
+    ctx.lineWidth=2; ctx.lineCap='round';
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++) if(grid[r][c]===1){
+      // dibuja contorno simple
+      ctx.strokeRect(c*TILE+2, r*TILE+2, TILE-4, TILE-4);
+    }
 
-    // Puntos
-    for (let r=0;r<ROWS;r++) for (let c=0;c<COLS;c++){
+    // Puntos originales
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
       if (grid[r][c]===2){
-        ctx.fillStyle='#9ad0ff';
+        ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--dot') || '#8fd3ff';
         ctx.beginPath(); ctx.arc(c*TILE+TILE/2, r*TILE+TILE/2, 2.1, 0, Math.PI*2); ctx.fill();
       } else if (grid[r][c]===3){
-        ctx.fillStyle='#fff4a5';
-        ctx.beginPath(); ctx.arc(c*TILE+TILE/2, r*TILE+TILE/2, 4.0 + Math.sin(performance.now()/160)*0.8, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--power') || '#ffd36e';
+        ctx.beginPath(); ctx.arc(c*TILE+TILE/2, r*TILE+TILE/2, 4.1 + Math.sin(performance.now()/160)*0.8, 0, Math.PI*2); ctx.fill();
       }
     }
 
-    pac.draw(); ghosts.forEach(g=>g.draw());
-    scoreEl.textContent = String(score);
+    boca.draw(); bots.forEach(b=>b.draw());
+    scoreEl.textContent=String(score);
   }
 
   requestAnimationFrame(loop);
@@ -308,7 +310,3 @@ permalink: /juegos/comecocos/
   </script>
 </body>
 </html>
-
-
-</html>
-
