@@ -1,1 +1,72 @@
-cccccc
+---
+layout: none
+permalink: /juegos/comecocos/
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Mini Comecocos</title>
+  <style>
+    :root { --bg:#0b0f19; --hud:#e6e6e6; --accent:#2e62ff; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin:0; background: radial-gradient(1200px 600px at 50% -10%, #151a2b, #0b0f19); color: var(--hud); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans'; }
+    .wrap { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+    h1 { font-weight: 800; letter-spacing: .5px; margin: 0 0 8px; font-size: clamp(18px, 3vw, 24px); }
+    .hud { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; border:1px solid #243; border-radius:14px; background: linear-gradient(180deg,#0f1426,#0c1120); box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03); margin-bottom: 12px; }
+    .hud b { color: #fff; }
+    .row { display:flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
+    canvas { background: #000414; width: 100%; height: auto; image-rendering: pixelated; border-radius: 16px; border:1px solid #203050; box-shadow: 0 20px 60px rgba(0,0,0,.4); display:block; }
+    .panel { flex: 1 1 240px; min-width: 240px; padding: 12px 14px; border:1px solid #243; border-radius: 14px; background: linear-gradient(180deg,#0f1426,#0c1120); }
+    .pill { display:inline-block; padding: 2px 8px; border-radius: 999px; background: #133; color:#9fd; border:1px solid #2a4c6f; font-size: 12px; }
+    .lives { display:flex; gap:6px; }
+    .life { width:14px; height:14px; border-radius:50%; background: #ffd54a; box-shadow: 0 0 8px #ffd54a80; border:1px solid #b08b00; }
+    .overlay { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+    .msg { pointer-events: none; text-align:center; padding: 12px 18px; background: rgba(8,12,24,.75); border:1px solid #2c3a60; border-radius: 12px; backdrop-filter: blur(6px); }
+    .msg h2 { margin: 0 0 6px; }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; border: 1px solid #345; background: #0c1222; border-radius: 6px; padding: 0 6px; }
+    .footer { opacity:.7; font-size: 12px; margin-top: 10px;}
+    .grid { position: relative; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🟡 Mini Comecocos</h1>
+
+    <div class="hud">
+      <div>🎯 Puntos: <b id="score">0</b></div>
+      <div>🌀 Nivel: <b id="level">1</b></div>
+      <div class="lives" id="lives"></div>
+      <div class="pill">Controles: <span class="kbd">← ↑ → ↓</span> / <span class="kbd">W A S D</span></div>
+    </div>
+
+    <div class="row">
+      <div class="grid" style="flex: 2 1 560px; min-width: 320px;">
+        <canvas id="game" width="684" height="828" aria-label="Juego Comecocos"></canvas>
+        <div class="overlay"><div class="msg" id="overlayMsg" hidden>
+          <h2 id="stateTitle">¡Listo!</h2>
+          <div id="stateSubtitle">Pulsa cualquier tecla para empezar</div>
+        </div></div>
+      </div>
+      <div class="panel">
+        <h3 style="margin:0 0 8px;">Instrucciones</h3>
+        <ul style="margin:0; padding-left: 18px;">
+          <li>Come todos los puntos para pasar de nivel.</li>
+          <li>Los puntos grandes (✨) vuelven vulnerables a los fantasmas durante unos segundos.</li>
+          <li>Si un fantasma te atrapa, pierdes una vida.</li>
+        </ul>
+        <div class="footer">Código en un único archivo. Sin dependencias.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // ⚠️ Aquí va TODO el script del juego
+  // 👉 Copia el bloque <script> que te pasé antes, completo, desde "(() => { 'use strict';"
+  // hasta el final de "})();"
+  </script>
+</body>
+</html>
+
