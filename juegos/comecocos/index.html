@@ -10,25 +10,15 @@ permalink: /juegos/comecocos/
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Mini Comecocos</title>
   <style>
-    :root { --bg:#0b0f19; --hud:#e6e6e6; --accent:#2e62ff; }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin:0; background: radial-gradient(1200px 600px at 50% -10%, #151a2b, #0b0f19); color: var(--hud); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans'; }
-    .wrap { max-width: 980px; margin: 24px auto; padding: 0 16px; }
-    h1 { font-weight: 800; letter-spacing: .5px; margin: 0 0 8px; font-size: clamp(18px, 3vw, 24px); }
-    .hud { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; border:1px solid #243; border-radius:14px; background: linear-gradient(180deg,#0f1426,#0c1120); box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03); margin-bottom: 12px; }
-    .hud b { color: #fff; }
-    .row { display:flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
-    canvas { background: #000414; width: 100%; height: auto; image-rendering: pixelated; border-radius: 16px; border:1px solid #203050; box-shadow: 0 20px 60px rgba(0,0,0,.4); display:block; }
-    .panel { flex: 1 1 240px; min-width: 240px; padding: 12px 14px; border:1px solid #243; border-radius: 14px; background: linear-gradient(180deg,#0f1426,#0c1120); }
-    .pill { display:inline-block; padding: 2px 8px; border-radius: 999px; background: #133; color:#9fd; border:1px solid #2a4c6f; font-size: 12px; }
+    :root { --bg:#0b0f19; --hud:#e6e6e6; }
+    html, body { margin:0; background:#000; color: var(--hud); font-family: system-ui; }
+    .wrap { max-width: 960px; margin: 24px auto; padding: 0 16px; }
+    canvas { background:#000414; width:100%; height:auto; display:block; border-radius:12px; }
+    .hud { display:flex; justify-content:space-between; margin:12px 0; }
     .lives { display:flex; gap:6px; }
-    .life { width:14px; height:14px; border-radius:50%; background: #ffd54a; box-shadow: 0 0 8px #ffd54a80; border:1px solid #b08b00; }
-    .overlay { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
-    .msg { pointer-events: none; text-align:center; padding: 12px 18px; background: rgba(8,12,24,.75); border:1px solid #2c3a60; border-radius: 12px; backdrop-filter: blur(6px); }
-    .msg h2 { margin: 0 0 6px; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; border: 1px solid #345; background: #0c1222; border-radius: 6px; padding: 0 6px; }
-    .footer { opacity:.7; font-size: 12px; margin-top: 10px;}
-    .grid { position: relative; }
+    .life { width:14px; height:14px; border-radius:50%; background:#ffd54a; }
+    .overlay { position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
+    .msg { background:rgba(0,0,0,.7); padding:12px 18px; border-radius:10px; text-align:center; color:#fff; }
   </style>
 </head>
 <body>
@@ -39,34 +29,98 @@ permalink: /juegos/comecocos/
       <div>🎯 Puntos: <b id="score">0</b></div>
       <div>🌀 Nivel: <b id="level">1</b></div>
       <div class="lives" id="lives"></div>
-      <div class="pill">Controles: <span class="kbd">← ↑ → ↓</span> / <span class="kbd">W A S D</span></div>
     </div>
 
-    <div class="row">
-      <div class="grid" style="flex: 2 1 560px; min-width: 320px;">
-        <canvas id="game" width="684" height="828" aria-label="Juego Comecocos"></canvas>
-        <div class="overlay"><div class="msg" id="overlayMsg" hidden>
-          <h2 id="stateTitle">¡Listo!</h2>
-          <div id="stateSubtitle">Pulsa cualquier tecla para empezar</div>
-        </div></div>
-      </div>
-      <div class="panel">
-        <h3 style="margin:0 0 8px;">Instrucciones</h3>
-        <ul style="margin:0; padding-left: 18px;">
-          <li>Come todos los puntos para pasar de nivel.</li>
-          <li>Los puntos grandes (✨) vuelven vulnerables a los fantasmas durante unos segundos.</li>
-          <li>Si un fantasma te atrapa, pierdes una vida.</li>
-        </ul>
-        <div class="footer">Código en un único archivo. Sin dependencias.</div>
-      </div>
+    <div style="position:relative">
+      <canvas id="game" width="684" height="828"></canvas>
+      <div class="overlay"><div class="msg" id="overlayMsg" hidden>
+        <h2 id="stateTitle">¡Listo!</h2>
+        <div id="stateSubtitle">Pulsa cualquier tecla para empezar</div>
+      </div></div>
     </div>
   </div>
 
   <script>
-  // ⚠️ Aquí va TODO el script del juego
-  // 👉 Copia el bloque <script> que te pasé antes, completo, desde "(() => { 'use strict';"
-  // hasta el final de "})();"
+  (()=>{'use strict';
+
+  // === CONFIGURACIÓN DEL JUEGO ===
+  const TILE=18, COLS=38, ROWS=46;
+  const SPEED_PAC=8.5, SPEED_GHOST=7.5, SPEED_FRIGHT=5.0, FRIGHT_TIME=6.0;
+  const GHOST_COLORS=['#ff4b4b','#ff78ff','#4bf1ff','#ffb84b'];
+  const POWER_POS=[[2,2],[COLS-3,2],[2,ROWS-3],[COLS-3,ROWS-3]];
+
+  const cvs=document.getElementById('game'), ctx=cvs.getContext('2d');
+  const scoreEl=document.getElementById('score'), levelEl=document.getElementById('level'), livesEl=document.getElementById('lives');
+  const overlayMsg=document.getElementById('overlayMsg'), stateTitle=document.getElementById('stateTitle'), stateSubtitle=document.getElementById('stateSubtitle');
+  cvs.width=COLS*TILE; cvs.height=ROWS*TILE;
+
+  const DIRS={left:{x:-1,y:0},right:{x:1,y:0},up:{x:0,y:-1},down:{x:0,y:1},none:{x:0,y:0}};
+  const OPP={left:'right',right:'left',up:'down',down:'up'};
+
+  const grid=Array.from({length:ROWS},()=>Array(COLS).fill(0));
+  const rect=(x,y,w,h)=>{for(let r=y;r<y+h;r++)for(let c=x;c<x+w;c++)grid[r][c]=1;}
+  rect(0,0,COLS,1); rect(0,ROWS-1,COLS,1); rect(0,0,1,ROWS); rect(COLS-1,0,1,ROWS);
+  const TUNNEL_ROW=(ROWS/2)|0; grid[TUNNEL_ROW][0]=0; grid[TUNNEL_ROW][COLS-1]=0;
+  rect(6,4,2,12); rect(COLS-8,4,2,12); rect(6,ROWS-16,2,12); rect(COLS-8,ROWS-16,2,12);
+  rect(3,9,12,2); rect(COLS-15,9,12,2); rect(3,ROWS-11,12,2); rect(COLS-15,ROWS-11,12,2);
+  rect((COLS/2|0)-5,(ROWS/2|0)-2,10,5);
+  for(let c=(COLS/2|0)-1;c<=(COLS/2|0)+1;c++)grid[(ROWS/2|0)-2][c]=0;
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)if(grid[r][c]===0)grid[r][c]=2;
+  POWER_POS.forEach(([c,r])=>grid[r][c]=3);
+
+  const PAC_START={c:(COLS/2|0),r:(ROWS-6)}, GHOST_HOME={c:(COLS/2|0),r:(ROWS/2|0)};
+  grid[PAC_START.r][PAC_START.c]=0; grid[GHOST_HOME.r][GHOST_HOME.c]=0;
+
+  const countDots=()=>grid.flat().filter(v=>v===2||v===3).length;
+  const rand=(a,b)=>Math.random()*(b-a)+a, choice=arr=>arr[(Math.random()*arr.length)|0];
+
+  class Entity{
+    constructor(c,r,color){this.x=c*TILE+TILE/2;this.y=r*TILE+TILE/2;this.dir='none';this.nextDir='none';this.color=color;this.radius=TILE*0.48;}
+    tileC(){return Math.floor(this.x/TILE)} tileR(){return Math.floor(this.y/TILE)}
+    atCenter(){const cx=this.tileC()*TILE+TILE/2,cy=this.tileR()*TILE+TILE/2;return Math.abs(this.x-cx)<0.5&&Math.abs(this.y-cy)<0.5;}
+    trySetDir(d){const v=DIRS[d],nc=this.tileC()+v.x,nr=this.tileR()+v.y;if(grid[nr]?.[nc]!==1){this.dir=d;return true}return false;}
+    move(dt,speed){const v=DIRS[this.dir];let nx=this.x+v.x*speed*TILE*dt,ny=this.y+v.y*speed*TILE*dt;if(this.tileR()===TUNNEL_ROW){if(nx<-TILE/2)nx=(COLS*TILE)-TILE/2;if(nx>(COLS*TILE)+TILE/2)nx=TILE/2;}const nc=Math.floor(nx/TILE),nr=Math.floor(ny/TILE);if(grid[nr]?.[nc]!==1){this.x=nx;this.y=ny}else{this.x=this.tileC()*TILE+TILE/2;this.y=this.tileR()*TILE+TILE/2;this.dir='none';}}
+  }
+
+  class Pacman extends Entity{
+    constructor(){super(PAC_START.c,PAC_START.r,'#ffd84a');this.mouth=0;}
+    update(dt){if(this.atCenter()&&this.nextDir!=='none')this.trySetDir(this.nextDir);this.move(dt,SPEED_PAC);this.mouth=(this.mouth+dt*8)%(Math.PI*2);const c=this.tileC(),r=this.tileR();if(grid[r]?.[c]===2){grid[r][c]=0;score+=10;dotsLeft--;}else if(grid[r]?.[c]===3){grid[r][c]=0;score+=50;dotsLeft--;frightTimer=FRIGHT_TIME;ghosts.forEach(g=>g.setFright());}}
+    draw(){const ang=Math.abs(Math.sin(this.mouth))*0.6;let rot=0;if(this.dir==='left')rot=Math.PI;else if(this.dir==='up')rot=-Math.PI/2;else if(this.dir==='down')rot=Math.PI/2;ctx.save();ctx.translate(this.x,this.y);ctx.rotate(rot);ctx.fillStyle=this.color;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,this.radius,ang,Math.PI*2-ang);ctx.fill();ctx.restore();}
+  }
+
+  class Ghost extends Entity{
+    constructor(i){super(GHOST_HOME.c+(i-1)-1,GHOST_HOME.r,GHOST_COLORS[i%4]);this.dir=choice(['left','right','up','down']);this.mode='chase';this.eyesOnly=false;this.scatterTarget={c:i%2===0?1:COLS-2,r:i<2?1:ROWS-2};}
+    speed(){return this.mode==='fright'?SPEED_FRIGHT:(this.mode==='eaten'?SPEED_GHOST*1.2:SPEED_GHOST);}
+    setFright(){if(this.mode!=='eaten'){this.mode='fright';this.dir=OPP[this.dir]||this.dir;}}
+    setEaten(){this.mode='eaten';this.eyesOnly=true;}
+    setChase(){this.mode='chase';this.eyesOnly=false;}
+    homeReached(){return this.tileC()===GHOST_HOME.c&&this.tileR()===GHOST_HOME.r;}
+    chooseDir(){if(!this.atCenter())return;const options=['left','right','up','down'].filter(d=>{if(OPP[d]===this.dir)return false;const v=DIRS[d],nc=this.tileC()+v.x,nr=this.tileR()+v.y;return grid[nr]?.[nc]!==1});if(!options.length){this.dir=OPP[this.dir]||'none';return;}let target;if(this.mode==='fright'){const dx=this.tileC()-pac.tileC(),dy=this.tileR()-pac.tileR();target={c:this.tileC()+Math.sign(dx)*6,r:this.tileR()+Math.sign(dy)*6};}else if(this.mode==='eaten'){target=GHOST_HOME;}else{target=Math.random()<0.7?{c:pac.tileC(),r:pac.tileR()}:this.scatterTarget;}let best=options[0],bestScore=1e9;for(const d of options){const v=DIRS[d],nc=this.tileC()+v.x,nr=this.tileR()+v.y;const sc=Math.abs(nc-target.c)+Math.abs(nr-target.r)+rand(0,0.6);if(sc<bestScore){bestScore=sc;best=d;}}this.dir=best;}
+    update(dt){this.chooseDir();this.move(dt,this.speed());if(this.mode==='eaten'&&this.homeReached())this.setChase();const dx=this.x-pac.x,dy=this.y-pac.y;if(dx*dx+dy*dy<(TILE*0.7)**2){if(this.mode==='fright'){this.setEaten();score+=200;}else if(this.mode==='chase'){loseLife();}}}
+    draw(){ctx.save();ctx.translate(this.x,this.y);ctx.fillStyle=this.mode==='fright'&&!this.eyesOnly?'#3dd6ff':this.color;ctx.beginPath();ctx.arc(0,0,TILE*0.5,0,Math.PI*2);ctx.fill();ctx.restore();}
+  }
+
+  let pac=new Pacman(),ghosts=[0,1,2,3].map(i=>new Ghost(i));
+  let dotsLeft=countDots(),score=0,level=1,lives=3,frightTimer=0,running=false,last=0;
+
+  function loseLife(){lives--;updateLives();if(lives<=0){running=false;showOverlay('💀 Juego terminado','Pulsa una tecla para reiniciar');}else{pac=new Pacman();ghosts=[0,1,2,3].map(i=>new Ghost(i));}}
+  function updateLives(){livesEl.innerHTML='';for(let i=0;i<lives;i++){const d=document.createElement('div');d.className='life';livesEl.appendChild(d);}}
+  function showOverlay(t,s){stateTitle.textContent=t;stateSubtitle.textContent=s;overlayMsg.hidden=false;}
+  function hideOverlay(){overlayMsg.hidden=true;}
+
+  updateLives();scoreEl.textContent='0';levelEl.textContent='1';showOverlay('👋 ¡Listo!','Pulsa cualquier tecla para empezar');
+
+  const keymap={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down',a:'left',d:'right',w:'up',s:'down',A:'left',D:'right',W:'up',S:'down'};
+  window.addEventListener('keydown',e=>{if(!running){running=true;hideOverlay();last=performance.now();return;}const d=keymap[e.key];if(!d)return;pac.nextDir=d;e.preventDefault();},{passive:false});
+
+  function loop(ts){if(!running){requestAnimationFrame(loop);return;}const dt=Math.min(0.035,(ts-last)/1000);last=ts;pac.update(dt);if(frightTimer>0){frightTimer-=dt;if(frightTimer<=0){ghosts.forEach(g=>g.setChase());frightTimer=0;}}ghosts.forEach(g=>g.update(dt));if(dotsLeft<=0){level++;levelEl.textContent=level;dotsLeft=countDots();pac=new Pacman();ghosts=[0,1,2,3].map(i=>new Ghost(i));}draw();requestAnimationFrame(loop);}
+  function draw(){ctx.clearRect(0,0,cvs.width,cvs.height);ctx.fillStyle='#2039ff';for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)if(grid[r][c]===1)ctx.fillRect(c*TILE,r*TILE,TILE,TILE);for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){if(grid[r][c]===2){ctx.fillStyle='#9ad0ff';ctx.beginPath();ctx.arc(c*TILE+TILE/2,r*TILE+TILE/2,2.2,0,Math.PI*2);ctx.fill();}else if(grid[r][c]===3){ctx.fillStyle='#fff4a5';ctx.beginPath();ctx.arc(c*TILE+TILE/2,r*TILE+TILE/2,4,0,Math.PI*2);ctx.fill();}}pac.draw();ghosts.forEach(g=>g.draw());scoreEl.textContent=score;}
+  requestAnimationFrame(loop);
+
+  })();
   </script>
 </body>
+</html>
+
 </html>
 
