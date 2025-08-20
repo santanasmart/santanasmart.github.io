@@ -1,6 +1,7 @@
 # Lean Six Sigma 📊⚙️
 
 Lean Six Sigma es una metodología de mejora continua que combina los principios de **Lean Manufacturing** y **Six Sigma** con el objetivo de **mejorar la eficiencia**, **reducir desperdicios** y **minimizar la variabilidad** en procesos productivos y de servicios.
+---
 image: "/assets/images/lss.jpg"
 ---
 
