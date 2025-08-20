@@ -4,10 +4,6 @@ image: /assets/images/nokia.jpg
 
 ---
 
-
-
-
-
 # 📉 El caso Nokia
 
 ## 🚀 Auge
