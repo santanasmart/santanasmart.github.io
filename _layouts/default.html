@@ -39,7 +39,7 @@
     header {
       background: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 1rem; /* 🔽 reducido */
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -58,11 +58,11 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      margin-bottom: 1rem;
+      margin: 0; /* 🔽 eliminado margen extra */
     }
 
     nav .logo img {
-      height: 100px;
+      height: clamp(64px, 7vw, 100px); /* 🔼 más grande y responsive */
       display: block;
     }
 
@@ -123,6 +123,16 @@
         width: auto;
       }
     }
+
+    /* Ajustes en móviles */
+    @media (max-width: 700px) {
+      header {
+        padding: 0.25rem 1rem; /* más compacto */
+      }
+      nav .logo img {
+        height: 64px; /* controla el alto en pantallas pequeñas */
+      }
+    }
   </style>
 </head>
 <body>
@@ -139,7 +149,6 @@
       <li role="none"><a role="menuitem" href="{{ '/blog.html' | relative_url }}">Entradas</a></li>
       <li role="none"><a role="menuitem" href="{{ '/about' | relative_url }}">Sobre nosotros</a></li>
       <li role="none"><a role="menuitem" href="{{ '/contacto' | relative_url }}">Contacto</a></li>
-      
     </ul>
   </nav>
 </header>
@@ -154,3 +163,4 @@
 
 </body>
 </html>
+
