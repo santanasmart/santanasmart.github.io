@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ page.lang | default: site.lang | default: 'es' }}">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ page.title }} | {{ site.title }}</title>
+  {%- include seo.html -%}
 
   <!-- Inter Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
 
+  <!-- (Opcional) tu CSS externo si lo tienes -->
+  <!-- <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}"> -->
+
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -29,17 +28,12 @@
       text-decoration: none;
       transition: color 0.2s ease;
     }
-
-    a:hover, a:focus {
-      color: #0051a3;
-      outline: none;
-      text-decoration: underline;
-    }
+    a:hover, a:focus { color: #0051a3; outline: none; text-decoration: underline; }
 
     header {
       background: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      padding: 0.4rem 1rem; /* 🔽 reducido */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 0.4rem 1rem;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -58,11 +52,11 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      margin: 0; /* 🔽 eliminado margen extra */
+      margin: 0;
     }
 
     nav .logo img {
-      height: clamp(64px, 7vw, 100px); /* 🔼 más grande y responsive */
+      height: clamp(64px, 7vw, 100px);
       display: block;
     }
 
@@ -77,9 +71,7 @@
       width: 100%;
     }
 
-    nav li {
-      font-weight: 500;
-    }
+    nav li { font-weight: 500; }
 
     main {
       flex: 1;
@@ -89,14 +81,14 @@
       width: 100%;
     }
 
-    /* 🌄 Imágenes responsivas y bien presentadas */
+    /* imágenes */
     img {
       max-width: 100%;
       height: auto;
       display: block;
       margin: 2rem auto;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     footer {
@@ -109,29 +101,14 @@
     }
 
     @media (min-width: 700px) {
-      nav {
-        flex-direction: row;
-      }
-
-      nav .logo {
-        width: auto;
-        margin-bottom: 0;
-      }
-
-      nav ul {
-        justify-content: flex-end;
-        width: auto;
-      }
+      nav { flex-direction: row; }
+      nav .logo { width: auto; margin-bottom: 0; }
+      nav ul { justify-content: flex-end; width: auto; }
     }
 
-    /* Ajustes en móviles */
     @media (max-width: 700px) {
-      header {
-        padding: 0.25rem 1rem; /* más compacto */
-      }
-      nav .logo img {
-        height: 64px; /* controla el alto en pantallas pequeñas */
-      }
+      header { padding: 0.25rem 1rem; }
+      nav .logo img { height: 64px; }
     }
   </style>
 </head>
@@ -163,4 +140,3 @@
 
 </body>
 </html>
-
