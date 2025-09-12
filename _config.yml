@@ -1,9 +1,24 @@
-title: SantanaSmart
-description: Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico.
-keywords: asesoría industrial, parque empresarial Linares, industria, automatización, empresas tecnológicas, ingeniería, eficiencia industrial
+title: "SantanaSmart"
+description: "Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico."
+keywords: "asesoría industrial, parque empresarial Linares, industria, automatización, empresas tecnológicas, ingeniería, eficiencia industrial"
+
 author:
-  name: SantanaSmart
-  email: santanasmart@proton.me
-  twitter: santanasmart
+  name: "SantanaSmart"
+  email: "santanasmart@proton.me"
+  twitter: "santanasmart" # sin @
+
 url: "https://www.santanasmart.com"
-image: /assets/img/logo.jpg
+image: "/assets/img/logo.jpg"
+
+# Idioma principal del sitio
+lang: "es"
+
+# Google Analytics 4 (cambia el ID por el tuyo real de GA4)
+google_analytics: "G-NWMQY8FCR2"
+
+# Si usas feed (RSS) agrega esto
+plugins:
+  - jekyll-feed
+
+# Si quieres que alguna página no se indexe, puedes añadir en el front matter:
+# noindex: true
