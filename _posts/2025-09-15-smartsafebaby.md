@@ -4,6 +4,8 @@ title: "SmartSafeBaby: el dispositivo que puede salvar vidas en el coche"
 description: "Un invento que ayuda a evitar el olvido de bebés en los automóviles."
 tags: [seguridad infantil, SmartSafeBaby, innovación]
 ---
+![Seguridad infantil en coches con dispositivos smart](https://images.pexels.com/photos/27662922/pexels-photo-27662922.jpeg)
+
 
 Cada año ocurren tragedias por bebés olvidados en vehículos. **SmartSafeBaby** nace para evitarlo.
 
