@@ -4,6 +4,7 @@ title: "Tendencias tecnológicas que dominarán el 2025"
 description: "Un repaso a las innovaciones que marcarán este año."
 tags: [tendencias, tecnología, 2025]
 ---
+![Tendencias tecnológicas 2025](https://images.pexels.com/photos/17485864/pexels-photo-17485864.jpeg)
 
 El 2025 es un año clave en la tecnología. Estas son las principales tendencias:
 
