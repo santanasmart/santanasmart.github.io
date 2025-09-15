@@ -1,6 +1,6 @@
 /* ========== HERO IoT SantanaSmart ========== */
 .hero-iot {
-  background: url("/assets/img/logo.jpg") no-repeat center center;
+  background: url("/assets/images/logo.jpg") no-repeat center center;
   background-size: contain; /* Para que el logo no se corte */
   min-height: 100vh; /* Que ocupe toda la altura de la pantalla */
   position: relative;
