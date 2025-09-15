@@ -22,3 +22,8 @@ plugins:
 
 # Si quieres que alguna página no se indexe, puedes añadir en el front matter:
 # noindex: true
+
+# Si usas sitemap
+plugins:
+  - jekyll-sitemap
+
