@@ -4,6 +4,7 @@ title: "Cómo crear un blog con Jekyll y GitHub Pages paso a paso"
 description: "Guía práctica para montar tu propio blog gratis en 2025."
 tags: [jekyll, github pages, blogging]
 ---
+![Blog en laptop con código](https://images.pexels.com/photos/18069517/pexels-photo-18069517.jpeg)
 
 Montar un blog nunca fue tan fácil y económico. Con **Jekyll + GitHub Pages** tienes hosting gratuito y un sistema rápido.
 
