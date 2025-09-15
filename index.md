@@ -13,7 +13,7 @@ permalink: /
     <p>Asesoría, implementación y soporte continuo para conectar procesos, reducir costes y decidir con datos.</p>
     <div class="hero-iot__cta">
       <a class="btn btn--primary" href="/contacto" aria-label="Contactar con SantanaSmart">Contactar</a>
-      <a class="btn btn--ghost" href="/blog.html" aria-label="Ver entradas del blog">Ver entradas</a>
+      <a class="btn btn--primary" href="/blog.html" aria-label="Ver entradas del blog">Ver entradas</a> # puede ser o primary o ghost
     </div>
     <ul class="hero-iot__badges" aria-label="Especialidades">
       <li>Industria 4.0</li>
@@ -73,6 +73,7 @@ Cursos prácticos en IoT, electrónica aplicada, robótica, Lean Manufacturing y
 En **SantanaSmart** te acompañamos en cada paso: desde la idea hasta la puesta en marcha y el soporte continuo.  
 
 📩 Contáctanos hoy y agenda una reunión sin compromiso → [página de contacto](/contacto).  
+
 
 
 
