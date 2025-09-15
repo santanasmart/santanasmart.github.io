@@ -1,0 +1,108 @@
+/* ========== HERO IoT SantanaSmart ========== */
+.hero-iot {
+  position: relative;
+  min-height: clamp(60vh, 70vh, 88vh);
+  display: grid;
+  place-items: center;
+  padding: clamp(2rem, 5vw, 4rem);
+  color: #fff;
+  background-image: url("https://images.pexels.com/photos/13053640/pexels-photo-13053640.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-iot__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      70% 60% at 30% 40%,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.65)
+    ),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.hero-iot__content {
+  position: relative;
+  max-width: 1100px;
+  width: 100%;
+  text-align: left;
+  z-index: 2;
+}
+
+.hero-iot h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0 0 0.6rem 0;
+  letter-spacing: 0.2px;
+}
+
+.hero-iot p {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  max-width: 60ch;
+  margin: 0 0 1.25rem 0;
+  opacity: 0.95;
+}
+
+.hero-iot__cta {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.7rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  will-change: transform;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.btn--primary {
+  background: #39c3ff;
+  color: #001119;
+}
+.btn--ghost {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+.hero-iot__badges {
+  list-style: none;
+  padding: 0;
+  margin: 0.4rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.hero-iot__badges li {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+}
+
+/* Dark-mode friendly */
+@media (prefers-color-scheme: dark) {
+  .btn--primary {
+    background: #31b6f0;
+    color: #001018;
+  }
+}
+
+/* Responsive improvements */
+@media (min-width: 900px) {
+  .hero-iot {
+    place-items: center start;
+  }
+}
