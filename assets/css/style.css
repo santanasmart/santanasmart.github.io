@@ -1,27 +1,17 @@
 /* ========== HERO IoT SantanaSmart ========== */
 .hero-iot {
+  background: url("/assets/img/logo.jpg") no-repeat center center;
+  background-size: contain; /* Para que el logo no se corte */
+  min-height: 100vh; /* Que ocupe toda la altura de la pantalla */
   position: relative;
-  min-height: clamp(60vh, 70vh, 88vh);
-  display: grid;
-  place-items: center;
-  padding: clamp(2rem, 5vw, 4rem);
-  color: #fff;
-  background-image: url("https://images.pexels.com/photos/13053640/pexels-photo-13053640.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .hero-iot__overlay {
+  background: rgba(255,255,255,0.6); /* Opcional: capa blanca transparente para mejorar contraste */
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      70% 60% at 30% 40%,
-      rgba(0, 0, 0, 0.25),
-      rgba(0, 0, 0, 0.65)
-    ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.7) 100%);
+  top: 0; left: 0; right: 0; bottom: 0;
 }
+
 
 .hero-iot__content {
   position: relative;
