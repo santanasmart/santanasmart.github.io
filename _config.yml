@@ -1,29 +1,40 @@
+# Información básica del sitio
 title: "SantanaSmart"
 description: "Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico."
 keywords: "asesoría industrial, parque empresarial Linares, industria, automatización, empresas tecnológicas, ingeniería, eficiencia industrial"
+lang: "es"
+url: "https://www.santanasmart.com"   # dominio principal con https
+baseurl: ""                           # vacío porque el dominio apunta a la raíz
+image: "/assets/img/logo.jpg"
 
+# Autor
 author:
   name: "SantanaSmart"
   email: "santanasmart@proton.me"
   twitter: "santanasmart" # sin @
 
-url: "https://www.santanasmart.com"
-image: "/assets/img/logo.jpg"
-
-# Idioma principal del sitio
-lang: "es"
-
-# Google Analytics 4 (cambia el ID por el tuyo real de GA4)
+# Google Analytics (GA4)
 google_analytics: "G-NWMQY8FCR2"
 
-# Si usas feed (RSS) agrega esto
+# Plugins recomendados
 plugins:
-  - jekyll-feed
+  - jekyll-feed      # genera feed RSS
+  - jekyll-sitemap   # genera sitemap.xml
+  - jekyll-seo-tag   # añade meta tags SEO y OpenGraph
 
-# Si quieres que alguna página no se indexe, puedes añadir en el front matter:
-# noindex: true
+# Exclusiones de la build
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
 
-# Si usas sitemap
-plugins:
-  - jekyll-sitemap
+# Configuración del blog
+paginate: 5
+paginate_path: "/page:num"
 
+collections:
+  posts:
+    output: true
