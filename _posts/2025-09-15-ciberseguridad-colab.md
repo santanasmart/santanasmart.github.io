@@ -63,3 +63,19 @@ def evaluar_password(password):
 
 # Prueba el sistema
 print(evaluar_password("Santana2025!"))
+
+
+
+🚀 Resultado esperado
+
+Si la contraseña cumple todos los criterios → aparecerá “Contraseña fuerte 💪”.
+
+Si no → recibirás sugerencias de mejora (ej. “Añade un número”, “Incluye mayúsculas y minúsculas”).
+
+🔒 Conclusión
+
+Este ejemplo es solo el inicio:
+
+Puedes ampliar el código con librerías como passlib o conectarlo con bases de datos de contraseñas filtradas.
+
+Lo importante es tomar conciencia: en 2025, la primera línea de defensa digital sigue siendo una contraseña segura.
