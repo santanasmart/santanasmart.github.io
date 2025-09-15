@@ -1,39 +1,41 @@
 {%- comment -%}
-  SEO META TAGS - Incluir este archivo dentro del <head> del layout
-  Requiere en _config.yml (ya lo tienes):
-  - title, description, url, author.name, author.twitter, image
-  Opcional:
-  - google_analytics: G-NWMQY8FCR2
-  - lang: es
-  - noindex global o page.noindex por página
+  SEO META TAGS – inclúyelo dentro de <head> del layout principal
+  Requiere en _config.yml:
+    title, description, url, author.name, author.twitter (opcional), image
 {%- endcomment -%}
 
+{%- assign site_lang = page.lang | default: site.lang | default: 'es' -%}
 {%- assign page_title = page.title | default: site.title -%}
 {%- assign page_description = page.description | default: site.description -%}
-{%- assign page_image = page.image | default: site.image | absolute_url -%}
+{%- assign raw_image = page.image | default: site.image | default: '/assets/images/og-default.jpg' -%}
+{%- assign page_image = raw_image | absolute_url -%}
+
+{%- comment -%}
+  Canonical sin querystrings/anchors. page.url suele venir "limpio".
+{%- endcomment -%}
 {%- assign page_url = page.url | absolute_url -%}
-{%- assign site_lang = page.lang | default: site.lang | default: 'es' -%}
+
 {%- assign twitter_user = site.author.twitter -%}
 {%- assign is_article = page.layout == 'post' or page.collection == 'posts' or page.date -%}
 
 <!-- Básicos -->
 <meta charset="utf-8">
-<title>{{ page_title }}</title>
+<title>{{ page_title | escape }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{{ page_description }}">
+<meta name="description" content="{{ page_description | strip_newlines | strip | escape }}">
 {%- if site.keywords or page.keywords -%}
-<meta name="keywords" content="{{ page.keywords | default: site.keywords }}">
+<meta name="keywords" content="{{ page.keywords | default: site.keywords | escape }}">
 {%- endif -%}
-<meta name="author" content="{{ site.author.name }}">
+<meta name="author" content="{{ site.author.name | escape }}">
 <meta name="robots" content="{% if page.noindex or site.noindex %}noindex, nofollow{% else %}index, follow{% endif %}">
 
 <!-- Canonical -->
 <link rel="canonical" href="{{ page_url }}">
 
-<!-- Idioma (solo como hint para crawlers que leen <meta>) -->
+<!-- Idioma -->
 <meta http-equiv="content-language" content="{{ site_lang }}">
 
-<!-- Favicons / PWA (ajusta rutas si es necesario) -->
+<!-- Favicons / PWA -->
 <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
@@ -42,12 +44,12 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- Open Graph -->
-<meta property="og:title" content="{{ page_title }}">
-<meta property="og:description" content="{{ page_description }}">
+<meta property="og:title" content="{{ page_title | escape }}">
+<meta property="og:description" content="{{ page_description | strip_newlines | strip | escape }}">
 <meta property="og:type" content="{% if is_article %}article{% else %}website{% endif %}">
 <meta property="og:url" content="{{ page_url }}">
 <meta property="og:image" content="{{ page_image }}">
-<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:locale" content="{{ site_lang | replace: '-', '_' }}">
 
 {%- if is_article and page.date -%}
@@ -57,27 +59,28 @@
 <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
 {%- endif -%}
 {%- if is_article and page.tags -%}
-{%- for tag in page.tags -%}
-<meta property="article:tag" content="{{ tag }}">
-{%- endfor -%}
+  {%- for tag in page.tags -%}
+<meta property="article:tag" content="{{ tag | escape }}">
+  {%- endfor -%}
 {%- endif -%}
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ page_title }}">
-<meta name="twitter:description" content="{{ page_description }}">
+<meta name="twitter:title" content="{{ page_title | escape }}">
+<meta name="twitter:description" content="{{ page_description | strip_newlines | strip | escape }}">
 <meta name="twitter:image" content="{{ page_image }}">
-{%- if twitter_user -%}
+{%- if twitter_user and twitter_user != '' -%}
 <meta name="twitter:site" content="@{{ twitter_user }}">
 <meta name="twitter:creator" content="@{{ twitter_user }}">
 {%- endif -%}
 
-<!-- Enlaces alternativos (RSS si usas jekyll-feed) -->
-<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+<!-- RSS (si usas jekyll-feed) -->
+<link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 
-{%- comment -%}
-  JSON-LD: Organization + WebSite (global) y BlogPosting (solo en posts)
-{%- endcomment -%}
+<!-- Hreflang básico (amplía si tienes más idiomas) -->
+<link rel="alternate" href="{{ page_url }}" hreflang="{{ site_lang }}">
+
+{%- comment -%} JSON-LD: Organization + WebSite (global) y BlogPosting (solo en posts) {%- endcomment -%}
 
 <!-- Organization -->
 <script type="application/ld+json">
@@ -87,9 +90,13 @@
   "name": "SantanaSmart",
   "url": "{{ site.url }}",
   "logo": "{{ site.image | absolute_url }}",
+  {%- if site.author.email -%}
   "email": "{{ site.author.email }}",
+  {%- endif -%}
   "sameAs": [
+    {%- if site.author.twitter and site.author.twitter != '' -%}
     "https://twitter.com/{{ site.author.twitter }}"
+    {%- endif -%}
   ]
 }
 </script>
@@ -99,15 +106,15 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "{{ site.title }}",
+  "name": {{ site.title | jsonify }},
   "url": "{{ site.url }}",
-  "description": "{{ site.description | strip_newlines | strip }}",
+  "description": {{ site.description | strip_newlines | strip | jsonify }},
   "inLanguage": "{{ site_lang }}"
 }
 </script>
 
 {%- if is_article -%}
-<!-- BlogPosting (solo en posts) -->
+<!-- BlogPosting (solo posts) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -117,18 +124,11 @@
   "image": [ "{{ page_image }}" ],
   "url": "{{ page_url }}",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page_url }}" },
-  "author": {
-    "@type": "Organization",
-    "name": "SantanaSmart",
-    "url": "{{ site.url }}"
-  },
+  "author": { "@type": "Organization", "name": "SantanaSmart", "url": "{{ site.url }}" },
   "publisher": {
     "@type": "Organization",
     "name": "SantanaSmart",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ site.image | absolute_url }}"
-    }
+    "logo": { "@type": "ImageObject", "url": "{{ site.image | absolute_url }}" }
   },
   {%- if page.date -%}
   "datePublished": "{{ page.date | date_to_xmlschema }}",
@@ -141,9 +141,7 @@
 </script>
 {%- endif -%}
 
-{%- comment -%}
-  Prev/Next para paginación (si usas paginator)
-{%- endcomment -%}
+{%- comment -%} Prev/Next para paginación {%- endcomment -%}
 {%- if paginator and paginator.previous_page_path -%}
 <link rel="prev" href="{{ paginator.previous_page_path | absolute_url }}">
 {%- endif -%}
@@ -151,16 +149,17 @@
 <link rel="next" href="{{ paginator.next_page_path | absolute_url }}">
 {%- endif -%}
 
-{%- comment -%}
-  Google Analytics 4 (solo en producción y si hay ID)
-  Añade a _config.yml: google_analytics: G-NWMQY8FCR2
-{%- endcomment -%}
+{%- comment -%} Google Analytics 4 (solo en producción) {%- endcomment -%}
 {%- if jekyll.environment == "production" and site.google_analytics -%}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){ dataLayer.push(arguments); }
   gtag('js', new Date());
+  gtag('config', '{{ site.google_analytics }}');
+</script>
+{%- endif -%}
+
   gtag('config', '{{ site.google_analytics }}');
 </script>
 {%- endif -%}
