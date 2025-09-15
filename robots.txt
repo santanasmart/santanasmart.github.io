@@ -1,0 +1,36 @@
+# robots.txt para SantanaSmart
+# Indica a los motores de búsqueda qué pueden indexar
+# y facilita el sitemap para mejorar el SEO.
+
+User-agent: *
+Allow: /
+
+# Bloqueo de carpetas internas que no deben indexarse
+Disallow: /assets/
+Disallow: /images/
+Disallow: /css/
+Disallow: /js/
+Disallow: /vendor/
+Disallow: /node_modules/
+Disallow: /drafts/       # por si usas posts en borrador
+Disallow: /README.md
+Disallow: /LICENSE
+
+# Sitemap generado automáticamente por jekyll-sitemap
+Sitemap: https://santanasmart.com/sitemap.xml
+
+# Extra: indicamos que no queremos indexar páginas de búsqueda
+Disallow: /search
+
+# Googlebot: permitimos que use recursos JS/CSS (mejora indexación)
+User-agent: Googlebot
+Allow: /.js
+Allow: /.css
+
+# Bingbot: igual que Google
+User-agent: Bingbot
+Allow: /.js
+Allow: /.css
+
+# Delay opcional (para crawlers menos conocidos, evita sobrecarga)
+Crawl-delay: 5
