@@ -4,6 +4,8 @@ title: "Las mejores apps gratuitas de productividad con IA en 2025"
 description: "Optimiza tu tiempo con estas herramientas inteligentes."
 tags: [apps, productividad, inteligencia artificial]
 ---
+![Apps de productividad con IA](https://images.pexels.com/photos/18069240/pexels-photo-18069240.jpeg)
+
 
 La productividad personal nunca había tenido tanta ayuda de la IA. Estas apps son gratuitas y muy potentes.
 
