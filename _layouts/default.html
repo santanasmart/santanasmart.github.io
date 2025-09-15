@@ -10,9 +10,28 @@
   <!-- SEO tags automáticas -->
   {%- include seo.html -%}
 
-  <!-- Favicons -->
-  <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" />
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}"/>
+  <!-- ================== FAVICONS ================== -->
+<!-- Favicon clásico -->
+<link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
+
+<!-- PNG para navegadores modernos -->
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+
+<!-- Apple Touch Icon (iOS, iPadOS) -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+
+<!-- Android/Chrome -->
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/images/android-chrome-192x192.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/images/android-chrome-512x512.png' | relative_url }}">
+
+<!-- Manifest (opcional para PWA en móviles) -->
+<link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
+
+<!-- Microsoft Tiles -->
+<meta name="msapplication-TileColor" content="#0055cc">
+<meta name="theme-color" content="#0055cc">
+
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
