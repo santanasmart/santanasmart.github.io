@@ -4,6 +4,7 @@ title: "Cómo elegir la mejor tablet para estudiar y trabajar en 2025"
 description: "Guía práctica para escoger la tablet ideal según tus necesidades."
 tags: [tablet, tecnología, accesorios]
 ---
+![Tablet moderna con accesorios](https://images.pexels.com/photos/18464522/pexels-photo-18464522.jpeg)
 
 Las tablets se han convertido en herramientas imprescindibles para estudiantes y profesionales.
 
