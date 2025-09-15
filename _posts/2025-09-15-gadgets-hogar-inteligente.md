@@ -4,6 +4,8 @@ title: "Los 5 gadgets más útiles para el hogar inteligente en 2025"
 description: "Convierte tu casa en un espacio inteligente con estos dispositivos prácticos y asequibles."
 tags: [hogar inteligente, gadgets, domótica]
 ---
+![Gadgets para hogar inteligente](https://images.pexels.com/photos/27523002/pexels-photo-27523002.jpeg)
+
 
 La domótica ya no es un lujo. En 2025, con pocos dispositivos puedes tener una casa más cómoda y eficiente.
 
