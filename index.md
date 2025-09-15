@@ -1,18 +1,32 @@
 ---
 layout: default
 title: Bienvenidos a SantanaSmart
-description: Asesoría e implementación de soluciones IoT e industria 4.0. Automatización, digitalización y soporte técnico para startups y empresas en Linares y el Parque Empresarial.
+description: Asesoría e implementación de soluciones IoT e Industria 4.0. Automatización, digitalización y soporte técnico para startups y empresas en Linares y el Parque Empresarial.
 permalink: /
 ---
 
-👉 Visita la sección de [ENTRADAS](/blog.html) o conoce más [sobre nosotros](/about).  
-¿Quieres contactarnos? Ve a la [página de contacto](/contacto).
+<!-- HERO -->
+<section class="hero-iot" role="banner" aria-label="SantanaSmart: IoT y Transformación Industrial">
+  <div class="hero-iot__overlay"></div>
+  <div class="hero-iot__content">
+    <h1>IoT que acelera tu industria</h1>
+    <p>Asesoría, implementación y soporte continuo para conectar procesos, reducir costes y decidir con datos.</p>
+    <div class="hero-iot__cta">
+      <a class="btn btn--primary" href="/contacto" aria-label="Contactar con SantanaSmart">Contactar</a>
+      <a class="btn btn--ghost" href="/blog.html" aria-label="Ver entradas del blog">Ver entradas</a>
+    </div>
+    <ul class="hero-iot__badges" aria-label="Especialidades">
+      <li>Industria 4.0</li>
+      <li>Automatización</li>
+      <li>SCADA & PLC</li>
+      <li>Edge & Cloud</li>
+    </ul>
+  </div>
+</section>
+
+---
 
 # 🏭 Bienvenidos a SantanaSmart
-
-![Fábrica moderna](https://images.pexels.com/photos/3757226/pexels-photo-3757226.jpeg)
-
-### IoT y Transformación Industrial Inteligente
 
 En **SantanaSmart**, ayudamos a empresas a dar el salto hacia la **Industria 4.0**.  
 Nos especializamos en **asesoría, implementación y soporte de soluciones IoT** que optimizan procesos, reducen costes y abren nuevas oportunidades de negocio.
@@ -23,7 +37,7 @@ Trabajamos con **startups, pymes industriales y empresas tecnológicas** del **P
 
 ## 🛠 Nuestros Servicios
 
-![Automatización](https://images.pexels.com/photos/31973806/pexels-photo-31973806.jpeg)
+![Automatización IoT](https://images.pexels.com/photos/5473955/pexels-photo-5473955.jpeg)
 
 🔧 **Consultoría e Implementación IoT**  
 Desde sensores hasta plataformas en la nube: conectamos tus procesos para que tomen decisiones en tiempo real.
@@ -44,7 +58,7 @@ Cursos prácticos en IoT, electrónica aplicada, robótica, Lean Manufacturing y
 
 ## 🌐 ¿Por qué SantanaSmart?
 
-![Equipo de trabajo](https://images.pexels.com/photos/1105379/pexels-photo-1105379.jpeg)
+![Equipo IoT trabajando](https://images.pexels.com/photos/4705615/pexels-photo-4705615.jpeg)
 
 - ✅ Experiencia en proyectos **IoT reales** aplicados a la industria  
 - ✅ Equipo técnico con visión **multidisciplinar**  
@@ -59,6 +73,8 @@ Cursos prácticos en IoT, electrónica aplicada, robótica, Lean Manufacturing y
 En **SantanaSmart** te acompañamos en cada paso: desde la idea hasta la puesta en marcha y el soporte continuo.  
 
 📩 Contáctanos hoy y agenda una reunión sin compromiso → [página de contacto](/contacto).  
+
+
 
 
 
