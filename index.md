@@ -1,61 +1,114 @@
 ---
 layout: default
 title: Bienvenidos a SantanaSmart
-description: Asesoría e implementación de soluciones IoT e Industria 4.0. Automatización, digitalización y soporte técnico para startups y empresas en Linares y el Parque Empresarial.
+description: IoT e Industria 4.0 para empresas que quieren resultados. Asesoría, implementación y soporte continuo para automatizar, monitorizar y decidir con datos.
 permalink: /
 ---
 
+# 🏭 SantanaSmart: IoT que convierte procesos en resultados
+
+Somos tu **equipo IoT** para pasar de *“tenemos datos”* a **“tomamos decisiones con datos”**.  
+Diseñamos, implementamos y mantenemos soluciones de **Industria 4.0** que reducen costes, aumentan la disponibilidad y ofrecen visibilidad en tiempo real.
 
 ---
 
-# 🏭 Bienvenidos a SantanaSmart
+## 💥 Qué problema resolvemos (y por qué importa)
 
-En **SantanaSmart**, ayudamos a empresas a dar el salto hacia la **Industria 4.0**.  
-Nos especializamos en **asesoría, implementación y soporte de soluciones IoT** que optimizan procesos, reducen costes y abren nuevas oportunidades de negocio.
+- 🔇 **Falta de visibilidad** → líneas y activos desconectados, decisiones “a ciegas”.  
+- ⏱️ **Paradas imprevistas** → mantenimiento reactivo que dispara costes.  
+- 📉 **Baja eficiencia** → energía, tiempos muertos y reprocesos sin controlar.  
+- 🔌 **Islas tecnológicas** → PLC/SCADA, ERPs y apps que no “hablan”.
 
-Trabajamos con **startups, pymes industriales y empresas tecnológicas** del **Parque Empresarial de Linares** y toda la región.
-
----
-
-## 🛠 Nuestros Servicios
-
-![Automatización IoT](https://images.pexels.com/photos/5473955/pexels-photo-5473955.jpeg)
-
-🔧 **Consultoría e Implementación IoT**  
-Desde sensores hasta plataformas en la nube: conectamos tus procesos para que tomen decisiones en tiempo real.
-
-🤖 **Automatización Industrial**  
-Integración de controladores, PLCs, SCADA y microcontroladores aplicados a la automatización de líneas de producción.
-
-📊 **Optimización y Monitorización**  
-Análisis de datos, mantenimiento predictivo, eficiencia energética y sistemas de trazabilidad conectados.
-
-🚀 **Apoyo a Startups y Nuevas Empresas**  
-Mentoría técnica, networking industrial y soporte en subvenciones para acelerar tu proyecto tecnológico.
-
-🎓 **Formación y Capacitación**  
-Cursos prácticos en IoT, electrónica aplicada, robótica, Lean Manufacturing y digitalización industrial.
+**Lo que entregamos:** procesos conectados, KPIs accionables y una hoja de ruta clara para escalar.
 
 ---
 
-## 🌐 ¿Por qué SantanaSmart?
+## 🛠️ Qué hacemos (de principio a fin)
 
-![Equipo IoT trabajando](https://images.pexels.com/photos/4705615/pexels-photo-4705615.jpeg)
+**1) Conectar**  
+Sensores, PLCs, SCADA y microcontroladores → datos estandarizados (MQTT/OPC-UA/REST).
 
-- ✅ Experiencia en proyectos **IoT reales** aplicados a la industria  
-- ✅ Equipo técnico con visión **multidisciplinar**  
-- ✅ **Soluciones llave en mano**: asesoría, implementación y soporte  
-- ✅ Compromiso con la **innovación y sostenibilidad**  
+**2) Orquestar**  
+Edge + Cloud (Grafana/Timescale/Influx/BigQuery) y flujos de datos robustos.
+
+**3) Monitorizar**  
+Cuadros de mando en tiempo real: OEE, consumo energético, tiempos de ciclo, alarmas.
+
+**4) Optimizar**  
+Mantenimiento predictivo, detección de anomalías, reducción de scrap y consumo.
+
+**5) Acompañar**  
+Soporte y formación continua. Sin dependencias innecesarias.
 
 ---
 
-## 🤝 Hablemos
+## 📦 Soluciones llave en mano
 
-¿Quieres que tu empresa sea más **eficiente, conectada e inteligente**?  
-En **SantanaSmart** te acompañamos en cada paso: desde la idea hasta la puesta en marcha y el soporte continuo.  
+- **Telemetría industrial**: Sensores → Gateway → Dashboard (alertas, históricos, exportables).  
+- **Eficiencia energética**: submetering, alertas de picos, informes automáticos por turno/máquina.  
+- **Mantenimiento predictivo**: vibración/temperatura + modelos sencillos para anticipar fallos.  
+- **Trazabilidad**: lote–máquina–operación con código de barras/NFC.  
+- **Integración IT/OT**: de PLC/SCADA a ERP/BI sin “frankensteins”.
 
-📩 Contáctanos hoy y agenda una reunión sin compromiso → [página de contacto](/contacto).  
+---
 
+## 🎯 Lo que consigues (métricas que importan)
+
+- ⏱️ **−20–40%** tiempo de parada no planificada.  
+- ⚡ **−10–25%** consumo energético en los primeros 3 meses.  
+- 📈 **+8–15%** OEE por célula/línea con acciones simples.  
+- 🧰 **−30–50%** incidencias repetidas gracias a alertas + checklists digitales.
+
+> Cifras orientativas basadas en proyectos similares. Tu caso puede variar: medimos desde el día 1.
+
+---
+
+## 🧩 Tecnologías con las que nos sentimos cómodos
+
+**Hardware/OT:** Siemens/Allen-Bradley, Modbus/OPC-UA, ESP32, gateways 4G/NB-IoT.  
+**Comms:** MQTT, HTTPS, LoRaWAN, NB-IoT/LTE-M.  
+**Datos/Visualización:** InfluxDB/TimescaleDB, Node-RED, Grafana, Power BI.  
+**Cloud/Edge:** Docker, Azure/Google Cloud, VPS On-Prem.
+
+*(Si ya tienes algo montado, nos integramos. Si no, lo cocinamos desde cero.)*
+
+---
+
+## 🔒 Seguridad y fiabilidad primero
+
+- Segmentación de red y **mínimo privilegio**.  
+- Cifrado en tránsito (**TLS**) y control de accesos.  
+- Logs, auditoría y **backup probado**.  
+- Entregables documentados y **propiedad de tus datos**.
+
+---
+
+## 🧭 Cómo trabajamos (simple y sin humo)
+
+1. **Diagnóstico express (gratis)**: 30–45 min para entender objetivos y limitaciones.  
+2. **Propuesta técnica**: alcance, hitos, coste y métricas de éxito.  
+3. **Piloto**: 2–4 semanas, impacto visible y plan de despliegue.  
+4. **Escalado**: estandarización, soporte y transferencia de conocimiento.
+
+---
+
+## 📚 Casos breves (micro-historias reales)
+
+- **OEE en 2 semanas**: sensores + gateway + dashboard; alarmas por Telegram/Email → plan de mejora por turno.  
+- **Aire comprimido bajo control**: submetering + alertas nocturnas → 18% menos kWh/mes sin CAPEX grande.  
+- **Predictivo low-cost**: vibración/temperatura en motores críticos → avisos 48h antes de fallo.
+
+---
+
+## 🤝 ¿Hablamos?
+
+Tienes arriba los accesos directos a **Entradas** (ideas y guías prácticas) y **Contacto**.  
+Si prefieres, aquí mismo:
+
+- 📩 **Escríbenos:** [santanasmart@proton.me](mailto:santanasmart@proton.me)  
+- 🗓️ **Agenda una llamada:** (pásanos tu disponibilidad en el correo y te proponemos hueco)
+
+---
 
 
 
