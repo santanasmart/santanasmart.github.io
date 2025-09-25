@@ -3,7 +3,7 @@ title: "SantanaSmart"
 description: "Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico."
 keywords: "asesoría industrial, parque empresarial Linares, industria, automatización, empresas tecnológicas, ingeniería, eficiencia industrial"
 lang: "es"
-url: "https://www.santanasmart.com"
+url: "https://santanasmart.com"
 baseurl: ""                          
 image: "/assets/img/logo.jpg"
 
@@ -69,6 +69,7 @@ robots:
     Bingbot:
       - /.js
       - /.css
+
 
 
 
