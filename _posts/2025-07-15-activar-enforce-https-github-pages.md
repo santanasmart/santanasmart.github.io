@@ -8,7 +8,7 @@ image: /assets/images/e34.jpg
 description: "Guía paso a paso para activar el HTTPS forzado en tu sitio de GitHub Pages y mejorar la seguridad."
 ---
 
-![GitHub Pages]( /assets/images/e31.jpg ){: style="display: block; margin: 1em auto; max-width: 100%; height: auto;" }
+![GitHub Pages](/assets/images/e31.jpg ){: style="display: block; margin: 1em auto; max-width: 100%; height: auto;" }
 
 # Cómo activar Enforce HTTPS en GitHub Pages
 
@@ -20,7 +20,7 @@ GitHub Pages es una plataforma gratuita para alojar sitios estáticos. Una medid
 
 Dirígete a la página principal del repositorio en GitHub.
 
-![Configuración del repositorio]( /assets/images/e32.jpg ){: style="width: 100%; max-width: 600px; display: block; margin: 1em auto;" }
+![Configuración del repositorio](/assets/images/e32.jpg ){: style="width: 100%; max-width: 600px; display: block; margin: 1em auto;" }
 
 Haz clic en la pestaña **Settings**.
 
@@ -30,7 +30,7 @@ Haz clic en la pestaña **Settings**.
 
 En el menú lateral izquierdo, baja hasta encontrar la opción **Pages** y haz clic.
 
-![Sección Pages]( /assets/images/e33.jpg ){: style="width: 100%; max-width: 600px; display: block; margin: 1em auto;" }
+![Sección Pages](/assets/images/e33.jpg ){: style="width: 100%; max-width: 600px; display: block; margin: 1em auto;" }
 
 ---
 
@@ -38,7 +38,7 @@ En el menú lateral izquierdo, baja hasta encontrar la opción **Pages** y haz c
 
 En la sección **GitHub Pages**, marca la casilla **Enforce HTTPS** para forzar que el sitio use HTTPS.
 
-![Activar Enforce HTTPS]( /assets/images/e34.jpg ){: style="width: 100%; max-width: 600px; display: block; margin: 1em auto;" }
+![Activar Enforce HTTPS](/assets/images/e34.jpg ){: style="width: 100%; max-width: 600px; display: block; margin: 1em auto;" }
 
 ---
 
@@ -51,3 +51,4 @@ Visita tu sitio (ejemplo: `https://tuusuario.github.io`) y asegúrate que la URL
 Si tienes dudas o quieres más tutoriales, ¡déjame un comentario!
 
 *Publicado por Juan Pérez, experto en GitHub y desarrollo web.*
+
