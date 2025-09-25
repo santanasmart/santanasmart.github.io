@@ -29,7 +29,22 @@
   <!-- CSS global -->
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+   <!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+      duration: 1000,   // Duración de animaciones en ms
+      once: true        // Animación solo la primera vez
+    });
+  });
+</script>
 
 </head>
 <body>
