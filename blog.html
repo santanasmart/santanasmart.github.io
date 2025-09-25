@@ -8,9 +8,9 @@ title: "Blog - SantanaSmart"
     <h1 class="text-4xl font-bold mb-12 text-center" data-aos="fade-down">Entradas</h1>
     
     {% if site.posts.size > 0 %}
-    <div class="grid md:grid-cols-2 gap-12">
-      {% for post in site.posts %}
-      <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 100 }}">
+  <div class="grid md:grid-cols-2 gap-12">
+    {% for post in site.posts %}
+      <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:scale-105">
         <h2 class="text-2xl font-semibold mb-2">
           <a href="{{ post.url | relative_url }}" class="hover:text-blue-600">{{ post.title }}</a>
         </h2>
@@ -18,22 +18,8 @@ title: "Blog - SantanaSmart"
         <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
         <a href="{{ post.url | relative_url }}" class="text-blue-600 font-semibold mt-2 inline-block hover:underline">Leer más →</a>
       </div>
-      {% endfor %}
-    </div>
-    
-    <!-- Paginación -->
-    <div class="mt-12 flex justify-center space-x-4">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path }}" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">&larr; Anterior</a>
-      {% endif %}
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path }}" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Siguiente &rarr;</a>
-      {% endif %}
-    </div>
-    
-    {% else %}
-      <p class="text-center text-gray-500">No hay entradas publicadas aún.</p>
-    {% endif %}
-    
+    {% endfor %}
   </div>
-</section>
+{% else %}
+  <p class="text-center text-gray-500">No hay entradas publicadas aún.</p>
+{% endif %}
