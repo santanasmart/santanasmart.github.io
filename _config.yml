@@ -1,0 +1,75 @@
+# Información básica del sitio
+title: "SantanaSmart"
+description: "Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico."
+keywords: "asesoría industrial, parque empresarial Linares, industria, automatización, empresas tecnológicas, ingeniería, eficiencia industrial"
+lang: "es"
+url: "https://www.santanasmart.com"
+baseurl: ""                          
+image: "/assets/img/logo.jpg"
+
+# Autor
+author:
+  name: "SantanaSmart"
+  email: "santanasmart@proton.me"
+  twitter: "santanasmart"
+
+# Google Analytics (GA4)
+google_analytics: "G-NWMQY8FCR2"
+
+# Plugins recomendados
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclusiones de la build
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Configuración del blog
+paginate: 5
+paginate_path: "/page:num"
+
+collections:
+  posts:
+    output: true
+
+# Configuración dinámica de robots.txt
+robots:
+  # Carpetas o rutas que no quieres indexar
+  disallow:
+    - /assets/
+    - /images/
+    - /css/
+    - /js/
+    - /vendor/
+    - /node_modules/
+    - /drafts/
+    - /README.md
+    - /LICENSE
+    - /search
+
+  # Rutas permitidas globalmente
+  allow:
+    - /
+
+  # Delay opcional para crawlers
+  crawl_delay: 5
+
+  # Bots con reglas especiales (puedes agregar más)
+  bots_with_extra_allow:
+    Googlebot:
+      - /.js
+      - /.css
+    Bingbot:
+      - /.js
+      - /.css
+
+
+
+

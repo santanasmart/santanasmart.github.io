@@ -1,0 +1,84 @@
+# robots.txt profesional para SantanaSmart
+# Fecha: 2025-09-24
+# www.santanasmart.com
+
+##########################################
+# REGLAS GENERALES PARA TODOS LOS BOTS
+##########################################
+
+User-agent: *
+# Bloquear carpetas privadas o temporales
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /drafts/
+Disallow: /node_modules/
+Disallow: /vendor/
+Disallow: /admin/
+Disallow: /*.pdf$
+Disallow: /*.zip$
+Disallow: /*.tar.gz$
+Disallow: /*.bak$
+Disallow: /cgi-bin/
+
+# Permitir indexar todo lo demás
+Allow: /
+
+# Sitemap principal
+Sitemap: https://www.santanasmart.com/sitemap.xml
+
+##########################################
+# REGLAS ESPECÍFICAS POR MOTOR DE BÚSQUEDA
+##########################################
+
+# Googlebot
+User-agent: Googlebot
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /drafts/
+Allow: /
+
+# Googlebot-Image: permite indexar imágenes específicas si quieres
+User-agent: Googlebot-Image
+Disallow: /private-images/
+Allow: /
+
+# Bingbot
+User-agent: bingbot
+Disallow: /private/
+Allow: /
+
+# Yahoo Slurp
+User-agent: Slurp
+Disallow: /private/
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Disallow: /private/
+Allow: /
+
+# Baiduspider (para China)
+User-agent: Baiduspider
+Disallow: /private/
+Allow: /
+
+##########################################
+# REGLAS AVANZADAS
+##########################################
+
+# Evitar rastreo de parámetros URL que generen contenido duplicado
+Disallow: /*?*sessionid=
+Disallow: /*?*utm_source=
+Disallow: /*?*utm_medium=
+Disallow: /*?*utm_campaign=
+
+# Tiempo recomendado entre solicitudes (en segundos)
+Crawl-delay: 10
+
+# Bloquear rastreo de páginas de prueba o staging
+Disallow: /staging/
+Disallow: /beta/
+
+##########################################
+# FIN DEL ARCHIVO
+##########################################

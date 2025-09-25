@@ -1,0 +1,40 @@
+---
+layout: default
+title: "Entradas"
+description: "Listado de artículos y publicaciones del blog de SantanaSmart."
+---
+
+<h1>Entradas del Blog</h1>
+
+<ul style="list-style: none; padding: 0; margin: 2rem 0;">
+  {% for post in site.posts %}
+    <li style="margin-bottom: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 1rem;">
+      <article itemscope itemtype="https://schema.org/BlogPosting">
+        <header>
+          <h2 style="margin-bottom: 0.5rem;" itemprop="headline">
+            <a href="{{ post.url | relative_url }}" itemprop="url">{{ post.title }}</a>
+          </h2>
+          <p style="font-size: 0.9rem; color: #666;">
+            <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
+              {{ post.date | date: "%d %B %Y" }}
+            </time>
+            {% if post.author %}
+              — por <span itemprop="author">{{ post.author }}</span>
+            {% endif %}
+          </p>
+        </header>
+
+        {% if post.image %}
+          <img src="{{ post.image | relative_url }}" alt="Imagen del artículo {{ post.title }}" 
+               style="max-width: 100%; height: auto; margin: 1rem 0;" itemprop="image" />
+        {% endif %}
+
+        <p itemprop="description">{{ post.description }}</p>
+
+        <p>
+          <a href="{{ post.url | relative_url }}" aria-label="Leer más sobre {{ post.title }}">Leer más →</a>
+        </p>
+      </article>
+    </li>
+  {% endfor %}
+</ul>
