@@ -1,76 +1,124 @@
----
-layout: default
+# =============================
+# Configuración básica del sitio
+# =============================
 title: "SantanaSmart"
----
+description: "Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico."
+keywords: "asesoría industrial, parque empresarial Linares, industria, automatización, empresas tecnológicas, ingeniería, eficiencia industrial"
+lang: "es"
+url: "https://santanasmart.com"
+baseurl: ""
+image: "/assets/img/logo.jpg"
+favicon: "/assets/img/favicon.ico"
 
-<!-- Hero Section -->
-<section class="hero" style="text-align:center; padding:80px 20px; background-color:#f5f5f5;">
-  <img src="{{ site.baseurl }}/assets/img/logo.jpg" alt="Logo SantanaSmart" style="max-width:200px; margin-bottom:20px;">
-  <h1 style="font-size:3em; margin-bottom:20px;">Bienvenido a SantanaSmart</h1>
-  <p style="font-size:1.3em; max-width:800px; margin:0 auto 30px;">
-    Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico.
-  </p>
-  <a href="#servicios" style="display:inline-block; padding:15px 35px; background-color:#007bff; color:#fff; text-decoration:none; border-radius:5px; font-weight:bold;">Descubre nuestros servicios</a>
-</section>
+# =============================
+# Autor del sitio
+# =============================
+author:
+  name: "SantanaSmart"
+  email: "santanasmart@proton.me"
+  twitter: "santanasmart"
+  linkedin: "santanasmart"
+  github: "santanasmart"
 
-<!-- Sobre Nosotros Section -->
-<section id="sobre-nosotros" style="padding:80px 20px; background-color:#ffffff; text-align:center;">
-  <h2 style="font-size:2.8em; margin-bottom:40px;">Sobre Nosotros</h2>
-  <div style="max-width:1000px; margin:0 auto; text-align:left; line-height:1.8em;">
-    <p>SantanaSmart nace con el objetivo de transformar la industria a través de la innovación tecnológica y la asesoría industrial especializada. Nos enfocamos en mejorar la eficiencia, optimizar procesos y apoyar a empresas emergentes y consolidadas dentro del parque empresarial de Linares.</p>
-    <p>Nuestro equipo combina experiencia en ingeniería, diseño industrial y automatización, ofreciendo soluciones adaptadas a cada cliente. Creemos que la innovación y la eficiencia no solo generan resultados, sino que fortalecen el desarrollo sostenible de las empresas.</p>
-  </div>
-</section>
+# =============================
+# Google Analytics (GA4)
+# =============================
+google_analytics: "G-NWMQY8FCR2"
 
-<!-- Servicios Section -->
-<section id="servicios" style="padding:80px 20px; text-align:center; background-color:#f9f9f9;">
-  <h2 style="font-size:2.8em; margin-bottom:50px;">Nuestros Servicios</h2>
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
-    
-    <div style="flex:1 1 300px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:left;">
-      <img src="{{ site.baseurl }}/assets/img/asesoria.jpg" alt="Asesoría Industrial" style="width:100%; border-radius:10px 10px 0 0; margin-bottom:15px;">
-      <h3>Asesoría Industrial</h3>
-      <p>Ofrecemos consultoría especializada para optimizar procesos, aumentar la productividad y mejorar la eficiencia en empresas del parque industrial.</p>
-    </div>
-    
-    <div style="flex:1 1 300px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:left;">
-      <img src="{{ site.baseurl }}/assets/img/innovacion.jpg" alt="Innovación Tecnológica" style="width:100%; border-radius:10px 10px 0 0; margin-bottom:15px;">
-      <h3>Innovación Tecnológica</h3>
-      <p>Desarrollamos soluciones tecnológicas y sistemas de automatización que aumentan la competitividad y transforman los procesos industriales.</p>
-    </div>
-    
-    <div style="flex:1 1 300px; background:#fff; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:left;">
-      <img src="{{ site.baseurl }}/assets/img/desarrollo.jpg" alt="Desarrollo y Diseño" style="width:100%; border-radius:10px 10px 0 0; margin-bottom:15px;">
-      <h3>Desarrollo y Diseño</h3>
-      <p>Proyectos de investigación, diseño industrial y desarrollo de soluciones a medida para startups y empresas consolidadas.</p>
-    </div>
-    
-  </div>
-</section>
+# =============================
+# Plugins
+# =============================
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
 
-<!-- Testimonios Section -->
-<section id="testimonios" style="padding:80px 20px; text-align:center; background-color:#ffffff;">
-  <h2 style="font-size:2.8em; margin-bottom:50px;">Lo que dicen nuestros clientes</h2>
-  <div style="max-width:900px; margin:0 auto; display:flex; flex-direction:column; gap:30px;">
-    <div style="background:#f1f1f1; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-      <p>"Gracias a SantanaSmart logramos optimizar nuestros procesos y reducir costes significativamente. Su equipo combina profesionalidad y visión tecnológica."</p>
-      <strong>- Empresa Industrial de Linares</strong>
-    </div>
-    <div style="background:#f1f1f1; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-      <p>"Su asesoría en innovación tecnológica nos permitió implementar sistemas automatizados que mejoraron nuestra productividad y eficiencia."</p>
-      <strong>- Startup de Tecnología</strong>
-    </div>
-  </div>
-</section>
+# =============================
+# Exclusiones de build
+# =============================
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - drafts
 
-<!-- Footer -->
-<footer style="background:#222; color:#fff; text-align:center; padding:50px 20px; margin-top:60px;">
-  <p>&copy; {{ "now" | date: "%Y" }} SantanaSmart. Todos los derechos reservados.</p>
-  <p>Marca registrada: <strong>Santana</strong> (Clases 35, 37, 42)</p>
-  <p>Email: <a href="mailto:{{ site.author.email }}" style="color:#fff; text-decoration:underline;">{{ site.author.email }}</a></p>
-  <p>Síguenos en Twitter: <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" style="color:#fff; text-decoration:underline;">@{{ site.author.twitter }}</a></p>
-</footer>
+# =============================
+# Blog y collections
+# =============================
+paginate: 5
+paginate_path: "/page:num"
+collections:
+  posts:
+    output: true
 
+# =============================
+# Robots.txt
+# =============================
+robots:
+  disallow:
+    - /assets/
+    - /images/
+    - /css/
+    - /js/
+    - /vendor/
+    - /node_modules/
+    - /drafts/
+    - /README.md
+    - /LICENSE/
+    - /search/
+  allow:
+    - /
+  crawl_delay: 5
+  bots_with_extra_allow:
+    Googlebot:
+      - /.js
+      - /.css
+    Bingbot:
+      - /.js
+      - /.css
+
+# =============================
+# Redes sociales y Open Graph
+# =============================
+social_links:
+  twitter: "https://twitter.com/santanasmart"
+  linkedin: "https://www.linkedin.com/company/santanasmart"
+  github: "https://github.com/santanasmart"
+
+seo:
+  title: "SantanaSmart - Asesoría Industrial e Innovación Tecnológica"
+  description: "Optimiza tu empresa con servicios de asesoría industrial, innovación tecnológica y desarrollo de soluciones personalizadas en Linares."
+  image: "/assets/img/logo.jpg"
+  twitter:
+    card: "summary_large_image"
+    site: "@santanasmart"
+  facebook:
+    admins: "SantanaSmart"
+
+# =============================
+# Marca registrada
+# =============================
+trademark:
+  name: "Santana"
+  classes: [35, 37, 42]
+
+# =============================
+# Markdown y sintaxis
+# =============================
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+
+# =============================
+# URLs y permalinks
+# =============================
+permalink: /:categories/:title/
+timezone: "Europe/Madrid"
 
 
 
