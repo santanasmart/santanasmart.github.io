@@ -1,7 +1,6 @@
 {%- comment -%}
   SEO META TAGS – inclúyelo dentro de <head> del layout principal
-  Requiere en _config.yml:
-    title, description, url, author.name, author.twitter (opcional), image
+  Requiere en _config.yml: title, description, url, author.name, author.twitter (opcional), image
 {%- endcomment -%}
 
 {%- assign site_lang = page.lang | default: site.lang | default: 'es' -%}
@@ -9,12 +8,7 @@
 {%- assign page_description = page.description | default: site.description -%}
 {%- assign raw_image = page.image | default: site.image | default: '/assets/images/og-default.jpg' -%}
 {%- assign page_image = raw_image | absolute_url -%}
-
-{%- comment -%}
-  Canonical sin querystrings/anchors. page.url suele venir "limpio".
-{%- endcomment -%}
 {%- assign page_url = page.url | absolute_url -%}
-
 {%- assign twitter_user = site.author.twitter -%}
 {%- assign is_article = page.layout == 'post' or page.collection == 'posts' or page.date -%}
 
@@ -49,6 +43,9 @@
 <meta property="og:type" content="{% if is_article %}article{% else %}website{% endif %}">
 <meta property="og:url" content="{{ page_url }}">
 <meta property="og:image" content="{{ page_image }}">
+{%- if page.image_alt or site.image_alt -%}
+<meta property="og:image:alt" content="{{ page.image_alt | default: site.image_alt | escape }}">
+{%- endif -%}
 <meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:locale" content="{{ site_lang | replace: '-', '_' }}">
 
@@ -84,21 +81,24 @@
 
 <!-- Organization -->
 <script type="application/ld+json">
+{%- capture org_json -%}
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "SantanaSmart",
+  "name": {{ site.title | jsonify }},
   "url": "{{ site.url }}",
-  "logo": "{{ site.image | absolute_url }}",
-  {%- if site.author.email -%}
-  "email": "{{ site.author.email }}",
+  "logo": "{{ site.image | absolute_url }}"
+  {%- if site.author.email or site.author.twitter -%},
   {%- endif -%}
-  "sameAs": [
-    {%- if site.author.twitter and site.author.twitter != '' -%}
-    "https://twitter.com/{{ site.author.twitter }}"
-    {%- endif -%}
-  ]
+  {%- if site.author.email -%}
+  "email": "{{ site.author.email }}"{%- if site.author.twitter -%},{% endif -%}
+  {%- endif -%}
+  {%- if site.author.twitter -%}
+  "sameAs": [ "https://twitter.com/{{ site.author.twitter }}" ]
+  {%- endif -%}
 }
+{%- endcapture -%}
+{{ org_json }}
 </script>
 
 <!-- WebSite -->
@@ -116,6 +116,7 @@
 {%- if is_article -%}
 <!-- BlogPosting (solo posts) -->
 <script type="application/ld+json">
+{%- capture bp -%}
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -124,20 +125,23 @@
   "image": [ "{{ page_image }}" ],
   "url": "{{ page_url }}",
   "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page_url }}" },
-  "author": { "@type": "Organization", "name": "SantanaSmart", "url": "{{ site.url }}" },
+  "author": { "@type": "Organization", "name": {{ site.title | jsonify }}, "url": "{{ site.url }}" },
   "publisher": {
     "@type": "Organization",
-    "name": "SantanaSmart",
+    "name": {{ site.title | jsonify }},
     "logo": { "@type": "ImageObject", "url": "{{ site.image | absolute_url }}" }
-  },
+  }{%- if page.date or page.last_modified_at -%},
+  {%- endif -%}
   {%- if page.date -%}
-  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}"{%- if page.last_modified_at -%},{% endif -%}
   {%- endif -%}
   {%- if page.last_modified_at -%}
   "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",
   {%- endif -%}
   "inLanguage": "{{ site_lang }}"
 }
+{%- endcapture -%}
+{{ bp }}
 </script>
 {%- endif -%}
 
@@ -159,7 +163,4 @@
   gtag('config', '{{ site.google_analytics }}');
 </script>
 {%- endif -%}
-
-  gtag('config', '{{ site.google_analytics }}');
-</script>
 
