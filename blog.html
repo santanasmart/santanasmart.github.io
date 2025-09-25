@@ -1,40 +1,39 @@
 ---
 layout: default
-title: "Entradas"
-description: "Listado de artículos y publicaciones del blog de SantanaSmart."
+title: "Blog - SantanaSmart"
 ---
 
-<h1>Entradas del Blog</h1>
-
-<ul style="list-style: none; padding: 0; margin: 2rem 0;">
-  {% for post in site.posts %}
-    <li style="margin-bottom: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 1rem;">
-      <article itemscope itemtype="https://schema.org/BlogPosting">
-        <header>
-          <h2 style="margin-bottom: 0.5rem;" itemprop="headline">
-            <a href="{{ post.url | relative_url }}" itemprop="url">{{ post.title }}</a>
-          </h2>
-          <p style="font-size: 0.9rem; color: #666;">
-            <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">
-              {{ post.date | date: "%d %B %Y" }}
-            </time>
-            {% if post.author %}
-              — por <span itemprop="author">{{ post.author }}</span>
-            {% endif %}
-          </p>
-        </header>
-
-        {% if post.image %}
-          <img src="{{ post.image | relative_url }}" alt="Imagen del artículo {{ post.title }}" 
-               style="max-width: 100%; height: auto; margin: 1rem 0;" itemprop="image" />
-        {% endif %}
-
-        <p itemprop="description">{{ post.description }}</p>
-
-        <p>
-          <a href="{{ post.url | relative_url }}" aria-label="Leer más sobre {{ post.title }}">Leer más →</a>
-        </p>
-      </article>
-    </li>
-  {% endfor %}
-</ul>
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <h1 class="text-4xl font-bold mb-12 text-center" data-aos="fade-down">Nuestro Blog</h1>
+    
+    {% if site.posts.size > 0 %}
+    <div class="grid md:grid-cols-2 gap-12">
+      {% for post in site.posts %}
+      <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 100 }}">
+        <h2 class="text-2xl font-semibold mb-2">
+          <a href="{{ post.url | relative_url }}" class="hover:text-blue-600">{{ post.title }}</a>
+        </h2>
+        <p class="text-gray-500 mb-4">{{ post.date | date: "%d %B %Y" }}</p>
+        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+        <a href="{{ post.url | relative_url }}" class="text-blue-600 font-semibold mt-2 inline-block hover:underline">Leer más →</a>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <!-- Paginación -->
+    <div class="mt-12 flex justify-center space-x-4">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">&larr; Anterior</a>
+      {% endif %}
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Siguiente &rarr;</a>
+      {% endif %}
+    </div>
+    
+    {% else %}
+      <p class="text-center text-gray-500">No hay entradas publicadas aún.</p>
+    {% endif %}
+    
+  </div>
+</section>
