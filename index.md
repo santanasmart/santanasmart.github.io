@@ -4,14 +4,46 @@ title: "SantanaSmart"
 ---
 
 <!-- Hero Section -->
-<section class="bg-gray-100 text-center py-32" data-aos="fade-up">
-  <img src="{{ site.baseurl }}/assets/images/logo.jpg" alt="SantanaSmart" class="mx-auto mb-6 w-40" data-aos="zoom-in" data-aos-delay="200">
-  <h1 class="text-5xl font-bold mb-4" data-aos="fade-down" data-aos-delay="400">Bienvenido a SantanaSmart</h1>
-  <p class="text-lg max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="600">
-    Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico.
-  </p>
-  <a href="#servicios" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition transform hover:scale-105" data-aos="zoom-in" data-aos-delay="800">Descubre nuestros servicios</a>
+<section class="relative bg-gray-100 text-center py-32 overflow-hidden" data-aos="fade-up">
+  <!-- Imagen de fondo con opacidad -->
+  <div class="absolute inset-0">
+    <img src="{{ site.baseurl }}/assets/images/fondo.jpg" 
+         alt="Fondo SantanaSmart"
+         class="w-full h-full object-cover opacity-30">
+  </div>
+
+  <!-- Overlay para oscurecer un poco (opcional) -->
+  <div class="absolute inset-0 bg-black opacity-20"></div>
+
+  <!-- Contenido encima -->
+  <div class="relative z-10">
+    <img src="{{ site.baseurl }}/assets/images/logo.jpg" 
+         alt="SantanaSmart" 
+         class="mx-auto mb-6 w-40" 
+         data-aos="zoom-in" 
+         data-aos-delay="200">
+
+    <h1 class="text-5xl font-bold mb-4 text-white" 
+        data-aos="fade-down" 
+        data-aos-delay="400">
+        Bienvenido a SantanaSmart
+    </h1>
+
+    <p class="text-lg max-w-3xl mx-auto mb-8 text-gray-100" 
+       data-aos="fade-up" 
+       data-aos-delay="600">
+       Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico.
+    </p>
+
+    <a href="#servicios" 
+       class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition transform hover:scale-105" 
+       data-aos="zoom-in" 
+       data-aos-delay="800">
+       Descubre nuestros servicios
+    </a>
+  </div>
 </section>
+
 
 <!-- Sobre Nosotros -->
 <section id="sobre-nosotros" class="py-32 bg-white" data-aos="fade-up">
@@ -84,4 +116,5 @@ title: "SantanaSmart"
   <p class="mb-2">Email: <a href="mailto:{{ site.author.email }}" class="underline">{{ site.author.email }}</a></p>
   <p>Síguenos en Twitter: <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" class="underline">@{{ site.author.twitter }}</a></p>
 </footer>
+
 
