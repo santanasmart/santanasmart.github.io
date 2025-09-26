@@ -110,11 +110,12 @@ title: "SantanaSmart"
 </section>
 
 <!-- Footer -->
-<footer class="bg-gray-900 text-white py-16 text-center" data-aos="fade-up">
+<footer class="bg-gray-400 text-white py-16 text-center" data-aos="fade-up">
   <p class="mb-2">&copy; {{ "now" | date: "%Y" }} SantanaSmart. Todos los derechos reservados.</p>
   <p class="mb-2"><strong>SantanaSmart</strong></p>
   <p class="mb-2">Email: <a href="mailto:{{ site.author.email }}" class="underline">{{ site.author.email }}</a></p>
   <p>Síguenos en Twitter: <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" class="underline">@{{ site.author.twitter }}</a></p>
 </footer>
+
 
 
