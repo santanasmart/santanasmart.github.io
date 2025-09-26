@@ -83,6 +83,14 @@
       </li>
     </ul>
 
+    <!-- Barra de búsqueda en header -->
+<div class="hidden md:block px-6">
+  <input id="search-input" 
+         class="w-64 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+         type="text" placeholder="Buscar...">
+</div>
+
+
     <!-- Botón menú móvil -->
     <div class="md:hidden">
       <button id="menu-button" class="text-gray-700 focus:outline-none">
@@ -123,6 +131,31 @@
 <footer class="bg-gray-400 text-white py-8 text-center">
   <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Todos los derechos reservados.</p>
 </footer>
+
+  <script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
+<script>
+  var sjs = SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.createElement('ul'),
+    json: '{{ "/search.json" | relative_url }}',
+    searchResultTemplate: '<li><a href="{url}" class="block px-2 py-1 text-blue-600 hover:underline">{title}</a></li>',
+    noResultsText: '<li class="px-2 py-1 text-gray-500">No se encontraron resultados</li>',
+    limit: 8,
+    fuzzy: false
+  })
+
+  // Crear el contenedor dinámicamente justo debajo del input
+  const input = document.getElementById('search-input')
+  const results = sjs.options.resultsContainer
+  results.className = "absolute bg-white border rounded-lg mt-1 shadow-lg w-64 z-50 hidden"
+
+  input.parentNode.appendChild(results)
+
+  input.addEventListener('input', () => {
+    results.classList.toggle('hidden', input.value.length < 2)
+  })
+</script>
+
 
 </body>
 </html>
