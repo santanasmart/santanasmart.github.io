@@ -67,9 +67,9 @@
            {% if page.url == '/' %}aria-current="page"{% endif %}>Inicio</a>
       </li>
       <li>
-        <a href="{{ '/blog.html' | relative_url }}" 
+        <a href="{{ '/blog' | relative_url }}" 
            class="hover:text-blue-600 transition-colors"
-           {% if page.url == '/blog.html' %}aria-current="page"{% endif %}>Entradas</a>
+           {% if page.url == '/blog' %}aria-current="page"{% endif %}>Blog</a>
       </li>
       <li>
         <a href="{{ '/about/' | relative_url }}" 
