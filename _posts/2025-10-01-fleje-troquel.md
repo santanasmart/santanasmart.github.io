@@ -47,3 +47,9 @@ Además de contar con buenos proveedores de fleje como Servitroquel, en Andaluc�
 
 Con proveedores como **Servitroquel** y fabricantes especializados como **Troqueles Cube** y **Troqueles Granada**, Andalucía se consolida como un punto estratégico para la industria del troquelado en España.  
 La combinación de materiales de calidad y la experiencia de los talleres locales asegura procesos eficientes y resultados de primera.
+
+---
+
+### Descargo legal
+
+Este artículo tiene fines **informativos** y no implica colaboración, patrocinio o recomendación directa de las empresas mencionadas. Toda la información presentada se basa en **fuentes públicas** y experiencias del sector.
