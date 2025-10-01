@@ -3,12 +3,12 @@ title: "Servitroquel y troqueles en Andalucía | Proveedores"
 date: 2025-10-01
 categories: [Troqueles, Industria, Proveedores, Andalucía]
 tags: [Servitroquel, fleje para troqueles, troqueles en Andalucía, Troqueles Cube, Troqueles Granada, proveedores de troqueles, fleje España, artes gráficas, packaging]
-![Fleje para troquel](assets/images/flejetroquel.jpg)
+image: /assets/images/flejetroquel.jpg
 description: "Descubre a Servitroquel como proveedor de fleje en España y a fabricantes andaluces como Troqueles Cube y Troqueles Granada."
 ---
 
 <p align="center">
-  <img src="/assets/images/flejetroquel.jpg" alt="flejetroquel, proveedor de fleje" width="600">
+  <img src="{{ page.image | relative_url }}" alt="Fleje para troquel" width="600">
 </p>
 
 La industria del **troquelado** en España mantiene una fuerte presencia, especialmente en Andalucía, donde distintos talleres y proveedores destacan por su calidad y experiencia.  
@@ -47,5 +47,3 @@ Además de contar con buenos proveedores de fleje como Servitroquel, en Andaluc�
 
 Con proveedores como **Servitroquel** y fabricantes especializados como **Troqueles Cube** y **Troqueles Granada**, Andalucía se consolida como un punto estratégico para la industria del troquelado en España.  
 La combinación de materiales de calidad y la experiencia de los talleres locales asegura procesos eficientes y resultados de primera.
-
----
