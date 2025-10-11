@@ -32,7 +32,7 @@ title: "SantanaSmart"
     <p class="text-lg max-w-3xl mx-auto mb-8 text-gray-100" 
        data-aos="fade-up" 
        data-aos-delay="600">
-       Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico.
+       Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas de España. Innovación, eficiencia y desarrollo tecnológico.
     </p>
 
     <a href="#servicios" 
@@ -50,7 +50,7 @@ title: "SantanaSmart"
 <div class="max-w-5xl mx-auto px-6 text-center">
   <h2 class="text-4xl font-bold mb-12">Sobre Nosotros</h2>
   <p class="text-lg mb-6">
-    SantanaSmart nace con el objetivo de transformar la industria a través de la innovación tecnológica y la asesoría industrial especializada. Nos enfocamos en mejorar la eficiencia, optimizar procesos y apoyar a empresas emergentes y consolidadas dentro del parque empresarial de Linares.
+    SantanaSmart nace con el objetivo de transformar la industria a través de la innovación tecnológica y la asesoría industrial especializada. Nos enfocamos en mejorar la eficiencia, optimizar procesos y apoyar a empresas emergentes y consolidadas dentro del territorio nacional.
   </p>
   <p class="text-lg">
     Nuestro equipo combina experiencia en ingeniería, diseño industrial y automatización, ofreciendo soluciones adaptadas a cada cliente. Creemos que la innovación y la eficiencia no solo generan resultados, sino que fortalecen el desarrollo sostenible de las empresas.
@@ -116,6 +116,7 @@ title: "SantanaSmart"
   <p class="mb-2">Email: <a href="mailto:{{ site.author.email }}" class="underline">{{ site.author.email }}</a></p>
   <p>Síguenos en Twitter: <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" class="underline">@{{ site.author.twitter }}</a></p>
 </footer>
+
 
 
 
