@@ -99,7 +99,7 @@ title: "SantanaSmart"
   <div class="space-y-10">
     <div class="bg-gray-100 p-8 rounded-xl shadow" data-aos="fade-right">
       <p class="mb-4">"Gracias a SantanaSmart logramos optimizar nuestros procesos y reducir costes significativamente. Su equipo combina profesionalidad y visión tecnológica."</p>
-      <strong>- Empresa Industrial de Linares</strong>
+      <strong>- Empresa Industrial</strong>
     </div>
     <div class="bg-gray-100 p-8 rounded-xl shadow" data-aos="fade-left">
       <p class="mb-4">"Su asesoría en innovación tecnológica nos permitió implementar sistemas automatizados que mejoraron nuestra productividad y eficiencia."</p>
@@ -116,6 +116,7 @@ title: "SantanaSmart"
   <p class="mb-2">Email: <a href="mailto:{{ site.author.email }}" class="underline">{{ site.author.email }}</a></p>
   <p>Síguenos en Twitter: <a href="https://twitter.com/{{ site.author.twitter }}" target="_blank" class="underline">@{{ site.author.twitter }}</a></p>
 </footer>
+
 
 
 
