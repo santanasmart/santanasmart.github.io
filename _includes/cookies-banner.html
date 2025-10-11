@@ -1,0 +1,24 @@
+<!-- Banner de Cookies - SantanaSmart -->
+<div id="banner-cookies" style="position:fixed;bottom:0;left:0;width:100%;background:#222;color:#fff;text-align:center;padding:12px;font-size:14px;z-index:9999;">
+  Usamos cookies propias y de terceros (Google Analytics) para analizar el tráfico del sitio.
+  <a href="/politica-cookies/" style="color:#4ec9b0;">Más información</a> |
+  <button onclick="aceptarCookies()" style="background:#4ec9b0;color:#fff;border:none;padding:6px 10px;margin-left:6px;cursor:pointer;">Aceptar</button>
+</div>
+
+<script>
+function aceptarCookies() {
+  localStorage.setItem('cookies-aceptadas', 'true');
+  document.getElementById('banner-cookies').style.display = 'none';
+  // Carga diferida de Google Analytics solo tras consentimiento
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'G-NWMQY8FCR2', 'auto');
+  ga('send', 'pageview');
+}
+if (localStorage.getItem('cookies-aceptadas')) {
+  document.getElementById('banner-cookies').style.display = 'none';
+  aceptarCookies();
+}
+</script>
