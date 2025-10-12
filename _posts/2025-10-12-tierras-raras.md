@@ -9,6 +9,8 @@ author: SantanaSmart
 
 ## 🌍 Introducción
 
+![Tierras Raras](/assets/images/tierras-raras.jpg){: .center .rounded .shadow }
+
 Las **tierras raras** son elementos críticos para la electrónica, energías limpias y defensa avanzada.  
 Hoy representan un **campo de batalla estratégico** entre Estados Unidos y China, donde **el control del suministro dicta poder tecnológico y económico**.
 
