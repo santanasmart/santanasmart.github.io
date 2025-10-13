@@ -3,7 +3,7 @@ layout: post
 title: "La guerra de las tierras raras: EE.UU. vs China"
 description: "Análisis de la lucha geopolítica y económica entre Estados Unidos y China por el control de las tierras raras, elementos clave para la tecnología y defensa."
 categories: [industria, geoeconomia, tecnologia]
-image: /assets/img/tierras-raras.jpg
+image: /assets/images/tierras-raras.jpg
 author: SantanaSmart
 ---
 
