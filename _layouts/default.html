@@ -67,14 +67,19 @@
         <li><a href="{{ '/contacto' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/contacto' %}aria-current="page"{% endif %}>Contacto</a></li>
       </ul>
 
-      <!-- Búsqueda escritorio -->
-      {% if page.url == '/blog/' or page.url contains '/blog' or page.collection == 'posts' %}
-      <div class="relative">
-        <input id="search-input" class="w-64 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
-        <ul id="search-results" class="absolute bg-white border rounded-lg mt-1 shadow-lg w-64 max-h-72 overflow-auto z-50 hidden"></ul>
-      </div>
-      {% endif %}
-    </div>
+<!-- Búsqueda escritorio -->
+{% if page.url contains '/blog' or page.collection == 'posts' %}
+<div class="relative">
+  <input id="search-input"
+         class="w-64 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+         type="text"
+         placeholder="Buscar en el blog...">
+  <ul id="search-results"
+      class="absolute bg-white border rounded-lg mt-1 shadow-lg w-64 max-h-72 overflow-auto z-50 hidden">
+  </ul>
+</div>
+{% endif %}
+
 
     <!-- Botón menú móvil -->
     <div class="md:hidden flex items-center space-x-4">
