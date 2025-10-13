@@ -62,25 +62,19 @@
     <div class="hidden md:flex items-center space-x-6">
       <ul class="flex space-x-8 font-semibold text-gray-700 items-center">
         <li><a href="{{ '/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/' %}aria-current="page"{% endif %}>Inicio</a></li>
-        <li><a href="{{ '/blog/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/blog/' %}aria-current="page"{% endif %}>Blog</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url contains '/blog' or page.collection == 'posts' %}aria-current="page"{% endif %}>Blog</a></li>
         <li><a href="{{ '/about/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/about/' %}aria-current="page"{% endif %}>Sobre nosotros</a></li>
         <li><a href="{{ '/contacto' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/contacto' %}aria-current="page"{% endif %}>Contacto</a></li>
       </ul>
 
-<!-- Búsqueda escritorio -->
-{% if page.url contains '/blog' or page.collection == 'posts' %}
-<div class="relative">
-  <input id="search-input"
-         class="w-64 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-         type="text"
-         placeholder="Buscar en el blog...">
-  <ul id="search-results"
-      class="absolute bg-white border rounded-lg mt-1 shadow-lg w-64 max-h-72 overflow-auto z-50 hidden">
-  </ul>
-</div>
-{% endif %}
-
-
+      <!-- Búsqueda escritorio / tablet -->
+      {% if page.url contains '/blog' or page.collection == 'posts' %}
+      <div class="relative">
+        <input id="search-input" class="w-64 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
+        <ul id="search-results" class="absolute bg-white border rounded-lg mt-1 shadow-lg w-64 max-h-72 overflow-auto z-50 hidden"></ul>
+      </div>
+      {% endif %}
+    </div>
 
     <!-- Botón menú móvil -->
     <div class="md:hidden flex items-center space-x-4">
@@ -98,11 +92,11 @@
       <li><a href="{{ '/' | relative_url }}" class="block hover:text-blue-600">Inicio</a></li>
       <li><a href="{{ '/blog/' | relative_url }}" class="block hover:text-blue-600">Blog</a></li>
       <li><a href="{{ '/about/' | relative_url }}" class="block hover:text-blue-600">Sobre nosotros</a></li>
-      <li><a href="{{ '/contacto' | relative_url }}" class="block hover:text-blue-600">Contacto</a></li>
+      <li><a href="{{ '/contacto/' | relative_url }}" class="block hover:text-blue-600">Contacto</a></li>
     </ul>
 
     <!-- Búsqueda móvil -->
-    {% if page.url == '/blog/' or page.url contains '/blog' or page.collection == 'posts' %}
+    {% if page.url contains '/blog' or page.collection == 'posts' %}
     <div class="mt-4 relative">
       <input id="search-input-mobile" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
       <ul id="search-results-mobile" class="absolute bg-white border rounded-lg mt-1 shadow-lg w-full max-h-72 overflow-auto z-50 hidden"></ul>
@@ -110,6 +104,7 @@
     {% endif %}
   </div>
 
+  <!-- Scripts -->
   <script>
     // Toggle menú móvil
     const menuButton = document.getElementById('menu-button');
@@ -117,8 +112,41 @@
     menuButton?.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
+
+    // Inicializar Simple Jekyll Search
+    (function () {
+      function initSearch(inputId, resultsId) {
+        const input = document.getElementById(inputId);
+        const results = document.getElementById(resultsId);
+        if (!input || !results) return;
+
+        var sjs = SimpleJekyllSearch({
+          searchInput: input,
+          resultsContainer: results,
+          json: '{{ "/search.json" | relative_url }}',
+          searchResultTemplate: '<li><a href="{url}" class="block px-3 py-2 text-blue-600 hover:underline">{title}</a></li>',
+          noResultsText: '<li class="px-3 py-2 text-gray-500">No se encontraron resultados</li>',
+          limit: 8,
+          fuzzy: false
+        });
+
+        input.addEventListener('input', () => {
+          results.classList.toggle('hidden', input.value.length < 2);
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!input.contains(e.target) && !results.contains(e.target)) {
+            results.classList.add('hidden');
+          }
+        });
+      }
+
+      initSearch('search-input', 'search-results');
+      initSearch('search-input-mobile', 'search-results-mobile');
+    })();
   </script>
 </header>
+
 
 <!-- Main content -->
 <main>
