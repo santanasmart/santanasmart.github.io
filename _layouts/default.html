@@ -64,16 +64,14 @@
         <li><a href="{{ '/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/' %}aria-current="page"{% endif %}>Inicio</a></li>
         <li><a href="{{ '/blog/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url contains '/blog' or page.collection == 'posts' %}aria-current="page"{% endif %}>Blog</a></li>
         <li><a href="{{ '/about/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/about/' %}aria-current="page"{% endif %}>Sobre nosotros</a></li>
-        <li><a href="{{ '/contacto' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/contacto' %}aria-current="page"{% endif %}>Contacto</a></li>
+        <li><a href="{{ '/contacto/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/contacto/' %}aria-current="page"{% endif %}>Contacto</a></li>
       </ul>
 
       <!-- Búsqueda escritorio / tablet -->
-      {% if page.url contains '/blog' or page.collection == 'posts' %}
-      <div class="relative">
+      <div class="relative ml-6">
         <input id="search-input" class="w-64 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
         <ul id="search-results" class="absolute bg-white border rounded-lg mt-1 shadow-lg w-64 max-h-72 overflow-auto z-50 hidden"></ul>
       </div>
-      {% endif %}
     </div>
 
     <!-- Botón menú móvil -->
@@ -96,40 +94,40 @@
     </ul>
 
     <!-- Búsqueda móvil -->
-    {% if page.url contains '/blog' or page.collection == 'posts' %}
     <div class="mt-4 relative">
       <input id="search-input-mobile" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
       <ul id="search-results-mobile" class="absolute bg-white border rounded-lg mt-1 shadow-lg w-full max-h-72 overflow-auto z-50 hidden"></ul>
     </div>
-    {% endif %}
   </div>
 
   <!-- Scripts -->
+  <script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
   <script>
-    // Toggle menú móvil
-    const menuButton = document.getElementById('menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuButton?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    document.addEventListener('DOMContentLoaded', function () {
+      // Toggle menú móvil
+      const menuButton = document.getElementById('menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuButton?.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
 
-    // Inicializar Simple Jekyll Search
-    (function () {
+      // Inicializar búsqueda
       function initSearch(inputId, resultsId) {
         const input = document.getElementById(inputId);
         const results = document.getElementById(resultsId);
         if (!input || !results) return;
 
-        var sjs = SimpleJekyllSearch({
+        SimpleJekyllSearch({
           searchInput: input,
           resultsContainer: results,
-          json: '{{ "/search.json" | relative_url }}',
+          json: '/search.json',
           searchResultTemplate: '<li><a href="{url}" class="block px-3 py-2 text-blue-600 hover:underline">{title}</a></li>',
           noResultsText: '<li class="px-3 py-2 text-gray-500">No se encontraron resultados</li>',
-          limit: 8,
+          limit: 10,
           fuzzy: false
         });
 
+        // Mostrar resultados solo si hay texto
         input.addEventListener('input', () => {
           results.classList.toggle('hidden', input.value.length < 2);
         });
@@ -143,9 +141,10 @@
 
       initSearch('search-input', 'search-results');
       initSearch('search-input-mobile', 'search-results-mobile');
-    })();
+    });
   </script>
 </header>
+
 
 
 <!-- Main content -->
