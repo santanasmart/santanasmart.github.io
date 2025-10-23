@@ -46,27 +46,4 @@ Su diseño compacto y resistente permite su instalación en distintos tipos de a
 
 ---
 
-## 📊 Especificaciones técnicas
-
-| Característica | Descripción |
-|----------------|------------|
-| Conectividad | BLE 5.1 / Wirepas Mesh |
-| Dimensiones | 97 × 53.5 × 28 mm |
-| Color | Gris |
-| Material | Plástico industrial resistente |
-| Resistencia | IK08, IP67 |
-| Sensores | Acelerómetro, opcional sensor de temperatura |
-| Batería | Li-SOCI2 5200 mAh (10+ años) / Alcalina 3200 mAh (5 años) |
-| Temperatura operación | -20°C a 60°C (Li-SOCI2) / 0°C a 40°C (Alcalina) |
-| Instalación | Tornillo, adhesivo, brida, montaje magnético |
-| Certificaciones | FCC, CE, RoHS, REACH |
-
----
-
-## 📄 Documentación
-
-- [Ficha técnica (PDF)]( /assets/images/M6-Industrial-Tag-Brief.pdf )
-
----
-
 > Este artículo es un **resumen informativo** sobre el M6 Industrial Tag, basado en información pública y observaciones técnicas. No se reproduce contenido protegido por derechos de autor ni material exclusivo del fabricante.
