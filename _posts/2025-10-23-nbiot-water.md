@@ -19,7 +19,8 @@ En esta entrega de la serie **Battery Powered Wireless IoT Solutions**, exploram
 
 ## 🔍 Descripción general
 
-El **SEN21310** es un sensor de detección de fugas de agua alimentado por batería que utiliza **tecnología NB-IoT** para una comunicación fiable y de bajo consumo energético.  
+El [**SEN21310**](https://s3.ap-northeast-1.amazonaws.com/www.senso8.com/senso8_datasheet/NBIoT/DS_SEN21310-Wxxx.pdf)
+es un sensor de detección de fugas de agua alimentado por batería que utiliza **tecnología NB-IoT** para una comunicación fiable y de bajo consumo energético.  
 Está diseñado para entornos donde la prevención de daños por agua es crucial, como centros de datos, salas técnicas, edificios inteligentes, y sistemas industriales.
 
 Su diseño compacto y su capacidad para funcionar con batería durante años lo convierten en una solución *plug-and-play* para aplicaciones de monitoreo remoto sin necesidad de mantenimiento constante.
