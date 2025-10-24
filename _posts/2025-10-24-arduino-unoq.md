@@ -17,9 +17,8 @@ Esta operación busca combinar la potencia de los chips de Qualcomm con la filos
 
 ---
 
-## 🧠 El nuevo Arduino UNO Q
+## 🧠 Que tiene el nuevo Arduino UNO Q
 
-![Arduino UNO Q](/assets/images/arduino-unoq-board.jpg)
 
 El **Arduino UNO Q** representa un salto tecnológico: es una placa híbrida que integra **dos procesadores** en una misma tarjeta.
 
