@@ -60,38 +60,43 @@ title: "SantanaSmart"
 
 <!-- Servicios -->
 <section id="servicios" class="py-32 bg-gray-50">
-<div class="max-w-6xl mx-auto px-6 text-center">
-  <h2 class="text-4xl font-bold mb-16" data-aos="fade-up">Nuestros Servicios</h2>
-  <div class="grid md:grid-cols-3 gap-12">
-    
-<div class="w-full sm:w-80 md:w-96 lg:w-[500px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-right">
-  <img src="{{ site.baseurl }}/assets/images/asesoria.jpg" alt="Asesoría Industrial" class="w-full h-48 object-cover">
-  <div class="p-6 text-left">
-    <h3 class="text-2xl font-semibold mb-3">Asesoría Industrial</h3>
-    Consultoría especializada para optimizar procesos, aumentar la productividad y mejorar la eficiencia en empresas del parque industrial.
-  </div>
-</div>
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-16" data-aos="fade-up">Nuestros Servicios</h2>
 
-<div class="w-full sm:w-80 md:w-96 lg:w-[500px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up">
-  <img src="{{ site.baseurl }}/assets/images/innovacion.jpg" alt="Innovación Tecnológica" class="w-full h-48 object-cover">
-  <div class="p-6 text-left">
-    <h3 class="text-2xl font-semibold mb-3">Innovación Tecnológica</h3>
-    Desarrollo de soluciones tecnológicas y sistemas de automatización que aumentan la competitividad y transforman los procesos industriales.
-  </div>
-</div>
+    <!-- GRID CORREGIDO -->
+    <div class="grid gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
 
-<div class="w-full sm:w-80 md:w-96 lg:w-[500px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-left">
-  <img src="{{ site.baseurl }}/assets/images/desarrollo.jpg" alt="Desarrollo y Diseño" class="w-full h-48 object-cover">
-  <div class="p-6 text-left">
-    <h3 class="text-2xl font-semibold mb-3">Desarrollo y Diseño</h3>
-    Proyectos de investigación, diseño industrial y desarrollo de soluciones a medida para startups y empresas consolidadas.
-  </div>
-</div>
+      <!-- Card 1 -->
+      <div class="w-full max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-right">
+        <img src="{{ site.baseurl }}/assets/images/asesoria.jpg" alt="Asesoría Industrial" class="w-full h-48 object-cover">
+        <div class="p-6 text-left">
+          <h3 class="text-2xl font-semibold mb-3">Asesoría Industrial</h3>
+          Consultoría especializada para optimizar procesos, aumentar la productividad y mejorar la eficiencia en empresas del parque industrial.
+        </div>
+      </div>
 
+      <!-- Card 2 -->
+      <div class="w-full max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up">
+        <img src="{{ site.baseurl }}/assets/images/innovacion.jpg" alt="Innovación Tecnológica" class="w-full h-48 object-cover">
+        <div class="p-6 text-left">
+          <h3 class="text-2xl font-semibold mb-3">Innovación Tecnológica</h3>
+          Desarrollo de soluciones tecnológicas y sistemas de automatización que aumentan la competitividad y transforman los procesos industriales.
+        </div>
+      </div>
 
+      <!-- Card 3 -->
+      <div class="w-full max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-left">
+        <img src="{{ site.baseurl }}/assets/images/desarrollo.jpg" alt="Desarrollo y Diseño" class="w-full h-48 object-cover">
+        <div class="p-6 text-left">
+          <h3 class="text-2xl font-semibold mb-3">Desarrollo y Diseño</h3>
+          Proyectos de investigación, diseño industrial y desarrollo de soluciones a medida para startups y empresas consolidadas.
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
 </section>
+
 
 <!-- Testimonios -->
 <section class="py-32 bg-white">
@@ -111,6 +116,7 @@ title: "SantanaSmart"
 </section>
 
 <!-- Footer -->
+
 
 
 
