@@ -120,12 +120,14 @@ highlighter: rouge
 permalink: /:categories/:title/
 timezone: "Europe/Madrid"
 
+# =============================
+# Colecciones personalizadas
+# =============================
 collections:
+  posts:
+    output: true
   proyectos:
     output: true
     permalink: /proyectos/:title/
-
-
-
 
 
