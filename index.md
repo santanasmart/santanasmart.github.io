@@ -79,7 +79,7 @@ title: "SantanaSmart"
       <div class="w-full max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up">
         <img src="{{ site.baseurl }}/assets/images/innovacion.jpg" alt="I+D Tecnológico" class="w-full h-48 object-cover">
         <div class="p-6 text-left">
-          <h3 class="text-2xl font-semibold mb-3">Innovación Tecnológica</h3>
+          <h3 class="text-2xl font-semibold mb-3">I+D Tecnológico</h3>
           Desarrollo de soluciones tecnológicas y sistemas de automatización que aumentan la competitividad y transforman los procesos industriales.
         </div>
       </div>
@@ -116,6 +116,7 @@ title: "SantanaSmart"
 </section>
 
 <!-- Footer -->
+
 
 
 
