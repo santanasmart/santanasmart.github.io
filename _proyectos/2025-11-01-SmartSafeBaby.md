@@ -66,24 +66,6 @@ Toda la electrónica está integrada en una **carcasa ligera impresa en 3D**, he
 
 ---
 
-## 🧩 Estado del proyecto
-
-| Etapa | Descripción | Estado |
-|-------|--------------|--------|
-| Diseño conceptual | Desarrollo de la idea y especificaciones técnicas | ✅ Completado |
-| Prototipo funcional | Ensamblaje del sistema IoT y pruebas de campo | 🧪 En curso |
-| App móvil | Desarrollo multiplataforma con Flutter | 🔄 En desarrollo |
-| Patente y registro | Solicitud de modelo de utilidad y marca | ⏳ En trámite |
-
----
-
-## 🧾 Propiedad intelectual
-
-El proyecto **SmartSafeBaby** está registrado como **modelo de utilidad y diseño industrial** bajo la titularidad de **SantanaSmart**.  
-También se ha reservado el **nombre comercial y dominio web oficial**.
-
----
-
 ## 🌍 Objetivo y visión
 
 SmartSafeBaby busca **salvar vidas mediante la tecnología**.  
