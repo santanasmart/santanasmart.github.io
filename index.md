@@ -79,7 +79,7 @@ title: "SantanaSmart"
       <div class="w-full max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up">
         <img src="{{ site.baseurl }}/assets/images/innovacion.jpg" alt="Innovación Tecnológica" class="w-full h-48 object-cover">
         <div class="p-6 text-left">
-          <h4 class="text-2xl font-semibold mb-3">Innovación Tecnológico</h4>
+          <h4 class="text-1xl font-semibold mb-3">Innovación Tecnológica</h4>
           Desarrollo de soluciones tecnológicas y sistemas de automatización que aumentan la competitividad y transforman los procesos industriales.
         </div>
       </div>
@@ -116,6 +116,7 @@ title: "SantanaSmart"
 </section>
 
 <!-- Footer -->
+
 
 
 
