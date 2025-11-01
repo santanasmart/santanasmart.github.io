@@ -25,7 +25,7 @@ title: "SantanaSmart"
 
     <h1 class="text-5xl font-bold mb-4 text-white" 
         data-aos="fade-down" 
-        data-aos-delay="400">
+        data-aos-delay="600">
         Bienvenido a SantanaSmart
     </h1>
 
@@ -116,6 +116,7 @@ title: "SantanaSmart"
 </section>
 
 <!-- Footer -->
+
 
 
 
