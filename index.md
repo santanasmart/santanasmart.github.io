@@ -64,7 +64,7 @@ title: "SantanaSmart"
   <h2 class="text-4xl font-bold mb-16" data-aos="fade-up">Nuestros Servicios</h2>
   <div class="grid md:grid-cols-3 gap-12">
     
-<div class="w-full sm:w-80 md:w-96 lg:w-[500px] mx-auto bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-right">
+<div class="w-full sm:w-80 md:w-96 lg:w-[500px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-right">
   <img src="{{ site.baseurl }}/assets/images/asesoria.jpg" alt="Asesoría Industrial" class="w-full h-48 object-cover">
   <div class="p-6 text-left">
     <h3 class="text-2xl font-semibold mb-3">Asesoría Industrial</h3>
@@ -72,7 +72,7 @@ title: "SantanaSmart"
   </div>
 </div>
 
-<div class="w-full sm:w-80 md:w-96 lg:w-[500px] mx-auto bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up">
+<div class="w-full sm:w-80 md:w-96 lg:w-[500px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up">
   <img src="{{ site.baseurl }}/assets/images/innovacion.jpg" alt="Innovación Tecnológica" class="w-full h-48 object-cover">
   <div class="p-6 text-left">
     <h3 class="text-2xl font-semibold mb-3">Innovación Tecnológica</h3>
@@ -80,7 +80,7 @@ title: "SantanaSmart"
   </div>
 </div>
 
-<div class="w-full sm:w-80 md:w-96 lg:w-[500px] mx-auto bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-left">
+<div class="w-full sm:w-80 md:w-96 lg:w-[500px] bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-left">
   <img src="{{ site.baseurl }}/assets/images/desarrollo.jpg" alt="Desarrollo y Diseño" class="w-full h-48 object-cover">
   <div class="p-6 text-left">
     <h3 class="text-2xl font-semibold mb-3">Desarrollo y Diseño</h3>
@@ -111,6 +111,7 @@ title: "SantanaSmart"
 </section>
 
 <!-- Footer -->
+
 
 
 
