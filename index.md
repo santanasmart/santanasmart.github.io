@@ -25,13 +25,13 @@ title: "SantanaSmart"
 
     <h1 class="text-5xl font-bold mb-4 text-white" 
         data-aos="fade-down" 
-        data-aos-delay="600">
+        data-aos-delay="800">
         Bienvenido a SantanaSmart
     </h1>
 
     <p class="text-lg max-w-3xl mx-auto mb-8 text-gray-100" 
        data-aos="fade-up" 
-       data-aos-delay="600">
+       data-aos-delay="800">
        Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas de España. Innovación, eficiencia y desarrollo tecnológico.
     </p>
 
@@ -116,6 +116,7 @@ title: "SantanaSmart"
 </section>
 
 <!-- Footer -->
+
 
 
 
