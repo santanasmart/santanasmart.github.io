@@ -23,11 +23,11 @@ title: "SantanaSmart"
          data-aos="zoom-in" 
          data-aos-delay="200">
 
-    <h1 class="text-5xl font-bold mb-4 text-white" 
+    <h2 class="text-5xl font-bold mb-4 text-white" 
         data-aos="fade-down" 
         data-aos-delay="800">
         Bienvenido a SantanaSmart
-    </h1>
+    </h2>
 
     <p class="text-lg max-w-3xl mx-auto mb-8 text-gray-100" 
        data-aos="fade-up" 
@@ -116,6 +116,7 @@ title: "SantanaSmart"
 </section>
 
 <!-- Footer -->
+
 
 
 
