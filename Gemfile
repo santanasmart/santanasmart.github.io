@@ -14,5 +14,4 @@ gem "jekyll-include-cache", group: :jekyll_plugins
 gem "jekyll-redirect-from", group: :jekyll_plugins
 
 # Optimización de assets
-
 gem "jekyll-minifier", group: :jekyll_plugins
