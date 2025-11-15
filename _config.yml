@@ -29,7 +29,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-paginate
-  - jekyll-archives
+  - jekyll-paginate-v2
+
 
 # =============================
 # Paginación
