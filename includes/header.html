@@ -1,0 +1,31 @@
+<!-- Sidepanel -->
+<div id="mySidepanel" class="sidepanel">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="{{ '/' | relative_url }}">Home</a>
+  <a href="#about">About</a>
+  <a href="#service">Services</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 col-sm-4">
+          <div class="logo">
+            <a href="{{ '/' | relative_url }}"><img src="{{ '/assets/images/logo.png' | relative_url }}" alt="logo" /></a>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-8">
+          <div class="right_bottun">
+            <button class="openbtn" onclick="openNav()"><img src="{{ '/assets/images/menu_icon.png' | relative_url }}" alt="menu" /></button> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Banner -->
+{% include banner.html %}
