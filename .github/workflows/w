@@ -1,0 +1,56 @@
+name: Deploy GitHub Pages
+
+# Se ejecuta en pushes a main y manualmente desde Actions
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Permisos necesarios para GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "github-pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ Clonar el repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Instalar Ruby + Bundler si usamos Jekyll
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2 # Ajusta según tu versión
+
+      - name: Install Jekyll & Bundler
+        run: |
+          gem install bundler jekyll
+
+      # 3️⃣ Construir el sitio (Jekyll)
+      - name: Build Jekyll site
+        run: |
+          if [ -f Gemfile ]; then
+            bundle install
+            bundle exec jekyll build -d ./_site
+          else
+            jekyll build -d ./_site
+          fi
+
+      # 4️⃣ Subir artefacto para Pages
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      # 5️⃣ Publicar el sitio en GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
