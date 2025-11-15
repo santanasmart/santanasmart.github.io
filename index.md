@@ -1,74 +1,110 @@
 ---
-layout: home
-title: "SantanaSmart Blog"
-description: "Reflexiones, aprendizajes y proyectos personales sobre innovación, tecnología y desarrollo profesional."
-pagination:
-  enabled: true
+layout: default
+title: "Mi Blog Personal"
 ---
 
-# Bienvenido a mi espacio personal
+<!-- Banner Section -->
+<section class="banner_main">
+  <div id="banner1" class="carousel slide banner_slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#banner1" data-slide-to="0" class="active"></li>
+      <li data-target="#banner1" data-slide-to="1"></li>
+      <li data-target="#banner1" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="container-fluid">
+          <div class="carousel-caption">
+            <div class="row">
+              <div class="col-md-7 col-lg-5">
+                <div class="text-bg">
+                  <h1>Bienvenido a mi Blog</h1>
+                  <span>Este es un espacio personal para compartir ideas y proyectos.</span>
+                  <a class="read_more" href="#contact">Contactarme</a>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-7">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="ban_track">
+                      <figure><img src="{{ '/assets/images/track.png' | relative_url }}" alt="banner image"/></figure>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <form class="transfot">
+                      <div class="col-md-12">
+                        <span>Suscríbete a mi newsletter</span>
+                        <h3>Recibe actualizaciones</h3>
+                      </div>
+                      <div class="col-md-12">
+                        <input class="transfot_form" placeholder="Tu correo" type="text" name="email">
+                      </div>
+                      <div class="col-md-12">
+                        <button class="get_now">Suscribirse</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Puedes agregar más carousel items aquí -->
+    </div>
+    <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+    </a>
+    <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</section>
 
-¡Hola! 👋  
-Soy **SantanaSmart**, y este es mi blog personal donde comparto **ideas, aprendizajes y proyectos** relacionados con la innovación, la tecnología y el mundo profesional.  
+<!-- About Section -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="row d_flex">
+      <div class="col-md-6">
+        <div class="about_right">
+          <figure><img src="{{ '/assets/images/about.png' | relative_url }}" alt="about image"/></figure>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="titlepage">
+          <h2>Sobre mí</h2>
+          <p>Este blog es un espacio donde comparto mis proyectos, aprendizajes y reflexiones sobre tecnología y desarrollo personal.</p>
+          <a class="read_more" href="#contact">Leer más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Mi objetivo es inspirarte, ayudarte a aprender y, de paso, compartir experiencias que quizás te resulten útiles en tu propio camino.
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="titlepage">
+      <h2>Contacto</h2>
+    </div>
+    <form id="request" class="main_form">
+      <div class="row">
+        <div class="col-md-12">
+          <input class="contactus" placeholder="Nombre" type="text" name="name">
+        </div>
+        <div class="col-md-12">
+          <input class="contactus" placeholder="Email" type="text" name="email">
+        </div>
+        <div class="col-md-12">
+          <input class="contactus" placeholder="Mensaje" type="text" name="message">
+        </div>
+        <div class="col-md-12">
+          <button class="send_btn">Enviar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
 
----
-
-## ✨ Lo que encontrarás aquí
-
-- **Reflexiones y consejos** sobre productividad, innovación y desarrollo profesional.  
-- **Proyectos personales** y casos prácticos que me han enseñado algo valioso.  
-- **Noticias y tendencias** en tecnología e industria.  
-
-No es un blog corporativo; es mi espacio para **aprender contigo y compartir conocimiento de manera honesta y cercana**.
-
----
-
-## 📰 Últimos artículos
-
-{% for post in paginator.posts %}
-### [{{ post.title }}]({{ post.url }})
-**Publicado el {{ post.date | date: "%d %B %Y" }}**  
-
-{{ post.excerpt | strip_html | truncate: 180 }}  
-[Leer más →]({{ post.url }})
-{% endfor %}
-
-{% if paginator.total_pages > 1 %}
-<div class="pagination">
-  {% if paginator.previous_page %}
-  <a href="{{ paginator.previous_page_path }}" class="previous">&larr; Anterior</a>
-  {% endif %}
-  
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <span class="current">{{ page }}</span>
-    {% else %}
-      <a href="{{ paginator.paginate_path | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
-  
-  {% if paginator.next_page %}
-  <a href="{{ paginator.next_page_path }}" class="next">Siguiente &rarr;</a>
-  {% endif %}
-</div>
-{% endif %}
-
----
-
-## 📬 Conecta conmigo
-
-Me encanta recibir mensajes y conversar sobre ideas y proyectos.  
-Puedes escribirme a **[santanasmart@proton.me](mailto:santanasmart@proton.me)** o seguirme en mis redes:  
-
-- [Twitter](https://twitter.com/santanasmart)  
-- [LinkedIn](https://www.linkedin.com/in/santanasmart)  
-- [GitHub](https://github.com/santanasmart)  
-
----
-
-> "Aprender y compartir es la mejor manera de crecer juntos."  
-> – SantanaSmart
 
 
