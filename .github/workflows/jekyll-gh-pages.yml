@@ -1,13 +1,11 @@
 name: Deploy GitHub Pages
 
-# Se ejecuta en pushes a main y manualmente desde Actions
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
-# Permisos necesarios para GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -29,7 +27,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2 # Ajusta según tu versión
+          ruby-version: 3.2
 
       - name: Install Jekyll & Bundler
         run: |
@@ -54,3 +52,4 @@ jobs:
       # 5️⃣ Publicar el sitio en GitHub Pages
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
