@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'es' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="ScJm5D1Rg3QtPzhtjdDnmds-aI2x22teSzGioufETWs">
+
+  <!-- SEO tags automáticas -->
+  {%- include seo.html -%}
+
+  <!-- Favicons / PWA -->
+  <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/images/favicon-96x96.png' | relative_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
+  <meta name="msapplication-TileColor" content="#0055cc">
+  <meta name="theme-color" content="#0055cc">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+    });
+  </script>
+</head>
+<body class="font-inter">
+
+<!-- Header -->
+<header class="bg-white shadow-md">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between py-6 px-6" aria-label="Menú principal">
+    <!-- Logo -->
+    <div class="flex-shrink-0">
+      <a href="{{ '/' | relative_url }}" aria-label="Inicio">
+        <img src="{{ '/assets/images/logo.jpg' | relative_url }}" alt="Logo de {{ site.title }}" class="w-48 h-auto">
+      </a>
+    </div>
+
+    <!-- Menú escritorio -->
+    <div class="hidden md:flex items-center space-x-6">
+      <ul class="flex space-x-8 font-semibold text-gray-700 items-center">
+        <li><a href="{{ '/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/' %}aria-current="page"{% endif %}>Inicio</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/blog/' %}aria-current="page"{% endif %}>Blog</a></li>
+        <li><a href="{{ '/proyectos/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/proyectos/' %}aria-current="page"{% endif %}>Proyectos</a></li>
+        <li><a href="{{ '/about/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/about/' %}aria-current="page"{% endif %}>Sobre nosotros</a></li>
+        <li><a href="{{ '/contacto/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/contacto/' %}aria-current="page"{% endif %}>Contacto</a></li>
+      </ul>
+
+      <!-- Búsqueda escritorio / tablet solo en /blog/ -->
+      {% if page.url == '/blog/' %}
+      <div class="relative ml-6">
+        <input id="search-input" class="w-64 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
+        <ul id="search-results" class="absolute bg-white border rounded-lg mt-1 shadow-lg w-64 max-h-72 overflow-auto z-50 hidden"></ul>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Botón menú móvil -->
+    <div class="md:hidden flex items-center space-x-4">
+      <button id="menu-button" class="text-gray-700 focus:outline-none" aria-label="Abrir menú">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menú móvil -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-6">
+    <ul class="space-y-4 font-semibold text-gray-700">
+      <li><a href="{{ '/' | relative_url }}" class="block hover:text-blue-600">Inicio</a></li>
+      <li><a href="{{ '/blog/' | relative_url }}" class="block hover:text-blue-600">Blog</a></li>
+      <li><a href="{{ '/proyectos/' | relative_url }}" class="block hover:text-blue-600">Proyectos</a></li>
+      <li><a href="{{ '/about/' | relative_url }}" class="block hover:text-blue-600">Sobre nosotros</a></li>
+      <li><a href="{{ '/contacto/' | relative_url }}" class="block hover:text-blue-600">Contacto</a></li>
+    </ul>
+
+    <!-- Búsqueda móvil solo en /blog/ -->
+    {% if page.url == '/blog/' %}
+    <div class="mt-4 relative">
+      <input id="search-input-mobile" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
+      <ul id="search-results-mobile" class="absolute bg-white border rounded-lg mt-1 shadow-lg w-full max-h-72 overflow-auto z-50 hidden"></ul>
+    </div>
+    {% endif %}
+  </div>
+</header>
+
+<!-- Main content -->
+<main>
+  {{ content }}
+</main>
+
+<!-- Banner de cookies -->
+<div id="cookie-banner" style="
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#555;
+  color:#fff;
+  padding:15px 10px;
+  text-align:center;
+  z-index:9999;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.3);
+  font-size:0.9rem;">
+  Este sitio usa cookies para mejorar tu experiencia.
+  <a href="/politica-cookies/" style="color:#0af;">Más información</a>.
+  <button id="accept-cookies" style="
+    margin-left:10px;
+    padding:6px 14px;
+    background:#0af;
+    border:none;
+    border-radius:4px;
+    color:#fff;
+    cursor:pointer;">Aceptar</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const banner = document.getElementById("cookie-banner");
+  const acceptBtn = document.getElementById("accept-cookies");
+  acceptBtn.addEventListener("click", function() {
+    banner.style.display = "none";
+  });
+});
+</script>
+
+{% include footer.html %}
+
+<!-- AOS + búsqueda -->
+<script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Toggle menú móvil
+  const menuButton = document.getElementById('menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuButton?.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+});
+</script>
+
+</body>
+</html>

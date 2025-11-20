@@ -1,0 +1,134 @@
+# =============================
+# Configuración básica del sitio
+# =============================
+title: "SantanaSmart"
+description: "Empresa de asesoría industrial especializada en apoyar a startups y empresas consolidadas del parque empresarial de Linares. Innovación, eficiencia y desarrollo tecnológico."
+keywords: "asesoría industrial, parque empresarial Linares, industria, automatización, empresas tecnológicas, ingeniería, eficiencia industrial"
+lang: "es"
+url: "https://santanasmart.com"
+baseurl: ""
+image: "/assets/img/logo.jpg"
+favicon: "/assets/img/favicon.ico"
+
+# =============================
+# Autor del sitio
+# =============================
+author:
+  name: "SantanaSmart"
+  email: "santanasmart@proton.me"
+  twitter: "santanasmart"
+  linkedin: "santanasmart"
+  github: "santanasmart"
+
+# =============================
+# Google Analytics (GA4)
+# =============================
+google_analytics: 
+
+# =============================
+# Plugins
+# =============================
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# =============================
+# Exclusiones de build
+# =============================
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - drafts
+
+# =============================
+# Blog y collections
+# =============================
+paginate: 5
+paginate_path: "/page:num"
+collections:
+  posts:
+    output: true
+
+# =============================
+# Robots.txt
+# =============================
+robots:
+  disallow:
+    - /assets/
+    - /images/
+    - /css/
+    - /js/
+    - /vendor/
+    - /node_modules/
+    - /drafts/
+    - /README.md
+    - /LICENSE/
+    - /search/
+  allow:
+    - /
+  crawl_delay: 5
+  bots_with_extra_allow:
+    Googlebot:
+      - /.js
+      - /.css
+    Bingbot:
+      - /.js
+      - /.css
+
+# =============================
+# Redes sociales y Open Graph
+# =============================
+social_links:
+  twitter: "https://twitter.com/santanasmart"
+  linkedin: "https://www.linkedin.com/company/santanasmart"
+  github: "https://github.com/santanasmart"
+
+seo:
+  title: "SantanaSmart - Asesoría Industrial e Innovación Tecnológica"
+  description: "Optimiza tu empresa con servicios de asesoría industrial, innovación tecnológica y desarrollo de soluciones personalizadas en Linares."
+  image: "/assets/img/logo.jpg"
+  twitter:
+    card: "summary_large_image"
+    site: "@santanasmart"
+  facebook:
+    admins: "SantanaSmart"
+
+# =============================
+# Marca registrada
+# =============================
+trademark:
+  name: "Santana"
+  classes: [35, 37, 42]
+
+# =============================
+# Markdown y sintaxis
+# =============================
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+
+# =============================
+# URLs y permalinks
+# =============================
+permalink: /:categories/:title/
+timezone: "Europe/Madrid"
+
+# =============================
+# Colecciones personalizadas
+# =============================
+collections:
+  posts:
+    output: true
+  proyectos:
+    output: true
+    permalink: /proyectos/:title/
+
+
+

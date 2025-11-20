@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<section class="max-w-4xl mx-auto px-6 py-12">
+  <article class="bg-white shadow-lg rounded-xl overflow-hidden">
+    
+    {% if page.image %}
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="w-full h-64 object-cover">
+    {% endif %}
+
+    <div class="p-8">
+      <h1 class="text-4xl font-bold mb-4 text-gray-800">{{ page.title }}</h1>
+
+      {% if page.date %}
+      <p class="text-gray-500 mb-6">Publicado el {{ page.date | date: "%d de %B de %Y" }}</p>
+      {% endif %}
+
+      <div class="prose max-w-none text-gray-700 leading-relaxed">
+        {{ content }}
+      </div>
+
+      <div class="mt-10">
+        <a href="{{ '/proyectos/' | relative_url }}" class="inline-block text-blue-600 hover:underline font-semibold">
+          ← Volver a Proyectos
+        </a>
+      </div>
+    </div>
+  </article>
+</section>

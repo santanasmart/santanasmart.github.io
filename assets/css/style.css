@@ -1,0 +1,178 @@
+/* ========== GLOBAL STYLES SantanaSmart ========== */
+
+/* Fuente y color gris medio para toda la web */
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', Arial, sans-serif;
+  color: #666; /* gris medio */
+  line-height: 1.6;
+  background: #fefefe;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover,a:focus {
+  color: #0051a3;
+  text-decoration: underline;
+  outline: none;
+}
+
+header {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 0.4rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+nav .logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+nav .logo img {
+  height: clamp(64px,7vw,100px);
+  display: block;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+nav li { font-weight: 600; }
+
+main {
+  flex: 1;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+footer {
+  background: #f5f5f5;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  color: #555;
+  user-select: none;
+}
+
+@media (min-width:700px) {
+  nav { flex-direction: row; }
+  nav .logo { width: auto; }
+  nav ul { justify-content: flex-end; width: auto; }
+}
+@media (max-width:700px) {
+  header { padding: 0.25rem 1rem; }
+  nav .logo img { height: 64px; }
+}
+
+/* ========== HERO IoT SantanaSmart ========== */
+.hero-iot {
+  background: url("/images/logo.jpg") no-repeat center center;
+  background-size: contain;
+  min-height: 100vh;
+  position: relative;
+}
+.hero-iot__overlay {
+  background: rgba(255,255,255,0.6);
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+.hero-iot__content {
+  position: relative;
+  max-width: 1100px;
+  width: 100%;
+  text-align: left;
+  z-index: 2;
+}
+.hero-iot h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0 0 0.6rem 0;
+  letter-spacing: 0.2px;
+}
+.hero-iot p {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  max-width: 60ch;
+  margin: 0 0 1.25rem 0;
+  opacity: 0.95;
+}
+.hero-iot__cta {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.btn {
+  display: inline-block;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.7rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  will-change: transform;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+.btn--primary {
+  background: #39c3ff;
+  color: #001119;
+}
+.btn--ghost {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+.hero-iot__badges {
+  list-style: none;
+  padding: 0;
+  margin: 0.4rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.hero-iot__badges li {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+}
+@media (prefers-color-scheme: dark) {
+  .btn--primary { background: #31b6f0; color: #001018; }
+}
+@media (min-width: 900px) {
+  .hero-iot { place-items: center start; }
+}
