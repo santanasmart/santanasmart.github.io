@@ -70,7 +70,7 @@ title: "SantanaSmart Blog"
 
       <!-- Card 1 -->
       <div class="w-full max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-right">
-        <img src="{{ site.baseurl }}/assets/images/articulo1.jpg" alt="Artículo 1" class="w-full h-48 object-cover">
+        <img src="{{ site.baseurl }}/assets/images/asesoria.jpg" alt="Artículo 1" class="w-full h-48 object-cover">
         <div class="p-6 text-left">
           <h3 class="text-1xl font-semibold mb-3">Reflexiones sobre creatividad</h3>
           Un vistazo a cómo la creatividad influye en nuestro día a día y algunas técnicas para potenciarla en proyectos personales.
@@ -79,7 +79,7 @@ title: "SantanaSmart Blog"
 
       <!-- Card 2 -->
       <div class="w-full max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up">
-        <img src="{{ site.baseurl }}/assets/images/articulo2.jpg" alt="Artículo 2" class="w-full h-48 object-cover">
+        <img src="{{ site.baseurl }}/assets/images/desarrollo.jpg" alt="Artículo 2" class="w-full h-48 object-cover">
         <div class="p-6 text-left">
           <h3 class="text-1xl font-semibold mb-3">Tecnología y vida diaria</h3>
           Explorando cómo la tecnología puede mejorar nuestras rutinas, aprendizaje y proyectos personales de manera simple y práctica.
@@ -88,7 +88,7 @@ title: "SantanaSmart Blog"
 
       <!-- Card 3 -->
       <div class="w-full max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-left">
-        <img src="{{ site.baseurl }}/assets/images/articulo3.jpg" alt="Artículo 3" class="w-full h-48 object-cover">
+        <img src="{{ site.baseurl }}/assets/images/energetico.jpg" alt="Artículo 3" class="w-full h-48 object-cover">
         <div class="p-6 text-left">
           <h3 class="text-1xl font-semibold mb-3">Proyectos personales</h3>
           Ideas, aprendizajes y resultados de los proyectos que desarrollo por curiosidad o para aprender nuevas habilidades.
