@@ -26,7 +26,7 @@ title: "SantanaSmart Blog"
 
     <!-- Título principal -->
    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white leading-tight drop-shadow-lg">
-     Bienvenido a mi Blog Personal
+     SantanaSmart
    </h2>
 
     <!-- Párrafo descriptivo -->
