@@ -99,15 +99,6 @@ title: "SantanaSmart Blog"
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="py-16 bg-gray-800 text-gray-200 text-center">
-  <p>© {{ site.time | date: "%Y" }} SantanaSmart. Blog personal sin seguimiento de Analytics.  
-  <a href="/aviso-legal/" class="underline">Aviso Legal</a> · 
-  <a href="/privacidad/" class="underline">Privacidad</a> · 
-  <a href="/cookies/" class="underline">Cookies</a>
-  </p>
-</footer>
-
 
 
 
