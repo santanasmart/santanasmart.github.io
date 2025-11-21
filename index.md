@@ -18,7 +18,7 @@ title: "SantanaSmart Blog"
 
   <!-- Contenido encima -->
   <div class="relative z-10">
-    <img src="{{ site.baseurl }}/assets/images/logo.svg" 
+    <img src="{{ site.baseurl }}/assets/images/logo.webp" 
          alt="SantanaSmart" 
          class="mx-auto mb-6 w-28 sm:w-36 md:w-44 lg:w-52" 
          data-aos="zoom-in" 
