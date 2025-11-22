@@ -85,7 +85,7 @@ title: Dashboard Industrial Firebase – BMP180
   const firebaseConfig = {
     apiKey: "AX8KLe41wB2Zp79giosVlEKGQYjByILjfR2F7Qir",
     authDomain: "esp32-bmp-180.firebaseapp.com",
-    databaseURL: "https://console.firebase.google.com/u/4/project/esp32-bmp-180/database/esp32-bmp-180-default-rtdb/data/~2F",
+    databaseURL: "https://esp32-bmp-180-default-rtdb.firebaseio.com/bmp180.json",
     projectId: "esp32-bmp-180",
   };
 
