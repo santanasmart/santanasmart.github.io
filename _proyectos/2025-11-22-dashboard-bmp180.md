@@ -70,26 +70,7 @@ title: Dashboard Industrial Firebase – BMP180
 
   <div class="card">
     <div class="label">Altitud</div>
-    <div class="value"><span id="alt">--</span><span class="units">m</span></div>
-  </div>
-
-  <div class="card">
-    <div class="label">Estado</div>
-    <div id="status" class="value status-bad">SIN DATOS</div>
-  </div>
-
-</div>
-
-<script>
-  // Configuración Firebase
-  const firebaseConfig = {
-    apiKey: "AX8KLe41wB2Zp79giosVlEKGQYjByILjfR2F7Qir",
-    authDomain: "esp32-bmp-180.firebaseapp.com",
-    databaseURL: "https://esp32-bmp-180-default-rtdb.firebaseio.com/bmp180.json",
-    projectId: "esp32-bmp-180",
-  };
-
-  firebase.initializeApp(firebaseConfig);
+    <div class="value"><span bmp-
 
   const db = firebase.database().ref("sensor");
 
