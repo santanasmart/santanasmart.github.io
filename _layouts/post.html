@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-6">
+
+    <!-- Volver -->
+    <a href="{{ '/' | relative_url }}" class="text-blue-600 hover:underline block mb-6">
+      ← Volver al Blog
+    </a>
+
+    <!-- Título -->
+    <h1 class="text-4xl font-bold mb-4">{{ page.title }}</h1>
+
+    <!-- Fecha + Tiempo -->
+    <div class="text-gray-500 text-sm mb-8">
+      {{ page.date | date: "%d de %B de %Y" }}
+      {% if page.reading_time %}
+        &nbsp;·&nbsp; {{ page.reading_time }} min de lectura
+      {% endif %}
+    </div>
+
+    <!-- Imagen destacada -->
+    {% if page.image %}
+    <img 
+      src="{{ page.image | relative_url }}" 
+      alt="{{ page.title }}" 
+      class="w-full rounded-xl mb-10 shadow-md"
+    >
+    {% endif %}
+
+    <!-- Contenido -->
+    <article class="prose prose-lg max-w-none prose-img:rounded-xl prose-headings:font-semibold">
+      {{ content }}
+    </article>
+
+  </div>
+</section>
