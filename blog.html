@@ -4,45 +4,77 @@ title: "Blog - SantanaSmart"
 ---
 
 <section class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <!-- Cabecera -->
-    <h1 class="text-4xl font-bold mb-12 text-center" data-aos="fade-down">Entradas del Blog</h1>
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h1 class="text-4xl font-bold mb-14 text-center" data-aos="fade-down">
+      Entradas del Blog
+    </h1>
 
     {% if site.posts.size > 0 %}
+
     <!-- Grid de posts -->
-    <div class="grid md:grid-cols-2 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
       {% for post in site.posts %}
-      <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:scale-105" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 100 }}">
-        
-        <!-- Miniatura del post -->
+      <article 
+        class="bg-white rounded-2xl shadow-md hover:shadow-xl border border-gray-100 transition"
+        data-aos="fade-up"
+        data-aos-delay="{{ forloop.index0 | times: 100 }}"
+      >
+
+        <!-- Imagen -->
         {% if post.image %}
-          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="w-full h-48 object-cover rounded mb-4">
+        <div class="rounded-t-2xl overflow-hidden">
+          <img 
+            src="{{ post.image | relative_url }}" 
+            alt="{{ post.title }}"
+            class="w-full aspect-[4/3] object-cover"
+          >
+        </div>
         {% endif %}
-        
-        <!-- Título del post -->
-        <h2 class="text-2xl font-semibold mb-2">
-          <a href="{{ post.url | relative_url }}" class="hover:text-blue-600">{{ post.title }}</a>
-        </h2>
 
-        <!-- Fecha -->
-        <p class="text-gray-500 mb-4">{{ post.date | date: "%d %B %Y" }}</p>
+        <!-- Contenido -->
+        <div class="p-6">
 
-        <!-- Extracto -->
-        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
+          <h2 class="text-xl font-semibold mb-2 leading-tight">
+            <a href="{{ post.url | relative_url }}" class="hover:text-blue-600">
+              {{ post.title }}
+            </a>
+          </h2>
 
-        <!-- Leer más -->
-        <a href="{{ post.url | relative_url }}" class="text-blue-600 font-semibold mt-2 inline-block hover:underline">Leer más →</a>
-      </div>
+          <p class="text-gray-500 text-sm mb-3">
+            {{ post.date | date: "%d %B %Y" }}
+          </p>
+
+          <p class="text-gray-700 mb-4">
+            {{ post.excerpt | strip_html | truncate: 140 }}
+          </p>
+
+          <a href="{{ post.url | relative_url }}" 
+             class="text-blue-600 font-medium hover:underline">
+             Leer más →
+          </a>
+
+        </div>
+      </article>
       {% endfor %}
+
     </div>
 
     <!-- Paginación -->
-    <div class="mt-12 flex justify-center space-x-4">
+    <div class="mt-14 flex justify-center gap-4">
       {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path }}" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">&larr; Anterior</a>
+        <a href="{{ paginator.previous_page_path }}" 
+           class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+           &larr; Anterior
+        </a>
       {% endif %}
+
       {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path }}" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Siguiente &rarr;</a>
+        <a href="{{ paginator.next_page_path }}" 
+           class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+           Siguiente &rarr;
+        </a>
       {% endif %}
     </div>
 
