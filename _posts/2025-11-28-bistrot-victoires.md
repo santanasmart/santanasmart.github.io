@@ -1,16 +1,20 @@
 ---
-title: "Bistrot des Victoires: un clásico imperdible en el corazón de París"
-description: "Recomendación del Bistrot des Victoires, uno de los mejores bistrós calidad-precio cerca del Louvre."
+layout: post
+title: "Bistrot des Victoires: un clásico imperdible en París"
 date: 2025-11-28
-tags: ["París", "Gastronomía", "Restaurantes", "Recomendaciones"]
-image: /assets/images/bistrot-victoires.jpg"
+categories: [París, Gastronomía, Restaurantes]
+tags: [Bistrot des Victoires, París, Bistró, Comida Francesa, Guía Gastronómica]
+image: /assets/images/bistrot-victoires-cabecera.jpg
+description: "Recomendación del Bistrot des Victoires, un bistró auténtico con cocina francesa clásica y precios accesibles en el centro de París."
 ---
 
-# Bistrot des Victoires: un clásico imperdible en el corazón de París
+![Cabecera del Bistrot des Victoires](/assets/images/bistrot-victoires.jpg)
+
+# Bistrot des Victoires: un clásico imperdible en París
 
 Si buscas un bistró auténtico, accesible y lleno de encanto en pleno centro de París, **Bistrot des Victoires** es una de las mejores opciones. Situado a pocos pasos del Louvre y del Palais Royal, este restaurante combina la tradición gastronómica francesa con precios sorprendentemente razonables para estar en el 1º distrito.
 
-![Confit de Canard, uno de sus platos estrella](/assets/images/chicken-victories.jpg)
+---
 
 ## ⭐ Por qué recomiendo Bistrot des Victoires
 
@@ -29,6 +33,10 @@ Si buscas un bistró auténtico, accesible y lleno de encanto en pleno centro de
 **Referencia:**  
 [Web oficial](http://www.paris-bistro.com/choisir/paris1/bistrot-des-victoires)
 
+---
+
+![Chicken, uno de sus platos estrella](/assets/images/chicken-victories.jpg)
+
 ## 🍽️ Platos recomendados
 
 - 🦆 **Confit de canard**  
@@ -36,11 +44,20 @@ Si buscas un bistró auténtico, accesible y lleno de encanto en pleno centro de
 - 🥗 Ensaladas grandes  
 - 🍮 **Crème brûlée** o profiteroles  
 
+---
+
 ## 💡 Consejo útil
 
 El restaurante suele llenarse, especialmente a la hora de comer. Llegar antes de las 12:30 o después de las 14:00 ayuda a evitar colas.
+
+---
 
 ## 📍 Ubicación en Google Maps
 
 [Ver ubicación en Google Maps](https://www.google.com/maps/search/?api=1&query=Bistrot+des+Victoires+Paris)
 
+---
+
+📸 **Créditos de imágenes:**  
+- Cabecera: [Foto exterior del Bistrot des Victoires]  
+- Plato estrella: [Confit de Canard – Wikimedia Commons]
