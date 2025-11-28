@@ -5,17 +5,24 @@ layout: default
 <section class="py-16 bg-white">
   <div class="max-w-3xl mx-auto px-6">
 
-  <div class="flex items-center justify-between mb-8">
-  <button onclick="history.back()" 
-          class="px-4 py-2 bg-gray-100 rounded-lg shadow hover:bg-gray-200">
-    ← Atrás
-  </button>
+      <!-- botones adelante atras -->
 
-  <button onclick="history.forward()" 
-          class="px-4 py-2 bg-gray-100 rounded-lg shadow hover:bg-gray-200">
-    Adelante →
-  </button>
+<div class="flex items-center justify-between mb-6">
+
+  {% if page.previous %}
+    <a href="{{ page.previous.url | relative_url }}" class="text-blue-600 hover:underline">
+      ← Post anterior
+    </a>
+  {% endif %}
+
+  {% if page.next %}
+    <a href="{{ page.next.url | relative_url }}" class="text-blue-600 hover:underline">
+      Post siguiente →
+    </a>
+  {% endif %}
+
 </div>
+
 
 
     <!-- Título -->
