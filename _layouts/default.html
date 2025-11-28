@@ -11,30 +11,29 @@
   {%- include seo.html -%}
 
   <!-- Standard Favicons -->
-<link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
 
-<!-- Android / Chrome -->
-<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/images/android-chrome-192x192.png' | relative_url }}">
-<link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/images/android-chrome-512x512.png' | relative_url }}">
+  <!-- Android / Chrome -->
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/images/android-chrome-192x192.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/images/android-chrome-512x512.png' | relative_url }}">
 
-<!-- Apple iOS Icon -->
-<link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+  <!-- Apple iOS Icon -->
+  <link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
 
-<!-- PWA Manifest -->
-<link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
 
-<!-- Safari Pinned Tab -->
-<link rel="mask-icon" href="{{ '/assets/images/safari-pinned-tab.svg' | relative_url }}" color="#0055cc">
+  <!-- Safari Pinned Tab -->
+  <link rel="mask-icon" href="{{ '/assets/images/safari-pinned-tab.svg' | relative_url }}" color="#0055cc">
 
-<!-- Windows Tiles -->
-<meta name="msapplication-TileColor" content="#0055cc">
-<meta name="msapplication-config" content="{{ '/assets/images/browserconfig.xml' | relative_url }}">
+  <!-- Windows Tiles -->
+  <meta name="msapplication-TileColor" content="#0055cc">
+  <meta name="msapplication-config" content="{{ '/assets/images/browserconfig.xml' | relative_url }}">
 
-<!-- Theme Color -->
-<meta name="theme-color" content="#0055cc">
-
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#0055cc">
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -66,10 +65,11 @@
 <!-- Header -->
 <header class="bg-white shadow-md">
   <nav class="max-w-6xl mx-auto flex items-center justify-between py-6 px-6" aria-label="Menú principal">
-    <!-- Logo -->
+    
+    <!-- Logo (ajustado tamaño) -->
     <div class="flex-shrink-0">
       <a href="{{ '/' | relative_url }}" aria-label="Inicio">
-        <img src="{{ '/assets/images/logo.webp' | relative_url }}" alt="Logo de {{ site.title }}" class="w-1 h-1">
+        <img src="{{ '/assets/images/logo.webp' | relative_url }}" alt="Logo de {{ site.title }}" class="w-12 h-12">
       </a>
     </div>
 
@@ -83,7 +83,7 @@
         <li><a href="{{ '/contacto/' | relative_url }}" class="hover:text-blue-600 transition-colors" {% if page.url == '/contacto/' %}aria-current="page"{% endif %}>Contacto</a></li>
       </ul>
 
-      <!-- Búsqueda escritorio / tablet solo en /blog/ -->
+      <!-- Búsqueda escritorio -->
       {% if page.url == '/blog/' %}
       <div class="relative ml-6">
         <input id="search-input" class="w-64 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
@@ -112,7 +112,7 @@
       <li><a href="{{ '/contacto/' | relative_url }}" class="block hover:text-blue-600">Contacto</a></li>
     </ul>
 
-    <!-- Búsqueda móvil solo en /blog/ -->
+    <!-- Búsqueda móvil -->
     {% if page.url == '/blog/' %}
     <div class="mt-4 relative">
       <input id="search-input-mobile" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="Buscar en el blog...">
@@ -122,17 +122,15 @@
   </div>
 </header>
 
-<!-- Main content -->
 <main>
   {{ content }}
 </main>
-
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const banner = document.getElementById("cookie-banner");
   const acceptBtn = document.getElementById("accept-cookies");
-  acceptBtn.addEventListener("click", function() {
+  acceptBtn?.addEventListener("click", function() {
     banner.style.display = "none";
   });
 });
@@ -140,16 +138,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 {% include footer.html %}
 
-<!-- AOS + búsqueda -->
+<!-- Búsqueda + menú -->
 <script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  // Toggle menú móvil
   const menuButton = document.getElementById('menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
-  menuButton?.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-  });
+  menuButton?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 });
 </script>
 
