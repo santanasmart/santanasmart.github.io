@@ -12,7 +12,7 @@ description: "Recomendación del Bistrot des Victoires, un bistró auténtico co
 
 # Bistrot des Victoires: un clásico imperdible en París
 
-Si vas a visitar el Museo de Louvre en la tarde, vete a este sitio es increible, se come que ............... flipas............... de verdad no te lo puerdas, clasica comida francesa a precio que no te lo crees, nosostros comimos por 33 € con medio litro de cerveza. 
+Si vas a visitar el Museo de Louvre en la tarde, vete a este sitio, es increible, se come que ............... flipas............... de verdad no te lo puerdas, clasica comida francesa a precio que no te lo crees, nosostros comimos por 33 € con medio litro de cerveza. 
 
 Si buscas un bistró auténtico, accesible y lleno de encanto en pleno centro de París, **Bistrot des Victoires** es una de las mejores opciones. Situado a pocos pasos del Louvre y del Palais Royal, este restaurante combina la tradición gastronómica francesa con precios sorprendentemente razonables para estar en el 1º distrito.
 
@@ -49,7 +49,9 @@ Si buscas un bistró auténtico, accesible y lleno de encanto en pleno centro de
 - 🦆 **Confit de canard**  
 - 🥩 **Steak frites**  
 - 🥗 Ensaladas grandes  
-- 🍮 **Crème brûlée** o profiteroles  
+- 🍮 **Crème brûlée** o profiteroles
+
+![Duck, otro de sus platos estrella](/assets/images/duck-victories.jpg)
 
 ---
 
