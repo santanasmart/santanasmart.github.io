@@ -10,16 +10,31 @@
   <!-- SEO tags automáticas -->
   {%- include seo.html -%}
 
-  <!-- Favicons / PWA -->
-  <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="96x96" href="{{ '/assets/images/favicon-96x96.png' | relative_url }}">
-  <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
-  <link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
-  <meta name="msapplication-TileColor" content="#0055cc">
-  <meta name="theme-color" content="#0055cc">
+  <!-- Standard Favicons -->
+<link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+
+<!-- Android / Chrome -->
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/images/android-chrome-192x192.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/images/android-chrome-512x512.png' | relative_url }}">
+
+<!-- Apple iOS Icon -->
+<link rel="apple-touch-icon" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="{{ '/assets/images/site.webmanifest' | relative_url }}">
+
+<!-- Safari Pinned Tab -->
+<link rel="mask-icon" href="{{ '/assets/images/safari-pinned-tab.svg' | relative_url }}" color="#0055cc">
+
+<!-- Windows Tiles -->
+<meta name="msapplication-TileColor" content="#0055cc">
+<meta name="msapplication-config" content="{{ '/assets/images/browserconfig.xml' | relative_url }}">
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#0055cc">
+
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
