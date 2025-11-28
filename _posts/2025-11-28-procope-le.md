@@ -3,7 +3,7 @@ layout: post
 title: "Le Procope: El café más antiguo de París"
 date: 2025-11-28
 categories: [historia, gastronomía, turismo]
-image: /assets/images/le-procope-1.jpg
+image: /assets/images/fachada-procope.jpg
 description: "Descubre la historia de Le Procope, el café más antiguo de París, su relevancia cultural, literaria y gastronómica desde 1686 hasta la actualidad."
 ---
 
