@@ -21,16 +21,7 @@ layout: default
       {% endif %}
     </div>
 
-    <!-- Imagen destacada -->
-    {% if page.image %}
-    <img 
-      src="{{ page.image | relative_url }}" 
-      alt="{{ page.title }}" 
-      class="w-full rounded-xl mb-10 shadow-md"
-    >
-    {% endif %}
-
-    <!-- Contenido -->
+      <!-- Contenido -->
     <article class="prose prose-lg max-w-none prose-img:rounded-xl prose-headings:font-semibold">
       {{ content }}
     </article>
