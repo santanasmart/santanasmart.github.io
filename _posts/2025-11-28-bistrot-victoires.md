@@ -3,7 +3,7 @@ title: "Bistrot des Victoires: un clásico imperdible en el corazón de París"
 description: "Recomendación del Bistrot des Victoires, uno de los mejores bistrós calidad-precio cerca del Louvre."
 date: 2025-11-28
 tags: ["París", "Gastronomía", "Restaurantes", "Recomendaciones"]
-header_image: "/assets/images/bistrot-victoires.jpg"
+image: /assets/images/bistrot-victoires.jpg"
 ---
 
 # Bistrot des Victoires: un clásico imperdible en el corazón de París
