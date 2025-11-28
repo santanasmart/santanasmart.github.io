@@ -4,7 +4,7 @@ title: "Bistrot des Victoires: un clásico imperdible en París"
 date: 2025-11-28
 categories: [París, Gastronomía, Restaurantes]
 tags: [Bistrot des Victoires, París, Bistró, Comida Francesa, Guía Gastronómica]
-image: /assets/images/bistrot-victoires-cabecera.jpg
+image: /assets/images/bistrot-victoires.jpg
 description: "Recomendación del Bistrot des Victoires, un bistró auténtico con cocina francesa clásica y precios accesibles en el centro de París."
 ---
 
