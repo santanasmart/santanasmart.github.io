@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<article class="max-w-3xl mx-auto py-12 px-6">
+  <h1 class="text-4xl font-bold mb-6">{{ page.title }}</h1>
+  <p class="text-gray-500 mb-10">{{ page.date | date: "%d %B %Y" }}</p>
+
+  <!-- Contenido con más espacio entre párrafos -->
+  <div class="prose prose-lg leading-relaxed space-y-6 text-gray-800">
+    {{ content }}
+  </div>
+</article>
