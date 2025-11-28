@@ -14,6 +14,10 @@ description: "Descubre la historia de Le Procope, el café más antiguo de Parí
 **Ubicación:** 13 rue de l’Ancienne Comédie, 75006 Paris, Francia  
 [Ver en Google Maps](https://goo.gl/maps/KFmX1P7m8D32)
 
+<a href="https://goo.gl/maps/KFmX1P7m8D32" class="block w-full text-center px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
+  Visitar sitio
+</a>
+
 Le Procope es el **café más antiguo de París**, fundado en **1686** por Francesco Procopio dei Coltelli, conocido en París como François Procope.  
 Fue pionero en servir café en taza de porcelana y ofrecer servicio en mesa, contribuyendo a popularizar el consumo de café en la ciudad.
 
