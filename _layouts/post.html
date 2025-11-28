@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<article class="max-w-4xl mx-auto py-16 px-6 sm:px-8 lg:px-0">
+
+  <!-- Imagen destacada -->
+  {% if page.image %}
+  <div class="mb-8">
+    <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full rounded-xl shadow-lg object-cover">
+  </div>
+  {% endif %}
+
+  <!-- Header: Título, Fecha, Autor -->
+  <header class="mb-8">
+    <h1 class="text-5xl font-extrabold leading-tight text-gray-900 mb-2">{{ page.title }}</h1>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between text-gray-400 text-sm sm:text-base">
+      <span>{{ page.date | date: "%d %B %Y" }}</span>
+      {% if page.author %}
+      <span>Por {{ page.author }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Tabla de contenidos automática (opcional) -->
+  {% if page.toc %}
+  <nav class="mb-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
+    <h2 class="text-lg font-semibold mb-2">Contenido</h2>
+    <ul class="list-disc list-inside space-y-1 text-gray-700">
+      {{ page.toc }}
+    </ul>
+  </nav>
+  {% endif %}
+
+  <!-- Contenido -->
+  <div class="prose prose-lg sm:prose-xl mx-auto text-gray-800">
+    {{ content }}
+  </div>
+
+  <!-- Botones para compartir -->
+  <div class="mt-12 flex flex-wrap gap-4">
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" class="px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition">Facebook</a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" target="_blank" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">LinkedIn</a>
+  </div>
+
+  <!-- Pie de artículo -->
+  <footer class="mt-12 border-t border-gray-200 pt-6 text-sm text-gray-500">
+    <p>Publicado en {{ site.title }}.</p>
+  </footer>
+
+</article>
