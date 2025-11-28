@@ -49,6 +49,33 @@ Sigue siendo un símbolo del **París literario e histórico**, atrayendo tanto 
 
 ---
 
+### 🔹 Personalidades que pasaron por Le Procope
+
+Le Procope no solo fue un café, sino un **centro intelectual y cultural de París**, frecuentado por escritores, filósofos, científicos y políticos que marcaron la historia.
+
+#### Filósofos y pensadores
+- **Voltaire** – Filósofo y escritor, solía acudir para leer, escribir y debatir ideas de la Ilustración.  
+- **Jean-Jacques Rousseau** – Filósofo y escritor, participaba en conversaciones sobre sociedad y política.  
+- **Denis Diderot** – Coeditor de la *Enciclopedia*, discutía filosofía y ciencia.  
+- **Montesquieu** – Filósofo político, intercambiaba ideas sobre leyes y gobierno.
+
+#### Escritores y literatos
+- **Beaumarchais** – Autor de *El Barbero de Sevilla*, socializaba con otros escritores y dramaturgos.  
+- **Marivaux** – Dramaturgo francés, habitual en los salones del café.  
+- **Otros escritores de la Ilustración** – Hacían del café un espacio de intercambio de ideas literarias.
+
+#### Políticos y revolucionarios
+- **Maximilien Robespierre** – Líder de la Revolución Francesa, se reunía con colegas en el café.  
+- **Georges Danton** – Revolucionario y figura clave durante la Revolución, también visitante frecuente.
+
+#### Científicos y académicos
+- **Antoine Lavoisier** – Pionero de la química moderna, debatía avances científicos en el café.  
+- **Benjamin Franklin** – Estadista y científico estadounidense, conoció el café como centro cultural en París.
+
+> Le Procope fue mucho más que un café: fue un **epicentro de ideas, debates y creatividad** donde se forjaron algunas de las grandes corrientes intelectuales y políticas de Francia.
+
+---
+
 **¡Visitar Le Procope es una experiencia histórica y gastronómica única en París!** 🥖🍷📚
 
 ![Decoración clásica](/assets/images/bejamin-procope.jpg){: .center-image }
