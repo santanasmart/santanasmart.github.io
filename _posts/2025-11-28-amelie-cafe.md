@@ -10,7 +10,16 @@ description: "Descubre la historia y el encanto del Café des Deux Moulins, el e
 ## ☕ Café des Deux Moulins: un rincón de Montmartre con magia de cine
 
 **Ubicación:** 15 Rue Lepic, 75018 Paris, Francia — esquina con Rue Cauchois, en pleno barrio de Montmartre.  
-[Ver en Google Maps](https://goo.gl/maps/)
+
+<br><br>
+
+<div style="text-align: center; margin: 20px 0;">
+  <a href="https://maps.app.goo.gl/e5WnK8yqkErSGYzQ6" 
+     style="background-color: #ff4b5c; color: white; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
+    Ver en Google Maps
+  </a>
+</div>
+
 
 Café des Deux Moulins es una típica brasserie parisina que combina su esencia de café‑barrio con una fama internacional gracias al cine.
 <br><br>
