@@ -33,6 +33,11 @@ Si buscas un bistró auténtico, accesible y lleno de encanto en pleno centro de
 **Referencia:**  
 [Web oficial](http://www.paris-bistro.com/choisir/paris1/bistrot-des-victoires)
 
+<a href="http://www.paris-bistro.com" class="block w-full text-center px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
+  Visitar sitio
+</a>
+
+
 ---
 
 ![Chicken, uno de sus platos estrella](/assets/images/chicken-victories.jpg)
@@ -55,6 +60,11 @@ El restaurante suele llenarse, especialmente a la hora de comer. Llegar antes de
 ## 📍 Ubicación en Google Maps
 
 [Ver ubicación en Google Maps](https://www.google.com/maps/search/?api=1&query=Bistrot+des+Victoires+Paris)
+
+<a href="https://www.google.com/maps/search/?api=1&query=Bistrot+des+Victoires+Paris" class="block w-full text-center px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
+  Visitar sitio
+</a>
+
 
 ---
 
