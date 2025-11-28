@@ -10,7 +10,7 @@ header_image: "/assets/images/bistrot-victoires.jpg"
 
 Si buscas un bistró auténtico, accesible y lleno de encanto en pleno centro de París, **Bistrot des Victoires** es una de las mejores opciones. Situado a pocos pasos del Louvre y del Palais Royal, este restaurante combina la tradición gastronómica francesa con precios sorprendentemente razonables para estar en el 1º distrito.
 
-![Confit de Canard, uno de sus platos estrella](/assets/images/chicken-vivtories.jpg)
+![Confit de Canard, uno de sus platos estrella](/assets/images/chicken-victories.jpg)
 
 ## ⭐ Por qué recomiendo Bistrot des Victoires
 
