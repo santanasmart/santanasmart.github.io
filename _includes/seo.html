@@ -1,15 +1,10 @@
-{%- comment -%}
-  SEO META TAGS – inclúyelo dentro de <head> del layout principal
-  Requiere en _config.yml: title, description, url, author.name, author.twitter (opcional), image
-{%- endcomment -%}
-
 {%- assign site_lang = page.lang | default: site.lang | default: 'es' -%}
 {%- assign page_title = page.title | default: site.title -%}
 {%- assign page_description = page.description | default: site.description -%}
 {%- assign raw_image = page.image | default: site.image | default: '/assets/images/og-default.jpg' -%}
 {%- assign page_image = raw_image | absolute_url -%}
 {%- assign page_url = page.url | absolute_url -%}
-{%- assign twitter_user = site.author.twitter -%}
+{%- assign twitter_user = site.author.twitter | remove: '@' -%}
 {%- assign is_article = page.layout == 'post' or page.collection == 'posts' or page.date -%}
 
 <!-- Básicos -->
@@ -22,18 +17,15 @@
 {%- endif -%}
 <meta name="author" content="{{ site.author.name | escape }}">
 <meta name="robots" content="{% if page.noindex or site.noindex %}noindex, nofollow{% else %}index, follow{% endif %}">
-
-<!-- Canonical -->
 <link rel="canonical" href="{{ page_url }}">
-
-<!-- Idioma -->
 <meta http-equiv="content-language" content="{{ site_lang }}">
 
 <!-- Favicons / PWA -->
-<link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | relative_url }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | relative_url }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+<link rel="mask-icon" href="{{ '/assets/images/safari-pinned-tab.svg' | relative_url }}" color="#5bbad5">
 <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
 <meta name="theme-color" content="#ffffff">
 
@@ -48,11 +40,10 @@
 {%- endif -%}
 <meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:locale" content="{{ site_lang | replace: '-', '_' }}">
-
-{%- if is_article and page.date -%}
+{%- if page.date -%}
 <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
 {%- endif -%}
-{%- if is_article and page.last_modified_at -%}
+{%- if page.last_modified_at -%}
 <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
 {%- endif -%}
 {%- if is_article and page.tags -%}
@@ -66,42 +57,35 @@
 <meta name="twitter:title" content="{{ page_title | escape }}">
 <meta name="twitter:description" content="{{ page_description | strip_newlines | strip | escape }}">
 <meta name="twitter:image" content="{{ page_image }}">
-{%- if twitter_user and twitter_user != '' -%}
+{%- if twitter_user != '' -%}
 <meta name="twitter:site" content="@{{ twitter_user }}">
 <meta name="twitter:creator" content="@{{ twitter_user }}">
 {%- endif -%}
 
-<!-- RSS (si usas jekyll-feed) -->
+<!-- RSS -->
 <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 
-<!-- Hreflang básico (amplía si tienes más idiomas) -->
+<!-- Hreflang para multilenguaje -->
+{%- if site.languages and site.languages.size > 1 -%}
+  {%- for lang in site.languages -%}
+<link rel="alternate" href="{{ page.url | prepend: site.baseurl | replace: site.lang, lang | absolute_url }}" hreflang="{{ lang }}">
+  {%- endfor -%}
+{%- else -%}
 <link rel="alternate" href="{{ page_url }}" hreflang="{{ site_lang }}">
+{%- endif -%}
 
-{%- comment -%} JSON-LD: Organization + WebSite (global) y BlogPosting (solo en posts) {%- endcomment -%}
-
-<!-- Organization -->
+<!-- JSON-LD: Organization -->
 <script type="application/ld+json">
-{%- capture org_json -%}
 {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": {{ site.title | jsonify }},
   "url": "{{ site.url }}",
-  "logo": "{{ site.image | absolute_url }}"
-  {%- if site.author.email or site.author.twitter -%},
-  {%- endif -%}
-  {%- if site.author.email -%}
-  "email": "{{ site.author.email }}"{%- if site.author.twitter -%},{% endif -%}
-  {%- endif -%}
-  {%- if site.author.twitter -%}
-  "sameAs": [ "https://twitter.com/{{ site.author.twitter }}" ]
-  {%- endif -%}
+  "logo": "{{ '/assets/images/og-default.jpg' | absolute_url }}"{% if site.author.email or site.author.twitter %},{% endif %}{% if site.author.email %}"email": "{{ site.author.email }}"{% if site.author.twitter %},{% endif %}{% endif %}{% if site.author.twitter %}"sameAs": ["https://twitter.com/{{ site.author.twitter | remove: '@' }}"]{% endif %}
 }
-{%- endcapture -%}
-{{ org_json }}
 </script>
 
-<!-- WebSite -->
+<!-- JSON-LD: WebSite -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -114,53 +98,27 @@
 </script>
 
 {%- if is_article -%}
-<!-- BlogPosting (solo posts) -->
+<!-- JSON-LD: BlogPosting -->
 <script type="application/ld+json">
-{%- capture bp -%}
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": {{ page_title | jsonify }},
   "description": {{ page_description | jsonify }},
-  "image": [ "{{ page_image }}" ],
+  "image": ["{{ page_image }}"],
   "url": "{{ page_url }}",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page_url }}" },
-  "author": { "@type": "Organization", "name": {{ site.title | jsonify }}, "url": "{{ site.url }}" },
-  "publisher": {
-    "@type": "Organization",
-    "name": {{ site.title | jsonify }},
-    "logo": { "@type": "ImageObject", "url": "{{ site.image | absolute_url }}" }
-  }{%- if page.date or page.last_modified_at -%},
-  {%- endif -%}
-  {%- if page.date -%}
-  "datePublished": "{{ page.date | date_to_xmlschema }}"{%- if page.last_modified_at -%},{% endif -%}
-  {%- endif -%}
-  {%- if page.last_modified_at -%}
-  "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",
-  {%- endif -%}
+  "mainEntityOfPage": {"@type":"WebPage","@id":"{{ page_url }}"},
+  "author": {"@type":"Organization","name":{{ site.title | jsonify }},"url":"{{ site.url }}"},
+  "publisher": {"@type":"Organization","name":{{ site.title | jsonify }},"logo":{"@type":"ImageObject","url":"{{ '/assets/images/og-default.jpg' | absolute_url }}"}}{% assign comma = false %}{% if page.date or page.last_modified_at %},{% assign comma = true %}{% endif %}{% if page.date %}"datePublished":"{{ page.date | date_to_xmlschema }}"{% if page.last_modified_at %},{% endif %}{% endif %}{% if page.last_modified_at %}"dateModified":"{{ page.last_modified_at | date_to_xmlschema }}"{% endif %},
   "inLanguage": "{{ site_lang }}"
 }
-{%- endcapture -%}
-{{ bp }}
 </script>
 {%- endif -%}
 
-{%- comment -%} Prev/Next para paginación {%- endcomment -%}
+<!-- Paginación -->
 {%- if paginator and paginator.previous_page_path -%}
 <link rel="prev" href="{{ paginator.previous_page_path | absolute_url }}">
 {%- endif -%}
 {%- if paginator and paginator.next_page_path -%}
 <link rel="next" href="{{ paginator.next_page_path | absolute_url }}">
 {%- endif -%}
-
-{%- comment -%} Google Analytics 4 (solo en producción) {%- endcomment -%}
-{%- if jekyll.environment == "production" and site.google_analytics -%}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', '{{ site.google_analytics }}');
-</script>
-{%- endif -%}
-
