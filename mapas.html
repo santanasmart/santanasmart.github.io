@@ -21,11 +21,12 @@ title: "Mapas"
     {% assign start = map.markers[0].coords %}
     {% assign end = map.route[1] %}
     <li class="map-item" data-category="{{ map.category }}">
+      <!-- Miniatura -->
       <img src="{{ map.thumbnail }}" alt="{{ map.title }}">
       <div class="overlay">
         <h3>{{ map.title }}</h3>
         {% if map.tips %}
-        <p>{{ map.tips | truncate: 100 }}</p>
+          <p>{{ map.tips | truncate: 100 }}</p>
         {% endif %}
         <a class="view-map-btn" 
            href="https://www.google.com/maps/dir/{{ start[0] }},{{ start[1] }}/{{ end[0] }},{{ end[1] }}" 
