@@ -3,7 +3,7 @@ layout: default
 title: "Mapas"
 ---
 
-<h1>Explora nuestros mapas</h1>
+<h1>{{ page.title }}</h1>
 
 <!-- Filtro por categoría -->
 <label for="categoryFilter">Filtrar por categoría:</label>
@@ -18,7 +18,15 @@ title: "Mapas"
 <!-- Lista de mapas -->
 <ul class="map-list">
   {% for map in site.mapas %}
-    <li class="map-item" data-category="{{ map.category }}" data-id="{{ map.id }}" data-title="{{ map.title }}" data-center="{{ map.center | join: ',' }}" data-zoom="{{ map.zoom }}" data-markers="{{ map.markers | jsonify }}" data-route="{{ map.route | jsonify }}" data-tips="{{ map.tips | escape }}">
+    <li class="map-item" 
+        data-category="{{ map.category }}" 
+        data-id="{{ map.id }}" 
+        data-title="{{ map.title }}" 
+        data-center="{{ map.center | join: ',' }}" 
+        data-zoom="{{ map.zoom }}" 
+        data-markers="{{ map.markers | jsonify }}" 
+        data-route="{{ map.route | jsonify }}" 
+        data-tips="{{ map.tips | escape }}">
       <img src="{{ map.thumbnail }}" alt="{{ map.title }}">
       <div class="overlay">
         <h3>{{ map.title }}</h3>
@@ -41,9 +49,8 @@ title: "Mapas"
   </div>
 </div>
 
-<!-- Scripts -->
+<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 <script>
 /* Filtrado por categoría */
@@ -59,7 +66,7 @@ function filterMapsAdvanced() {
   });
 }
 
-/* Abrir modal y cargar Leaflet */
+/* Modal Leaflet */
 let mapInstance;
 
 function openMapModal(mapId) {
@@ -78,9 +85,7 @@ function openMapModal(mapId) {
   document.getElementById('modalTips').innerHTML = `<p>${tips}</p>`;
 
   // Eliminar mapa previo si existe
-  if (mapInstance) {
-    mapInstance.remove();
-  }
+  if (mapInstance) mapInstance.remove();
 
   mapInstance = L.map('modalMap').setView(center, zoom);
 
@@ -134,14 +139,10 @@ function closeMapModal() {
   object-fit: cover;
   height: 150px;
 }
-.map-item:hover {
-  transform: translateY(-5px);
-}
+.map-item:hover { transform: translateY(-5px); }
 .overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   background: rgba(0,0,0,0.6);
   color: #fff;
   padding: 10px;
@@ -149,17 +150,17 @@ function closeMapModal() {
   flex-direction: column;
   gap: 5px;
 }
-.overlay h3 { margin: 0; }
-.overlay p { font-size: 0.9rem; margin: 0; }
+.overlay h3 { margin:0; }
+.overlay p { font-size:0.9rem; margin:0; }
 .view-map-btn {
-  background: #0077cc;
-  border: none;
-  padding: 5px 10px;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
+  background:#0077cc;
+  border:none;
+  padding:5px 10px;
+  color:#fff;
+  border-radius:4px;
+  cursor:pointer;
 }
-.view-map-btn:hover { background: #005fa3; }
+.view-map-btn:hover { background:#005fa3; }
 
 /* Modal */
 .map-modal {
@@ -181,12 +182,12 @@ function closeMapModal() {
 }
 .close-modal {
   position: absolute;
-  top: 10px; right: 15px;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
+  top:10px; right:15px;
+  font-size:2rem;
+  font-weight:bold;
+  cursor:pointer;
 }
-.map-info { margin-top: 10px; padding: 10px; background:#f9f9f9; border-radius: 5px; }
+.map-info { margin-top: 10px; padding: 10px; background:#f9f9f9; border-radius:5px; }
 
 /* Responsive */
 @media (max-width: 992px) { .map-item { flex: 1 1 calc(50% - 20px); } }
