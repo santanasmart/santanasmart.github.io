@@ -18,80 +18,58 @@ title: "Mapas"
 <!-- Lista de mapas -->
 <ul class="map-list">
   {% for map in site.mapas %}
-    {% assign start = map.markers[0].coords %}
-    {% assign end = map.route[1] %}
-    <li class="map-item" data-category="{{ map.category }}">
-      <!-- Miniatura -->
-      <img src="{{ map.thumbnail }}" alt="{{ map.title }}">
+    <li class="map-item" data-category="{{ map.category }}"
+        data-center="{{ map.center | join: ',' }}"
+        data-zoom="{{ map.zoom }}"
+        data-markers="{{ map.markers | jsonify }}"
+        data-route="{{ map.route | jsonify }}"
+        data-title="{{ map.title }}"
+        data-google-url="https://www.google.com/maps/dir/{{ map.markers[0].coords[0] }},{{ map.markers[0].coords[1] }}/{{ map.route[1][0] }},{{ map.route[1][1] }}">
+      <img src="{{ map.thumbnail | relative_url }}" alt="{{ map.title }}">
       <div class="overlay">
         <h3>{{ map.title }}</h3>
         {% if map.tips %}
           <p>{{ map.tips | truncate: 100 }}</p>
         {% endif %}
-        <a class="view-map-btn" 
-           href="https://www.google.com/maps/dir/{{ start[0] }},{{ start[1] }}/{{ end[0] }},{{ end[1] }}" 
-           target="_blank">
-           Abrir en Google Maps
-        </a>
+        <button class="view-map-btn" onclick="openMapModal('{{ map.title | slugify }}')">Ver mapa</button>
+        <a class="google-map-btn" href="{{ map.markers[0].coords[0] }},{{ map.markers[0].coords[1] }}" target="_blank">Abrir en Google Maps</a>
       </div>
     </li>
   {% endfor %}
 </ul>
 
-<style>
-.map-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-}
-.map-item {
-  position: relative;
-  flex: 1 1 calc(33% - 20px);
-  min-width: 250px;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.map-item img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  height: 150px;
-}
-.map-item:hover { transform: translateY(-5px); }
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.overlay h3 { margin: 0; }
-.overlay p { font-size: 0.9rem; margin: 0; }
-.view-map-btn {
-  background: #0077cc;
-  border: none;
-  padding: 5px 10px;
-  color: #fff;
-  border-radius: 4px;
-  text-decoration: none;
-  text-align: center;
-  display: inline-block;
-  margin-top: 5px;
-}
-.view-map-btn:hover { background: #005fa3; }
+<!-- Modal Leaflet -->
+<div id="mapModal" class="map-modal" style="display:none;">
+  <div class="map-modal-content">
+    <span class="close-modal" onclick="closeMapModal()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <div id="modalMap" style="height: 500px; width: 100%; border-radius: 8px;"></div>
+    <div id="modalTips" class="map-info"></div>
+  </div>
+</div>
 
-/* Responsive */
-@media (max-width: 992px) { .map-item { flex: 1 1 calc(50% - 20px); } }
-@media (max-width: 600px) { .map-item { flex: 1 1 100%; } }
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<style>
+/* Galería */
+.map-list { display:flex; flex-wrap:wrap; gap:20px; list-style:none; padding:0; }
+.map-item { position:relative; flex:1 1 calc(33% - 20px); min-width:250px; overflow:hidden; border-radius:8px; cursor:pointer; transition: transform 0.3s; }
+.map-item img { width:100%; display:block; object-fit:cover; height:150px; }
+.map-item:hover { transform: translateY(-5px); }
+.overlay { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.6); color:#fff; padding:10px; display:flex; flex-direction:column; gap:5px; }
+.overlay h3 { margin:0; }
+.overlay p { font-size:0.9rem; margin:0; }
+.view-map-btn, .google-map-btn {
+  background:#0077cc; border:none; padding:5px 10px; color:#fff; border-radius:4px; cursor:pointer; text-decoration:none; text-align:center; display:inline-block; margin-top:5px;
+}
+.view-map-btn:hover, .google-map-btn:hover { background:#005fa3; }
+.map-modal { position:fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center; z-index:9999; }
+.map-modal-content { background:#fff; padding:20px; border-radius:8px; width:90%; max-width:900px; position:relative; }
+.close-modal { position:absolute; top:10px; right:15px; font-size:2rem; font-weight:bold; cursor:pointer; }
+.map-info { margin-top:10px; padding:10px; background:#f9f9f9; border-radius:5px; }
+@media (max-width: 992px) { .map-item { flex:1 1 calc(50% - 20px); } }
+@media (max-width: 600px) { .map-item { flex:1 1 100%; } }
 </style>
 
 <script>
@@ -102,5 +80,50 @@ function filterMapsAdvanced() {
   items.forEach(item => {
     item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
   });
+}
+
+/* Leaflet Modal */
+let mapInstance;
+function openMapModal(mapId) {
+  const item = document.querySelector(`.map-item[data-title='${mapId.replace(/-/g,' ')}']`);
+  if(!item) return;
+
+  const center = item.dataset.center.split(',').map(Number);
+  const zoom = parseInt(item.dataset.zoom) || 13;
+  const markers = JSON.parse(item.dataset.markers);
+  const route = JSON.parse(item.dataset.route || '[]');
+  const tips = item.dataset.tips;
+
+  document.getElementById('mapModal').style.display = 'block';
+  document.getElementById('modalTitle').textContent = mapId.replace(/-/g,' ');
+  document.getElementById('modalTips').innerHTML = `<p>${tips}</p>`;
+
+  if(mapInstance) mapInstance.remove();
+
+  mapInstance = L.map('modalMap').setView(center, zoom);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(mapInstance);
+
+  // Marcadores
+  markers.forEach(marker => {
+    let popupContent = `<b>${marker.name}</b><br>${marker.popup || ''}`;
+    if(marker.image) popupContent += `<br><img src="${marker.image}" style="max-width:100%; border-radius:5px;">`;
+    if(marker.audio) popupContent += `<br><audio controls src="${marker.audio}" style="width:100%;"></audio>`;
+    if(marker.video) popupContent += `<br><video controls src="${marker.video}" width="250" style="border-radius:5px;"></video>`;
+    L.marker(marker.coords).addTo(mapInstance).bindPopup(popupContent);
+  });
+
+  // Ruta
+  if(route.length>1){
+    const polyline = L.polyline(route, { color:'blue', weight:4, opacity:0.7, dashArray:'10,5' }).addTo(mapInstance);
+    mapInstance.fitBounds(polyline.getBounds());
+  }
+}
+
+function closeMapModal() {
+  document.getElementById('mapModal').style.display='none';
+  if(mapInstance) mapInstance.remove();
 }
 </script>
