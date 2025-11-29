@@ -31,50 +31,12 @@ title: "Mapas"
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <style>
-.map-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.map-item {
-  flex: 1 1 calc(33% - 20px);
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  background: #fff;
-  cursor: pointer;
-}
-.map-thumb {
-  width: 100%;
-  height: 200px; /* Fija altura para Leaflet */
-  border-radius: 8px;
-  margin-bottom: 5px;
-}
-.map-title {
-  margin: 5px 0 3px;
-  text-align: center;
-}
-.map-tips {
-  font-size: 0.9rem;
-  text-align: center;
-  margin: 0 0 5px;
-  color: #555;
-}
-.gm-btn {
-  padding: 5px 10px;
-  background: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  margin-bottom: 10px;
-  text-decoration: none;
-}
+.map-list { display: flex; flex-wrap: wrap; gap: 20px; }
+.map-item { flex: 1 1 calc(33% - 20px); min-width: 250px; display: flex; flex-direction: column; align-items: center; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: #fff; cursor: pointer; }
+.map-thumb { width: 100%; height: 200px; border-radius: 8px; margin-bottom: 5px; }
+.map-title { margin: 5px 0 3px; text-align: center; }
+.map-tips { font-size: 0.9rem; text-align: center; margin: 0 0 5px; color: #555; }
+.gm-btn { padding: 5px 10px; background: #0077cc; color: white; border: none; border-radius: 5px; cursor: pointer; text-align: center; margin-bottom: 10px; text-decoration: none; }
 .gm-btn:hover { background: #005fa3; }
 
 @media (max-width: 992px) { .map-item { flex: 1 1 calc(50% - 20px); } }
@@ -92,7 +54,8 @@ document.addEventListener("DOMContentLoaded", function(){
       center: {{ map.center | jsonify }},
       zoom: {{ map.zoom | default: 13 }},
       markers: {{ map.markers | jsonify }},
-      route: {{ map.route | jsonify }}
+      route: {{ map.route | jsonify }},
+      my_map_embed: {{ map.my_map_embed | jsonify }}
     },
     {% endfor %}
   ];
@@ -100,17 +63,22 @@ document.addEventListener("DOMContentLoaded", function(){
   mapsData.forEach(map => {
     const thumbEl = document.getElementById('thumb-' + map.index);
 
-    // Crear miniatura Leaflet
-    const mapThumb = L.map(thumbEl, { zoomControl:false, dragging:false, scrollWheelZoom:false, attributionControl:false }).setView(map.center, map.zoom);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapThumb);
+    if(map.my_map_embed){
+      // Mostrar iframe de My Maps
+      thumbEl.innerHTML = `<iframe src="${map.my_map_embed}" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+    } else {
+      // Crear miniatura Leaflet
+      const mapThumb = L.map(thumbEl, { zoomControl:false, dragging:false, scrollWheelZoom:false, attributionControl:false }).setView(map.center, map.zoom);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapThumb);
 
-    // Agregar marcadores
-    if(map.markers) map.markers.forEach(m => L.marker(m.coords).addTo(mapThumb));
+      // Agregar marcadores
+      if(map.markers) map.markers.forEach(m => L.marker(m.coords).addTo(mapThumb));
 
-    // Agregar ruta
-    if(map.route && map.route.length>1){
-      const line = L.polyline(map.route, { color:'blue', weight:3 }).addTo(mapThumb);
-      mapThumb.fitBounds(line.getBounds());
+      // Agregar ruta
+      if(map.route && map.route.length>1){
+        const line = L.polyline(map.route, { color:'blue', weight:3 }).addTo(mapThumb);
+        mapThumb.fitBounds(line.getBounds());
+      }
     }
 
     // Crear enlace Google Maps
@@ -120,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function(){
       `https://www.google.com/maps/dir/${origin[0]},${origin[1]}/${destination[0]},${destination[1]}` :
       `https://www.google.com/maps/search/?api=1&query=${map.center[0]},${map.center[1]}`;
 
-    // Asignar href al botón
     const gmBtn = thumbEl.closest('.map-item').querySelector('.gm-btn');
     gmBtn.href = gmapsURL;
 
@@ -130,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-// Filtrado
+// Filtrado por categoría
 function filterMaps(){
   const filter = document.getElementById('categoryFilter').value;
   document.querySelectorAll('.map-item').forEach(item => {
