@@ -1,8 +1,8 @@
 ---
 layout: mapa
-title: "Recorrido Histórico París: Hôtel de Ville → Notre-Dame → Café Procope → Sainte-Chapelle"
+title: "Recorrido Histórico París"
 permalink: /mapas/paris-historico/
-center: [48.8545, 2.3455]   # punto medio aproximado del recorrido
+center: [48.8545, 2.3455]
 zoom: 16
 category: "Turismo"
 tips: "Camina con calzado cómodo y disfruta del recorrido histórico por París."
