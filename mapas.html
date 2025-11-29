@@ -22,7 +22,10 @@ title: "Mapas"
       <a href="#" class="map-link" target="_blank">
         <div id="thumb-{{ forloop.index0 }}" class="map-thumb"></div>
       </a>
-      <h3>{{ map.title }}</h3>
+      <h3 class="map-title">{{ map.title }}</h3>
+      {% if map.tips %}
+        <p class="map-tips">{{ map.tips }}</p>
+      {% endif %}
       <a href="#" class="gm-btn" target="_blank">Abrir en Google Maps</a>
     </div>
   {% endfor %}
@@ -43,15 +46,26 @@ title: "Mapas"
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
 }
 .map-thumb {
   width: 100%;
   height: 150px;
   border-radius: 8px;
+  margin-bottom: 5px;
 }
-.map-item h3 {
+.map-title {
+  margin: 5px 0 3px;
   text-align: center;
-  margin: 10px 0 5px;
+}
+.map-tips {
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0 0 5px;
+  color: #555;
 }
 .gm-btn {
   padding: 5px 10px;
@@ -84,10 +98,10 @@ const mapsData = [
   {% endfor %}
 ];
 
-// Generar miniaturas Leaflet
+// Generar miniaturas Leaflet y enlaces a Google Maps
 mapsData.forEach(map => {
-  const mapThumb = L.map('thumb-' + map.index, { zoomControl: false, dragging: false, scrollWheelZoom: false }).setView(map.center, map.zoom);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '' }).addTo(mapThumb);
+  const mapThumb = L.map('thumb-' + map.index, { zoomControl: false, dragging: false, scrollWheelZoom: false, attributionControl:false }).setView(map.center, map.zoom);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapThumb);
 
   if(map.markers) map.markers.forEach(m => L.marker(m.coords).addTo(mapThumb));
   if(map.route && map.route.length>1) {
@@ -95,7 +109,7 @@ mapsData.forEach(map => {
     mapThumb.fitBounds(line.getBounds());
   }
 
-  // Enlaces a Google Maps
+  // Enlace Google Maps
   const origin = (map.route && map.route.length>0) ? map.route[0] : map.center;
   const destination = (map.route && map.route.length>1) ? map.route[map.route.length-1] : map.center;
   const gmapsURL = (map.route && map.route.length>1) ?
@@ -110,7 +124,7 @@ mapsData.forEach(map => {
   gmBtn.href = gmapsURL;
 });
 
-// Filtrado
+// Filtrado por categoría
 function filterMaps(){
   const filter = document.getElementById('categoryFilter').value;
   document.querySelectorAll('.map-item').forEach(item => {
