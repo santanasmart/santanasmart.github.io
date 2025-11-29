@@ -1,16 +1,19 @@
 ---
 layout: mapa
 title: "Ruta Cairo a la Gran Pirámide"
-permalink: /mapas/ruta-cairo-gran-piramide/
+permalink: /mapas/cairo-piramide/
 center: [30.0444, 31.2357]
-zoom: 10
+zoom: 12
 category: "Turismo"
-thumbnail: "/assets/images/cairo-piramide-thumb.jpg"
-tips: "Usa ropa ligera, protector solar y agua."
+tips: "Usa ropa ligera, protector solar y agua. Evita las horas de más calor."
 markers:
   - name: "Centro Cairo"
     coords: [30.0444, 31.2357]
-    popup: "Inicio del recorrido"
+    popup: "Inicio de la ruta"
+  - name: "Gran Pirámide de Guiza"
+    coords: [29.9792, 31.1342]
+    popup: "Destino turístico"
+    image: "/assets/images/piramide.jpg"
 route:
   - [30.0444, 31.2357]
   - [29.9792, 31.1342]
