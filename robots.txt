@@ -1,33 +1,48 @@
+# ======================================================
 # robots.txt profesional para SantanaSmart
-# Fecha: 2025-09-24
-# www.santanasmart.com
+# Fecha: 2025-11-29
+# Dominio: www.santanasmart.com
+# Optimizado para Google, Bing, Yandex, Baidu y más
+# ======================================================
 
 ##########################################
-# REGLAS GENERALES PARA TODOS LOS BOTS
+# 1. REGLAS GENERALES PARA TODOS LOS BOTS
 ##########################################
 
 User-agent: *
-# Bloquear carpetas privadas o temporales
+# Bloquear carpetas privadas, temporales o sensibles
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /drafts/
 Disallow: /node_modules/
 Disallow: /vendor/
 Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /staging/
+Disallow: /beta/
+
+# Bloquear tipos de archivos innecesarios
 Disallow: /*.pdf$
 Disallow: /*.zip$
 Disallow: /*.tar.gz$
 Disallow: /*.bak$
-Disallow: /cgi-bin/
+Disallow: /*.log$
 
-# Permitir indexar todo lo demás
-Allow: /
+# Evitar rastreo de parámetros de URL que generen duplicados
+Disallow: /*?*sessionid=
+Disallow: /*?*utm_source=
+Disallow: /*?*utm_medium=
+Disallow: /*?*utm_campaign=
+Disallow: /*?*fbclid=
+
+# Permitir indexación del resto
+# No se necesita "Allow: /" explícito, Google y la mayoría lo asume
 
 # Sitemap principal
 Sitemap: https://www.santanasmart.com/sitemap.xml
 
 ##########################################
-# REGLAS ESPECÍFICAS POR MOTOR DE BÚSQUEDA
+# 2. REGLAS ESPECÍFICAS POR MOTOR DE BÚSQUEDA
 ##########################################
 
 # Googlebot
@@ -35,50 +50,53 @@ User-agent: Googlebot
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /drafts/
-Allow: /
+Crawl-delay: 5
 
-# Googlebot-Image: permite indexar imágenes específicas si quieres
+# Googlebot-Image
 User-agent: Googlebot-Image
 Disallow: /private-images/
-Allow: /
+Crawl-delay: 10
 
 # Bingbot
 User-agent: bingbot
 Disallow: /private/
-Allow: /
+Crawl-delay: 10
 
 # Yahoo Slurp
 User-agent: Slurp
 Disallow: /private/
-Allow: /
+Crawl-delay: 10
 
 # Yandex
 User-agent: Yandex
 Disallow: /private/
-Allow: /
-
-# Baiduspider (para China)
-User-agent: Baiduspider
-Disallow: /private/
-Allow: /
-
-##########################################
-# REGLAS AVANZADAS
-##########################################
-
-# Evitar rastreo de parámetros URL que generen contenido duplicado
-Disallow: /*?*sessionid=
-Disallow: /*?*utm_source=
-Disallow: /*?*utm_medium=
-Disallow: /*?*utm_campaign=
-
-# Tiempo recomendado entre solicitudes (en segundos)
 Crawl-delay: 10
 
-# Bloquear rastreo de páginas de prueba o staging
-Disallow: /staging/
-Disallow: /beta/
+# Baiduspider (China)
+User-agent: Baiduspider
+Disallow: /private/
+Crawl-delay: 10
+
+# DuckDuckBot
+User-agent: DuckDuckBot
+Disallow: /private/
+Crawl-delay: 10
 
 ##########################################
-# FIN DEL ARCHIVO
+# 3. REGLAS AVANZADAS / OPCIONALES
+##########################################
+
+# Evitar indexación de páginas de prueba o staging
+Disallow: /test/
+Disallow: /preview/
+
+# Evitar contenido duplicado en categorías y tags
+Disallow: /tag/
+Disallow: /category/
+
+# Bloquear archivos temporales de sistema
+Disallow: /.*\.swp$
+Disallow: /.*\.tmp$
+
+# Fin del archivo
 ##########################################
