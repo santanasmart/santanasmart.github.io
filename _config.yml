@@ -130,5 +130,13 @@ collections:
     output: true
     permalink: /proyectos/:title/
 
+collections:
+  mapas:
+    output: true
+    permalink: /mapas/:id/
+
+
+    
+
 
 
