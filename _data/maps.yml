@@ -1,0 +1,37 @@
+- id: ruta-urbana
+  title: "Ruta Urbana SantanaSmart"
+  description: "Explora los puntos clave de la ciudad con rutas recomendadas."
+  thumbnail: "/assets/images/ruta-urbana.jpg"
+  category: "Urbano"
+  center: [37.7749, -122.4194]
+  zoom: 13
+  markers:
+    - name: "SantanaSmart HQ"
+      coords: [37.7749, -122.4194]
+      popup: "Nuestra sede principal"
+      image: "/assets/images/hq.jpg"
+      audio: "/assets/audio/hq.mp3"
+      video: "/assets/video/hq.mp4"
+    - name: "Parque Central"
+      coords: [37.7760, -122.4170]
+      popup: "Ideal para descansar"
+      image: "/assets/images/parque.jpg"
+  route:
+    - [37.7749, -122.4194]
+    - [37.7760, -122.4170]
+  tips: "Lleva agua y calzado cómodo. Hay paradas de café cercanas."
+
+- id: ruta-norte
+  title: "Ruta Norte"
+  description: "Zona norte y sus puntos de interés destacados."
+  thumbnail: "/assets/images/ruta-norte.jpg"
+  category: "Naturaleza"
+  center: [37.7849, -122.4094]
+  zoom: 14
+  markers:
+    - name: "Sucursal Norte"
+      coords: [37.7849, -122.4094]
+      popup: "Sucursal Norte"
+  route:
+    - [37.7849, -122.4094]
+  tips: "Zona ideal para paseos matutinos."
