@@ -5,7 +5,6 @@ title: "Mapas"
 
 <h1>{{ page.title }}</h1>
 
-<!-- Filtro por categoría -->
 <label for="categoryFilter">Filtrar por categoría:</label>
 <select id="categoryFilter" onchange="filterMaps()">
   <option value="all">Todas</option>
@@ -15,7 +14,6 @@ title: "Mapas"
   {% endfor %}
 </select>
 
-<!-- Lista de mapas -->
 <div class="map-list">
   {% for map in site.mapas %}
     <div class="map-item" data-category="{{ map.category }}" data-index="{{ forloop.index0 }}">
@@ -85,46 +83,56 @@ title: "Mapas"
 </style>
 
 <script>
-const mapsData = [
-  {% for map in site.mapas %}
-  {
-    index: {{ forloop.index0 }},
-    title: {{ map.title | jsonify }},
-    center: {{ map.center | jsonify }},
-    zoom: {{ map.zoom | default: 13 }},
-    markers: {{ map.markers | jsonify }},
-    route: {{ map.route | jsonify }}
-  },
-  {% endfor %}
-];
+document.addEventListener("DOMContentLoaded", function(){
 
-// Generar miniaturas Leaflet y enlaces a Google Maps
-mapsData.forEach(map => {
-  const mapThumb = L.map('thumb-' + map.index, { zoomControl: false, dragging: false, scrollWheelZoom: false, attributionControl:false }).setView(map.center, map.zoom);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapThumb);
+  const mapsData = [
+    {% for map in site.mapas %}
+    {
+      index: {{ forloop.index0 }},
+      title: {{ map.title | jsonify }},
+      center: {{ map.center | jsonify }},
+      zoom: {{ map.zoom | default: 13 }},
+      markers: {{ map.markers | jsonify }},
+      route: {{ map.route | jsonify }}
+    },
+    {% endfor %}
+  ];
 
-  if(map.markers) map.markers.forEach(m => L.marker(m.coords).addTo(mapThumb));
-  if(map.route && map.route.length>1) {
-    const line = L.polyline(map.route, { color:'blue', weight:3 }).addTo(mapThumb);
-    mapThumb.fitBounds(line.getBounds());
-  }
+  mapsData.forEach(map => {
+    // Inicializar Leaflet
+    const thumbEl = document.getElementById('thumb-' + map.index);
+    const mapThumb = L.map(thumbEl, { zoomControl:false, dragging:false, scrollWheelZoom:false, attributionControl:false }).setView(map.center, map.zoom);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapThumb);
 
-  // Enlace Google Maps
-  const origin = (map.route && map.route.length>0) ? map.route[0] : map.center;
-  const destination = (map.route && map.route.length>1) ? map.route[map.route.length-1] : map.center;
-  const gmapsURL = (map.route && map.route.length>1) ?
-    `https://www.google.com/maps/dir/${origin[0]},${origin[1]}/${destination[0]},${destination[1]}` :
-    `https://www.google.com/maps/search/?api=1&query=${map.center[0]},${map.center[1]}`;
+    if(map.markers) map.markers.forEach(m => L.marker(m.coords).addTo(mapThumb));
+    if(map.route && map.route.length>1){
+      const line = L.polyline(map.route, { color:'blue', weight:3 }).addTo(mapThumb);
+      mapThumb.fitBounds(line.getBounds());
+    }
 
-  // Asignar href tanto al div como al botón
-  const mapLink = document.querySelector(`#thumb-${map.index}`).parentElement.querySelector('.map-link');
-  mapLink.href = gmapsURL;
+    // Crear enlace Google Maps
+    const origin = (map.route && map.route.length>0) ? map.route[0] : map.center;
+    const destination = (map.route && map.route.length>1) ? map.route[map.route.length-1] : map.center;
+    const gmapsURL = (map.route && map.route.length>1) ?
+      `https://www.google.com/maps/dir/${origin[0]},${origin[1]}/${destination[0]},${destination[1]}` :
+      `https://www.google.com/maps/search/?api=1&query=${map.center[0]},${map.center[1]}`;
 
-  const gmBtn = document.querySelector(`#thumb-${map.index}`).parentElement.querySelector('.gm-btn');
-  gmBtn.href = gmapsURL;
+    // Asignar href al div y al botón
+    const mapLink = thumbEl.closest('.map-item').querySelector('.map-link');
+    mapLink.href = gmapsURL;
+
+    const gmBtn = thumbEl.closest('.map-item').querySelector('.gm-btn');
+    gmBtn.href = gmapsURL;
+
+    // Clic en la miniatura también abre Google Maps
+    thumbEl.addEventListener('click', () => {
+      window.open(gmapsURL, '_blank');
+    });
+  });
+
 });
 
-// Filtrado por categoría
+// Filtrado
 function filterMaps(){
   const filter = document.getElementById('categoryFilter').value;
   document.querySelectorAll('.map-item').forEach(item => {
