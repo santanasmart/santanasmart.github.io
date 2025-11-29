@@ -7,7 +7,7 @@ title: "Mapas"
 
 <!-- Filtro por categoría -->
 <label for="categoryFilter">Filtrar por categoría:</label>
-<select id="categoryFilter" onchange="filterMapsAdvanced()">
+<select id="categoryFilter" onchange="filterMaps()">
   <option value="all">Todas</option>
   {% assign categories = site.mapas | map: "category" | uniq %}
   {% for cat in categories %}
@@ -16,120 +16,106 @@ title: "Mapas"
 </select>
 
 <!-- Lista de mapas -->
-<ul class="map-list">
+<div class="map-list">
   {% for map in site.mapas %}
-    <li class="map-item" data-category="{{ map.category }}" data-title="{{ map.title }}">
-      <div class="map-thumbnail" id="thumb-{{ forloop.index0 }}" style="height:150px;"></div>
-      <div class="overlay">
-        <h3>{{ map.title }}</h3>
-        {% if map.tips %}
-          <p>{{ map.tips | truncate: 100 }}</p>
-        {% endif %}
-        <button class="view-map-btn" onclick="openMapModal('{{ map.title | slugify }}')">Ver mapa</button>
-        <a class="google-map-btn" href="https://www.google.com/maps/dir/{{ map.markers[0].coords[0] }},{{ map.markers[0].coords[1] }}/{{ map.route[1][0] }},{{ map.route[1][1] }}" target="_blank">Abrir en Google Maps</a>
-      </div>
-    </li>
+    <div class="map-item" data-category="{{ map.category }}" data-index="{{ forloop.index0 }}">
+      <a href="#" class="map-link" target="_blank">
+        <div id="thumb-{{ forloop.index0 }}" class="map-thumb"></div>
+      </a>
+      <h3>{{ map.title }}</h3>
+      <a href="#" class="gm-btn" target="_blank">Abrir en Google Maps</a>
+    </div>
   {% endfor %}
-</ul>
-
-<!-- Modal Leaflet -->
-<div id="mapModal" class="map-modal" style="display:none;">
-  <div class="map-modal-content">
-    <span class="close-modal" onclick="closeMapModal()">&times;</span>
-    <h2 id="modalTitle"></h2>
-    <div id="modalMap" style="height:500px; width:100%; border-radius:8px;"></div>
-    <div id="modalTips" class="map-info"></div>
-  </div>
 </div>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 <style>
-.map-list { display:flex; flex-wrap:wrap; gap:20px; list-style:none; padding:0; }
-.map-item { position:relative; flex:1 1 calc(33% - 20px); min-width:250px; border-radius:8px; overflow:hidden; cursor:pointer; transition: transform 0.3s; }
-.map-item:hover { transform: translateY(-5px); }
-.overlay { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.6); color:#fff; padding:10px; display:flex; flex-direction:column; gap:5px; }
-.overlay h3 { margin:0; }
-.overlay p { font-size:0.9rem; margin:0; }
-.view-map-btn, .google-map-btn { background:#0077cc; border:none; padding:5px 10px; color:#fff; border-radius:4px; cursor:pointer; text-decoration:none; text-align:center; display:inline-block; margin-top:5px; }
-.view-map-btn:hover, .google-map-btn:hover { background:#005fa3; }
-.map-modal { position:fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center; z-index:9999; }
-.map-modal-content { background:#fff; padding:20px; border-radius:8px; width:90%; max-width:900px; position:relative; }
-.close-modal { position:absolute; top:10px; right:15px; font-size:2rem; font-weight:bold; cursor:pointer; }
-.map-info { margin-top:10px; padding:10px; background:#f9f9f9; border-radius:5px; }
-@media (max-width:992px){.map-item{flex:1 1 calc(50% - 20px);}} 
-@media (max-width:600px){.map-item{flex:1 1 100%;}}
+.map-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.map-item {
+  flex: 1 1 calc(33% - 20px);
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.map-thumb {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+}
+.map-item h3 {
+  text-align: center;
+  margin: 10px 0 5px;
+}
+.gm-btn {
+  padding: 5px 10px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+.gm-btn:hover { background: #005fa3; }
+
+@media (max-width: 992px) { .map-item { flex: 1 1 calc(50% - 20px); } }
+@media (max-width: 600px) { .map-item { flex: 1 1 100%; } }
 </style>
 
 <script>
 const mapsData = [
   {% for map in site.mapas %}
   {
-    title: "{{ map.title | escape }}",
-    center: [{{ map.center | join:',' }}],
-    zoom: {{ map.zoom }},
+    index: {{ forloop.index0 }},
+    title: {{ map.title | jsonify }},
+    center: {{ map.center | jsonify }},
+    zoom: {{ map.zoom | default: 13 }},
     markers: {{ map.markers | jsonify }},
-    route: {{ map.route | jsonify }},
-    tips: "{{ map.tips | escape }}"
+    route: {{ map.route | jsonify }}
   },
   {% endfor %}
 ];
 
-// Crear miniaturas Leaflet
-mapsData.forEach((mapData, index)=>{
-  const thumbDiv = L.map('thumb-'+index, {zoomControl:false, attributionControl:false}).setView(mapData.center, mapData.zoom);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(thumbDiv);
+// Generar miniaturas Leaflet
+mapsData.forEach(map => {
+  const mapThumb = L.map('thumb-' + map.index, { zoomControl: false, dragging: false, scrollWheelZoom: false }).setView(map.center, map.zoom);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '' }).addTo(mapThumb);
 
-  mapData.markers.forEach(m=>{
-    L.marker(m.coords).addTo(thumbDiv).bindPopup(m.name);
-  });
-
-  if(mapData.route.length>1){
-    const polyline = L.polyline(mapData.route,{color:'blue',weight:3,opacity:0.7,dashArray:'5,5'}).addTo(thumbDiv);
-    thumbDiv.fitBounds(polyline.getBounds());
+  if(map.markers) map.markers.forEach(m => L.marker(m.coords).addTo(mapThumb));
+  if(map.route && map.route.length>1) {
+    const line = L.polyline(map.route, { color:'blue', weight:3 }).addTo(mapThumb);
+    mapThumb.fitBounds(line.getBounds());
   }
+
+  // Enlaces a Google Maps
+  const origin = (map.route && map.route.length>0) ? map.route[0] : map.center;
+  const destination = (map.route && map.route.length>1) ? map.route[map.route.length-1] : map.center;
+  const gmapsURL = (map.route && map.route.length>1) ?
+    `https://www.google.com/maps/dir/${origin[0]},${origin[1]}/${destination[0]},${destination[1]}` :
+    `https://www.google.com/maps/search/?api=1&query=${map.center[0]},${map.center[1]}`;
+
+  // Asignar href tanto al div como al botón
+  const mapLink = document.querySelector(`#thumb-${map.index}`).parentElement.querySelector('.map-link');
+  mapLink.href = gmapsURL;
+
+  const gmBtn = document.querySelector(`#thumb-${map.index}`).parentElement.querySelector('.gm-btn');
+  gmBtn.href = gmapsURL;
 });
 
-// Modal Leaflet
-let mapInstance;
-function openMapModal(title){
-  const mapData = mapsData.find(m=>m.title===title);
-  if(!mapData) return;
-
-  document.getElementById('mapModal').style.display='block';
-  document.getElementById('modalTitle').textContent=title;
-  document.getElementById('modalTips').innerHTML=`<p>${mapData.tips}</p>`;
-
-  if(mapInstance) mapInstance.remove();
-
-  mapInstance = L.map('modalMap').setView(mapData.center, mapData.zoom);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{ attribution:'&copy; OpenStreetMap' }).addTo(mapInstance);
-
-  mapData.markers.forEach(m=>{
-    let popupContent=`<b>${m.name}</b><br>${m.popup||''}`;
-    if(m.image) popupContent+=`<br><img src="${m.image}" style="max-width:100%;border-radius:5px;">`;
-    if(m.video) popupContent+=`<br><video controls src="${m.video}" style="width:100%;"></video>`;
-    if(m.audio) popupContent+=`<br><audio controls src="${m.audio}" style="width:100%;"></audio>`;
-    L.marker(m.coords).addTo(mapInstance).bindPopup(popupContent);
-  });
-
-  if(mapData.route.length>1){
-    const polyline = L.polyline(mapData.route,{color:'blue',weight:4,opacity:0.7,dashArray:'10,5'}).addTo(mapInstance);
-    mapInstance.fitBounds(polyline.getBounds());
-  }
-}
-
-function closeMapModal(){
-  document.getElementById('mapModal').style.display='none';
-  if(mapInstance) mapInstance.remove();
-}
-
-/* Filtro por categoría */
-function filterMapsAdvanced(){
-  const filter=document.getElementById('categoryFilter').value;
-  document.querySelectorAll('.map-item').forEach(item=>{
-    item.style.display=(filter==='all'||item.dataset.category===filter)?'block':'none';
+// Filtrado
+function filterMaps(){
+  const filter = document.getElementById('categoryFilter').value;
+  document.querySelectorAll('.map-item').forEach(item => {
+    if(filter==='all' || item.dataset.category===filter) item.style.display='flex';
+    else item.style.display='none';
   });
 }
 </script>
