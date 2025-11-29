@@ -22,7 +22,9 @@ title: "Mapas"
       {% if map.tips %}
         <p class="map-tips">{{ map.tips }}</p>
       {% endif %}
-      <a href="#" class="gm-btn" target="_blank">Abrir en Google Maps</a>
+      {% if map.description %}
+        <p class="map-description">{{ map.description }}</p>
+      {% endif %}
     </div>
   {% endfor %}
 </div>
@@ -32,12 +34,11 @@ title: "Mapas"
 
 <style>
 .map-list { display: flex; flex-wrap: wrap; gap: 20px; }
-.map-item { flex: 1 1 calc(33% - 20px); min-width: 250px; display: flex; flex-direction: column; align-items: center; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: #fff; cursor: pointer; }
+.map-item { flex: 1 1 calc(33% - 20px); min-width: 250px; display: flex; flex-direction: column; align-items: center; border: 1px solid #ddd; border-radius: 8px; padding: 10px; background: #fff; }
 .map-thumb { width: 100%; height: 200px; border-radius: 8px; margin-bottom: 5px; }
 .map-title { margin: 5px 0 3px; text-align: center; }
 .map-tips { font-size: 0.9rem; text-align: center; margin: 0 0 5px; color: #555; }
-.gm-btn { padding: 5px 10px; background: #0077cc; color: white; border: none; border-radius: 5px; cursor: pointer; text-align: center; margin-bottom: 10px; text-decoration: none; }
-.gm-btn:hover { background: #005fa3; }
+.map-description { font-size: 0.9rem; text-align: center; margin: 5px 0 10px; color: #333; }
 
 @media (max-width: 992px) { .map-item { flex: 1 1 calc(50% - 20px); } }
 @media (max-width: 600px) { .map-item { flex: 1 1 100%; } }
@@ -81,18 +82,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
     }
 
-    // Crear enlace Google Maps
-    const origin = (map.route && map.route.length>0) ? map.route[0] : map.center;
-    const destination = (map.route && map.route.length>1) ? map.route[map.route.length-1] : map.center;
-    const gmapsURL = (map.route && map.route.length>1) ?
-      `https://www.google.com/maps/dir/${origin[0]},${origin[1]}/${destination[0]},${destination[1]}` :
-      `https://www.google.com/maps/search/?api=1&query=${map.center[0]},${map.center[1]}`;
-
-    const gmBtn = thumbEl.closest('.map-item').querySelector('.gm-btn');
-    gmBtn.href = gmapsURL;
-
-    // Clic en miniatura también abre Google Maps
-    thumbEl.addEventListener('click', () => window.open(gmapsURL, '_blank'));
+    // No se incluyen botones ni enlaces a Google Maps
   });
 
 });
