@@ -1,0 +1,111 @@
+---
+layout: none
+permalink: /sitemap.xml
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+    xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" 
+    xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Página principal -->
+  <url>
+    <loc>{{ site.url | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Páginas estáticas -->
+  {%- for page in site.pages -%}
+    {%- unless page.exclude_from_sitemap or page.permalink == nil -%}
+  <url>
+    <loc>{{ page.url | absolute_url }}</loc>
+    <lastmod>{{ page.last_modified_at | default: page.date | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+    {%- endunless -%}
+  {%- endfor -%}
+
+  <!-- Posts del blog -->
+  {%- for post in site.posts -%}
+  <url>
+    <loc>{{ post.url | absolute_url }}</loc>
+    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+
+    <!-- Imagen Open Graph del post -->
+    {%- if post.image or site.image -%}
+    <image:image>
+      <image:loc>{{ post.image | default: site.image | absolute_url }}</image:loc>
+      {%- if post.image_alt or site.image_alt -%}
+      <image:caption>{{ post.image_alt | default: site.image_alt | escape }}</image:caption>
+      {%- endif -%}
+    </image:image>
+    {%- endif -%}
+
+  </url>
+  {%- endfor -%}
+
+  <!-- Categorías -->
+  {%- if site.categories -%}
+    {%- for category in site.categories -%}
+  <url>
+    <loc>{{ '/categories/' | append: category[0] | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+    {%- endfor -%}
+  {%- endif -%}
+
+  <!-- Tags -->
+  {%- if site.tags -%}
+    {%- for tag in site.tags -%}
+  <url>
+    <loc>{{ '/tags/' | append: tag[0] | absolute_url }}</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+    {%- endfor -%}
+  {%- endif -%}
+
+  <!-- Multilenguaje -->
+  {%- if site.languages and site.languages.size > 1 -%}
+    {%- for lang in site.languages -%}
+      {%- for page in site.pages -%}
+        {%- unless page.exclude_from_sitemap or page.permalink == nil -%}
+  <url>
+    <loc>{{ page.url | replace: site.lang, lang | absolute_url }}</loc>
+    <lastmod>{{ page.last_modified_at | default: page.date | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+        {%- endunless -%}
+      {%- endfor -%}
+
+      {%- for post in site.posts -%}
+  <url>
+    <loc>{{ post.url | replace: site.lang, lang | absolute_url }}</loc>
+    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+
+    {%- if post.image or site.image -%}
+    <image:image>
+      <image:loc>{{ post.image | default: site.image | absolute_url }}</image:loc>
+      {%- if post.image_alt or site.image_alt -%}
+      <image:caption>{{ post.image_alt | default: site.image_alt | escape }}</image:caption>
+      {%- endif -%}
+    </image:image>
+    {%- endif -%}
+
+  </url>
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+</urlset>
