@@ -12,9 +12,9 @@ description: "Descubre la historia de Le Procope, el café más antiguo de Parí
 ![Le Procope](/assets/images/fachada-procope.jpg){: .center-image }
 
 **Ubicación:** 13 rue de l’Ancienne Comédie, 75006 Paris, Francia  
-[Ver en Google Maps](https://goo.gl/maps/KFmX1P7m8D32)
+[Ver en Google Maps](https://maps.app.goo.gl/8CHayxQJ2gyBXd1F8)
 
-<a href="https://goo.gl/maps/KFmX1P7m8D32" class="block w-full text-center px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
+<a href="https://maps.app.goo.gl/8CHayxQJ2gyBXd1F8" class="block w-full text-center px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition">
   Visitar sitio
 </a>
 <br><br>
