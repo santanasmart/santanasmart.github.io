@@ -7,7 +7,7 @@ title: "Mapas"
 
 <!-- Filtro por categoría -->
 <label for="categoryFilter">Filtrar por categoría:</label>
-<select id="categoryFilter" onchange="filterMaps()">
+<select id="categoryFilter" onchange="filterMapsAdvanced()">
   <option value="all">Todas</option>
   {% assign categories = site.mapas | map: "category" | uniq %}
   {% for cat in categories %}
@@ -15,30 +15,41 @@ title: "Mapas"
   {% endfor %}
 </select>
 
+<!-- Lista de mapas -->
 <ul class="map-list">
   {% for map in site.mapas %}
-    <li class="map-item" data-category="{{ map.category }}">
-      <a href="{{ map.url }}">
-        {% if map.thumbnail %}
-          <img src="{{ map.thumbnail }}" alt="{{ map.title }}">
-        {% endif %}
+    <li class="map-item" data-category="{{ map.category }}" data-id="{{ map.id }}" data-title="{{ map.title }}" data-center="{{ map.center | join: ',' }}" data-zoom="{{ map.zoom }}" data-markers="{{ map.markers | jsonify }}" data-route="{{ map.route | jsonify }}" data-tips="{{ map.tips | escape }}">
+      <img src="{{ map.thumbnail }}" alt="{{ map.title }}">
+      <div class="overlay">
         <h3>{{ map.title }}</h3>
-      </a>
-      {% if map.description %}
-        <p>{{ map.description }}</p>
-      {% endif %}
-      {% if map.category %}
-        <small>Categoría: {{ map.category }}</small>
-      {% endif %}
+        {% if map.tips %}
+        <p>{{ map.tips | truncate: 100 }}</p>
+        {% endif %}
+        <button class="view-map-btn" onclick="openMapModal('{{ map.id }}')">Ver mapa</button>
+      </div>
     </li>
   {% endfor %}
 </ul>
 
+<!-- Modal Leaflet -->
+<div id="mapModal" class="map-modal" style="display:none;">
+  <div class="map-modal-content">
+    <span class="close-modal" onclick="closeMapModal()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <div id="modalMap" style="height: 500px; width: 100%; border-radius: 8px;"></div>
+    <div id="modalTips" class="map-info"></div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 <script>
-function filterMaps() {
+/* Filtrado por categoría */
+function filterMapsAdvanced() {
   const filter = document.getElementById('categoryFilter').value;
   const items = document.querySelectorAll('.map-item');
-
   items.forEach(item => {
     if (filter === 'all' || item.dataset.category === filter) {
       item.style.display = 'block';
@@ -47,4 +58,137 @@ function filterMaps() {
     }
   });
 }
+
+/* Abrir modal y cargar Leaflet */
+let mapInstance;
+
+function openMapModal(mapId) {
+  const item = document.querySelector(`.map-item[data-id='${mapId}']`);
+  if (!item) return;
+
+  const center = item.dataset.center.split(',').map(Number);
+  const zoom = parseInt(item.dataset.zoom) || 13;
+  const markers = JSON.parse(item.dataset.markers);
+  const route = JSON.parse(item.dataset.route || '[]');
+  const title = item.dataset.title;
+  const tips = item.dataset.tips;
+
+  document.getElementById('mapModal').style.display = 'block';
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalTips').innerHTML = `<p>${tips}</p>`;
+
+  // Eliminar mapa previo si existe
+  if (mapInstance) {
+    mapInstance.remove();
+  }
+
+  mapInstance = L.map('modalMap').setView(center, zoom);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(mapInstance);
+
+  // Marcadores
+  markers.forEach(marker => {
+    let popupContent = `<b>${marker.name}</b><br>${marker.popup || ''}`;
+    if (marker.image) popupContent += `<br><img src="${marker.image}" style="max-width:100%; border-radius:5px;">`;
+    if (marker.audio) popupContent += `<br><audio controls src="${marker.audio}" style="width:100%;"></audio>`;
+    if (marker.video) popupContent += `<br><video controls src="${marker.video}" width="250" style="border-radius:5px;"></video>`;
+    L.marker(marker.coords).addTo(mapInstance).bindPopup(popupContent);
+  });
+
+  // Ruta
+  if (route.length > 1) {
+    const polyline = L.polyline(route, { color: 'blue', weight: 4, opacity: 0.7, dashArray: '10,5' }).addTo(mapInstance);
+    mapInstance.fitBounds(polyline.getBounds());
+  }
+}
+
+/* Cerrar modal */
+function closeMapModal() {
+  document.getElementById('mapModal').style.display = 'none';
+  if (mapInstance) mapInstance.remove();
+}
 </script>
+
+<style>
+.map-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+.map-item {
+  position: relative;
+  flex: 1 1 calc(33% - 20px);
+  min-width: 250px;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.map-item img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 150px;
+}
+.map-item:hover {
+  transform: translateY(-5px);
+}
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.overlay h3 { margin: 0; }
+.overlay p { font-size: 0.9rem; margin: 0; }
+.view-map-btn {
+  background: #0077cc;
+  border: none;
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.view-map-btn:hover { background: #005fa3; }
+
+/* Modal */
+.map-modal {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.map-modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 900px;
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.map-info { margin-top: 10px; padding: 10px; background:#f9f9f9; border-radius: 5px; }
+
+/* Responsive */
+@media (max-width: 992px) { .map-item { flex: 1 1 calc(50% - 20px); } }
+@media (max-width: 600px) { .map-item { flex: 1 1 100%; } }
+</style>
