@@ -25,7 +25,7 @@ Montmartre es uno de los barrios más emblemáticos y carismáticos de París. T
 <br><br>
 ---
 ### 1️⃣ Moulin Rouge
-![Moulin Rouge](https://upload.wikimedia.org/wikipedia/commons/1/19/Moulin_Rouge_Paris.jpg)
+![Moulin Rouge](https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Moulin_Rouge%2C_17_April_2011.jpg)
 ## 🎡 1️⃣ Moulin Rouge – Historia del Cabaret Rojo  
 **📍 82 Boulevard de Clichy**
 
