@@ -10,6 +10,8 @@ tags: ["París", "Montmartre", "Guía", "Historia", "Arte"]
 # 🗺️ Recorrido completo por Montmartre  
 ## Guía detallada + historia + curiosidades
 
+![Montmartre](https://images.pexels.com/photos/27523002/pexels-photo-27523002.jpeg)
+
 Montmartre es uno de los barrios más emblemáticos y carismáticos de París. Tierra de artistas, cabarets, cafés legendarios, escaleras infinitas y callejuelas de película. Esta ruta está diseñada para conocer su historia, sus rincones más fotogénicos y su esencia bohemia.
 
 <a href="https://www.google.com/maps/d/u/0/edit?mid=1pELLpXKA0utI0twPyFxRxxvlPNe_VsA&usp=sharing" target="_blank" style="display:inline-block; background-color:#4285F4; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">
