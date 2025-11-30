@@ -98,6 +98,12 @@ El busto fue creado por el escultor **Aslan** y colocado en 1997 como homenaje p
 Muchos visitantes tocan el busto para “pedir suerte”, lo que ha desgastado notablemente el bronce.
 
 🎶 **Dalida:** una vida entre el éxito rotundo y la tragedia, convertida hoy en símbolo cultural del barrio.
+
+<a href="https://www.youtube.com/watch?v=SHpXJ6hQoXI" target="_blank" style="display:inline-block; background-color:#FF0000; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">
+▶️ Ver video en YouTube 
+</a>
+
+
 <br><br>
 ---
 
