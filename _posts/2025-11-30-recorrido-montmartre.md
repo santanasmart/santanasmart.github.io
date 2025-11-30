@@ -11,7 +11,7 @@ tags: ["París", "Montmartre", "Guía", "Historia", "Arte"]
 ## Guía detallada + historia + curiosidades
 
 Montmartre es uno de los barrios más emblemáticos y carismáticos de París. Tierra de artistas, cabarets, cafés legendarios, escaleras infinitas y callejuelas de película. Esta ruta está diseñada para conocer su historia, sus rincones más fotogénicos y su esencia bohemia.
-
+<br><br>
 ---
 
 ## 🎡 1️⃣ Moulin Rouge – Historia del Cabaret Rojo  
@@ -22,7 +22,7 @@ Fundado en **1889**, el Moulin Rouge representa el inicio del **París nocturno 
 Aquí nació el **cancán francés**, un baile cuyos movimientos acrobáticos escandalizaron a la sociedad de la época y rompieron con las normas del comportamiento público. **Toulouse-Lautrec** inmortalizó esa energía en sus famosos carteles, que aún hoy marcan la estética del lugar.
 
 🔎 **Curiosidad:** El cabaret permitía algo revolucionario para su época: que mujeres y hombres bailaran juntos sin protocolos estrictos. El Moulin Rouge fue uno de los epicentros de la liberación social y cultural.
-
+<br><br>
 ---
 
 ## ☕ 2️⃣ Café des Deux Moulins – El hogar de Amélie  
@@ -31,7 +31,7 @@ Aquí nació el **cancán francés**, un baile cuyos movimientos acrobáticos es
 Este café adquirió fama mundial gracias a la película **“Amélie” (2001)**. La película utiliza el café como símbolo de intimidad, magia cotidiana y pequeñas historias anónimas. Aunque algunas escenas se filmaron en estudio, gran parte de la atmósfera real del café se conserva: su barra metálica, sus mesas pequeñas y su aire local.
 
 💡 **Tip:** Pide un **crème brûlée** y revive la icónica escena de “romper la costra con la cucharita”.
-
+<br><br>
 ---
 
 ## 🥧 3️⃣ Les Petits Mitrons – La pastelería artesanal más querida  
@@ -47,7 +47,7 @@ Entre sus sabores más celebrados están:
 - manzana-canela
 
 ❤️ **Por qué es especial:** mantienen procesos 100% artesanales, sin industrializar, algo cada vez más difícil de encontrar en París.
-
+<br><br>
 ---
 
 ## 💙 4️⃣ Mur des Je T’Aime – El muro del amor  
@@ -56,7 +56,7 @@ Entre sus sabores más celebrados están:
 Inaugurado en el año **2000**, es una obra de **Frédéric Baron y Claire Kito**. Reúne la frase *“Te quiero”* en **más de 300 idiomas y dialectos**. Las líneas rojas representan fragmentos de un corazón roto: el visitante, al acercarse, “lo recompone”.
 
 🌍 **Significado profundo:** el muro es un mensaje de reconciliación universal, un recordatorio de que el amor es la única lengua común.
-
+<br><br>
 ---
 
 ## 🎨 5️⃣ Le Bateau-Lavoir – Donde nació el cubismo  
@@ -75,7 +75,7 @@ En **1907**, Picasso pintó aquí **Las Señoritas de Avignon**, obra que dio or
 El edificio actual es una reconstrucción, ya que el original fue destruido por un incendio en los años 70.
 
 ❄️ **Dato curioso:** El lugar era tan frío que los artistas quemaban muebles viejos y cajas de madera para calentarse.
-
+<br><br>
 ---
 
 ## 🌾 6️⃣ Moulin de la Galette – La “Moulinette”  
@@ -86,7 +86,7 @@ Uno de los pocos molinos originales de Montmartre que aún se conservan. Durante
 Fue inmortalizado por **Renoir** en su emblemático cuadro *“Baile en el Moulin de la Galette”* (1876), una celebración de la alegría y la libertad parisina.
 
 🌾 **Historia secreta:** originalmente molía trigo y uvas para los viñedos de Montmartre, antes de convertirse en lugar de ocio.
-
+<br><br>
 ---
 
 ## 🎤 7️⃣ Busto de Dalida – Homenaje a una reina trágica  
@@ -98,7 +98,7 @@ El busto fue creado por el escultor **Aslan** y colocado en 1997 como homenaje p
 Muchos visitantes tocan el busto para “pedir suerte”, lo que ha desgastado notablemente el bronce.
 
 🎶 **Dalida:** una vida entre el éxito rotundo y la tragedia, convertida hoy en símbolo cultural del barrio.
-
+<br><br>
 ---
 
 ## 🎀 8️⃣ La Maison Rose – La casa rosa más fotografiada  
@@ -109,7 +109,7 @@ Una de las imágenes más icónicas de Montmartre. Esta casa restaurante, con su
 Frecuentada por Picasso, Utrillo y otros artistas, conserva la estética del Montmartre de principios del XX.
 
 📸 **Dato curioso:** aparece en numerosas obras del pintor Maurice Utrillo, gran cronista del barrio.
-
+<br><br>
 ---
 
 ## 🎭 9️⃣ Cabaret Lapin Agile – La guarida bohemia  
@@ -120,7 +120,7 @@ Uno de los cabarets más antiguos de París, creado en el siglo XIX. Su fachada 
 Fue frecuentado por Picasso, Apollinaire y Modigliani, quienes pasaban noches enteras entre poesía, canciones y debates artísticos.
 
 📚 **Origen del nombre:** proviene de un cuadro de André Gill donde aparece un conejo saltando de una olla (*Lapin Agile* = “conejo ágil”).
-
+<br><br>
 ---
 
 ## ☕ 🔟 Le Consulat – El café de los artistas  
@@ -134,14 +134,14 @@ Este café, activo desde el siglo XIX, fue refugio habitual de grandes artistas:
 - Picasso
 
 Su fachada histórica, su interior clásico y su terraza lo convierten en uno de los cafés más fotogénicos y auténticos del barrio.
-
+<br><br>
 ---
 
 ## 🎨 1️⃣1️⃣ Place du Tertre – El corazón de los pintores  
 Esta plaza es el centro artístico de Montmartre. Antaño fue lugar de encuentro de la vanguardia pictórica; hoy mantiene viva la tradición con decenas de pintores montando sus caballetes para retratos, caricaturas y óleos.
 
 📜 **Dato histórico:** la plaza se ubica sobre el antiguo terreno de la abadía de Montmartre, fundada en 1133.
-
+<br><br>
 ---
 
 ## ⛪ 1️⃣2️⃣ Basílica del Sacré-Cœur – Final con vista eterna  
@@ -153,10 +153,10 @@ Desde sus escalinatas se disfruta **la mejor vista panorámica de París**.
 Quien suba a la cúpula obtendrá una vista **360°** simplemente inolvidable.
 
 🙏 **Simbolismo:** fue construida como acto de reconciliación espiritual tras la guerra franco-prusiana y la Comuna de París.
-
+<br><br>
 ---
 
 # 🎉 Final de la ruta
 Montmartre es un viaje en el tiempo. Calles estrechas, arte en cada esquina, perfumes de café, música espontánea… un barrio donde el pasado y el presente se abrazan.  
-
+<br><br>
 ---
