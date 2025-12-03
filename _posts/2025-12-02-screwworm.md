@@ -4,7 +4,7 @@ title: "El regreso del gusano devorador de carne: el screwworm vuelve"
 date: 2025-12-03
 categories: [Salud, Ganadería, Ciencia]
 tags: [Screwworm, Plagas, Ganadería, Seguridad animal]
-image: /assets/images/ia-forense.jpg
+image: /assets/images/ai-forense.jpg
 description: "El New World screwworm, casi erradicado, está regresando en Centroamérica y sur de México, afectando ganado, fauna y, en algunos casos, humanos. Descubre cómo se propaga y cómo protegerse."
 ---
 
@@ -14,7 +14,7 @@ description: "El New World screwworm, casi erradicado, está regresando en Centr
 
 <br><br>
 
-![Screwworm](/assets/images/ia-forense.jpg)  
+![Screwworm](/assets/images/ai-forense.jpg)  
 *Imagen representativa del screwworm*
 
 <br><br>
