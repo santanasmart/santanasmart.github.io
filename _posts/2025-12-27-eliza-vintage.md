@@ -79,7 +79,7 @@ La influencia de ELIZA ha llegado hasta nuestros días, apareciendo en libros, p
 - **Videojuegos:** Muchos juegos de aventura de los 80 usaban motores basados en la lógica de ELIZA.
 - **Cyberpunk:** A menudo se cita a ELIZA como el ancestro de las IAs que gestionan ciudades enteras en la ficción.
 
-<a href="https://www.youtube.com/watch?v=RMK9mloU78s" target="_blank" style="display:inline-block; background-color:#FF0000; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">
+<a href="https://www.youtube.com/watch?v=zhxNI7V2IxM" target="_blank" style="display:inline-block; background-color:#FF0000; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">
 ▶️ Ver documental sobre Joseph Weizenbaum en YouTube
 </a>
 
