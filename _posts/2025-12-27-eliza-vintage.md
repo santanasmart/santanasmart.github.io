@@ -14,7 +14,7 @@ tags: ["IA", "Historia", "Chatbots", "Computación", "Curiosidades"]
 
 Mucho antes de ChatGPT, Claude o Gemini, existió un programa que revolucionó nuestra forma de entender la computación. En 1964, Joseph Weizenbaum creó a **ELIZA**, la "madre" de todos los chatbots, demostrando que una máquina podía "conversar" con nosotros usando solo un puñado de reglas lógicas.
 <br><br>
-<a href="https://web.mit.edu/STS.035/www/PDFs/eliza.pdf" target="_blank" style="display:inline-block; background-color:#4285F4; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">
+<a href="https://cse.buffalo.edu/~rapaport/572/S02/weizenbaum.eliza.1966.pdf" target="_blank" style="display:inline-block; background-color:#4285F4; color:white; padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold;">
 📜 Leer el paper original de 1966 (MIT)
 </a>
 <br><br>
