@@ -1,6 +1,6 @@
 ---
 title: "The Roots of Conversational AI: ELIZA and the DOCTOR Script"
-date: 2025-10-24
+date: 2025-12-27
 categories: [AI History, NLP, Computer Science]
 tags: [ELIZA, NLP, Chatbots, AI History, Joseph Weizenbaum]
 image: /assets/images/eliza-vintage.jpg
@@ -28,22 +28,11 @@ A pesar de carecer de una base de datos de conocimiento o una arquitectura de ap
 
 ## ⚙️ Características principales
 
-- 🛠️ **Arquitectura basada en Scripts**: No era un modelo monolítico; su comportamiento dependía totalmente del script cargado (siendo DOCTOR el más icónico).
-- 🧩 **Pattern Matching (Reconocimiento de patrones)**: Identificaba palabras clave en la entrada del usuario mediante reglas predefinidas.
-- 🔄 **Transformación de oraciones**: Utilizaba reglas de descomposición y reensamblaje para invertir pronombres (p.ej., de "Mi madre" a "Tu madre").
-- ⏳ **Bajo consumo de recursos**: Funcionaba en sistemas de tiempo compartido como el IBM 7094, una fracción de la potencia de cualquier sensor IoT moderno.
-- 🧠 **Sin estado (Stateless)**: A diferencia de los modelos actuales, ELIZA no "aprendía" de la conversación; cada respuesta era una reacción inmediata al último input.
-
----
-
-## 🧩 El "Efecto ELIZA" en la sociedad
-
-Lo que comenzó como un experimento técnico se convirtió en un estudio psicológico. Weizenbaum observó con preocupación cómo las personas:
-1.  **Antropomorfizaban** la máquina rápidamente.
-2.  Compartían secretos íntimos con el programa.
-3.  Creían que la máquina realmente "entendía" sus problemas.
-
-Este fenómeno sigue vigente hoy en día cuando interactuamos con asistentes virtuales y modelos generativos, subrayando la importancia de la **ética en la IA**.
+- 🛠️ **Arquitectura basada en Scripts**: Su comportamiento dependía totalmente del script cargado.
+- 🧩 **Pattern Matching**: Identificaba palabras clave mediante reglas predefinidas.
+- 🔄 **Transformación de oraciones**: Reorganizaba frases para invertir pronombres (p.ej., de "Mi madre" a "Tu madre").
+- ⏳ **Bajo consumo de recursos**: Funcionaba en sistemas de tiempo compartido como el IBM 7094.
+- 🧠 **Sin estado (Stateless)**: No aprendía de la conversación; cada respuesta era una reacción inmediata al último input.
 
 ---
 
@@ -51,9 +40,9 @@ Este fenómeno sigue vigente hoy en día cuando interactuamos con asistentes vir
 
 El flujo de trabajo de ELIZA se puede resumir en tres pasos técnicos:
 
-1.  **Escaneo:** El input se limpia y se busca la palabra clave con el mayor "rango" de prioridad.
-2.  **Descomposición:** Si se encuentra "Yo estoy *X*", el sistema fragmenta la oración.
-3.  **Reensamblaje:** Se aplica una regla de respuesta, como "¿Por qué dice usted que está *X*?".
+1.  **Escaneo:** El input se limpia y se busca la palabra clave con mayor prioridad.
+2.  **Descomposición:** Si se encuentra una estructura conocida, el sistema fragmenta la oración.
+3.  **Reensamblaje:** Se aplica una regla de respuesta (p.ej., "¿Por qué dice usted que...?").
 
 ---
 
